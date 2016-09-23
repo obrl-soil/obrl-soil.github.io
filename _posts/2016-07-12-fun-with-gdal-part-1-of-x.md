@@ -40,8 +40,8 @@ The output .tif will contain any cells whose lower-right corners fell within the
 
 **Update 01-Aug-2016:** Turns out there's a bit of a bug in GDAL 2.1 - a change was made that meant the -projwin tag did some unexpected pixel reshaping and realignment. [The behaviour should be reverted in v.2.1.2](https://trac.osgeo.org/gdal/ticket/6610), so stick to using v1.x for this kind of operation until then. I've tested the method successfully with GDAL 1.9 and 1.11. Note also that the QGIS >= 2.14 Clipper tool relies on GDAL 2.1.0, so it may not perform as you might expect.
 
-NB: If you're behind a firewall, you'l have to set up your proxy stuff first. In the OSGeo4w shell, the commands are:
-* `set GDAL_HTTP_PROXY=http://proxy_url:port`
-* `set GDAL_HTTP_PROXYUSRPASS=USER:PASSWORD` (in this case, sub in your proxy logon stuff, not the WebDAV credentials. For Win users, this is usually your network logon and password. Don't save those in any text files, of course)
+NB: If you're behind a firewall, you'l have to set up your proxy stuff first. In the OSGeo4w shell, the commands are:  
+* `set GDAL_HTTP_PROXY=http://proxy_url:port`  
+* `set GDAL_HTTP_PROXYUSRPASS=USER:PASSWORD` (in this case, sub in your proxy logon stuff, not the WebDAV credentials. For Win users, this is usually your network logon and password. Don't save those in any text files, of course)  
 
 This has been working pretty well for me over the past few days, although transfer times got really slow once the work week started; about 2 hours for 140MB, ugh. Not sure whether to blame general usage levels or the PokemonGo launch...
