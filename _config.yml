@@ -1,29 +1,21 @@
-title:            Site Title
-description:      Describe your website here.
+title:            obrl_soil
+description:      soil science, spatial stuff, and whatever code gets me through the day
 disqus_shortname: 
 reading_time:     true
 words_per_minute: 200
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
 # When testing locally leave blank or use http://localhost:4000
-url:
+url: https://obrl-soil.github.io
 
 # Owner/author information
 owner:
-  name:           Your Name
+  name:           obrl_soil
   avatar:         avatar.jpg
   bio:            "Your bio goes here. It shouldn't be super long but a good sentence or two should suffice."
   email:          you@email.com
   # Social networking links used in footer. Update and remove as you like.
-  twitter:        
-  facebook:       
-  github:         
-  stackexchange:  
-  linkedin:       
-  instagram:      
-  flickr:         
-  tumblr:         
-  # google plus id, include the '+', eg +mmistakes
-  google_plus:
+  twitter: obrl_soil
+  github: obrl-soil      
 
 # Background image to be tiled on all pages
 background: 
@@ -35,7 +27,7 @@ google_verify:
 bing_verify:         
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
+timezone:    Australia/Brisbane
 future:      false  # publish future dated posts --  true, false (default) 
 highlighter: rouge
 markdown:    kramdown
