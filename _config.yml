@@ -1,6 +1,5 @@
 title:            obrl_soil
-description:      soil science, spatial stuff, and whatever code gets me through the day
-disqus_shortname: 
+disqus_shortname: leobrien
 reading_time:     true
 words_per_minute: 200
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
@@ -11,8 +10,8 @@ url: https://obrl-soil.github.io
 owner:
   name:           obrl_soil
   avatar:         avatar.jpg
-  bio:            "Your bio goes here. It shouldn't be super long but a good sentence or two should suffice."
-  email:          you@email.com
+  bio:            "Big nerd for soils and open science. Hope you like R code and maps of stuff."
+  email:          leobrien@gmail.com
   # Social networking links used in footer. Update and remove as you like.
   twitter: obrl_soil
   github: obrl-soil      
