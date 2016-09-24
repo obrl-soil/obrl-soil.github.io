@@ -19,7 +19,7 @@ There's not much around for generating bounding boxes over multiple datasets, un
 
 My problem today was that I had four (roughly) adjacent soil survey boundaries, and I wanted to run extracts from other overlapping datasets for Science Reasons. I wanted a simple clipping box that encompassed all of the survey areas, and I didn't need to be picky about restricting the clip to the actual, irregular, outlines. Below is the quick-and-dirty method I came up with, starting with [this guy's code](http://anothergisblog.blogspot.com.au/2011/07/creating-extent-polygons-using-arcpy.html) (hat tip!) and branching out.
 
-The idea is that it will draw a box around anything you've added to the map window. Caveats: I haven't accounted for meridian crosses, haven't tested it on multiple data types, and haven't tested it on northern hemisphere data, because I don't need to care about any of that ¯\\_(ツ)_/¯
+The idea is that it will draw a box around anything you've added to the map window. Caveats: I haven't accounted for meridian crosses, haven't tested it on multiple data types, and haven't tested it on northern hemisphere data, because I don't need to care about any of that ¯\\\_(ツ)\_/¯
 
 ```python  
 
