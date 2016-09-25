@@ -25,7 +25,7 @@ I'm demo-ing this using some modelled data I pinched from the [Soil and Landscap
 I am also using the `soiltexture` package to do most of the heavy lifting, and boy am I ever glad I didn't have to code all that myself.
 
 Required packages and data sources:
-
+<!--more-->
 
 ```r
 library(sp)
