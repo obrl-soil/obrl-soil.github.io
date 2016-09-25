@@ -12,5 +12,7 @@ This is my blog wherein...I blog. I set this up mostly because I want to be able
   * http://jmcglone.com/guides/github-pages/
 * Michael Rose - HPSTR Jekyll theme
   * https://github.com/mmistakes/hpstr-jekyll-theme
+* Ben Balter - Wordpress to Jekyll converter plugin
+  * https://github.com/benbalter/wordpress-to-jekyll-exporter
 * Jekyll team, documentation
   * https://jekyllrb.com/docs/home/ 
