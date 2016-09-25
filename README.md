@@ -2,6 +2,8 @@ This is my blog wherein...I blog. I set this up mostly because I want to be able
 
 * Barry Clark - Build a blog with Jekyll and Github Pages  
   * https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/
+* David Burella - install Jekyll on Windows
+  * https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/
 * Nicole White - Blogging about R code with R Markdown, Knitr, and Jekyll
   * https://github.com/nicolewhite/nicolewhite.github.io/blob/master/_posts/2015-02-07-r-blogging-with-rmarkdown-knitr-jekyll.md
 * Peter Meissner - Making R files executable (under windows)
