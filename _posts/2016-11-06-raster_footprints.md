@@ -80,7 +80,7 @@ rasters <- list.files(getwd(), pattern = '\\.tif$', full.names = T)
 ```
 They look like this:
 
-<img src="{{ site.url }}/images/raster-footprintsrplots-1.png" title="plot of chunk rplots" alt="plot of chunk rplots" width="80%" style="display: block; margin: auto;" />
+<img src="{{ site.url }}/images/raster-footprintsrplots-1.png" title="plot of chunk rplots" alt="plot of chunk rplots" style="display: block; margin: auto;" />
 
 Props to [Andrew Tredennick](https://nrelscience.org/2013/05/30/this-is-how-i-did-it-mapping-in-r-with-ggplot2/) for the ggplot method used above, although I'd be careful with very large rasters.
 
@@ -195,6 +195,6 @@ for (dn in dissname_list) {
 ```
 
 End result:
-<img src="{{ site.url }}/images/raster-footprintsoutput-1.png" title="plot of chunk output" alt="plot of chunk output" width="80%" style="display: block; margin: auto;" />
+<img src="{{ site.url }}/images/raster-footprintsoutput-1.png" title="plot of chunk output" alt="plot of chunk output" style="display: block; margin: auto;" />
 
-You can find all the files related to this post in https://github.com/obrl-soil/bits-n-pieces/footprint_test.
+You can find all the files related to this post in [https://github.com/obrl-soil/bits-n-pieces/footprint_test](https://github.com/obrl-soil/bits-n-pieces/footprint_test).
