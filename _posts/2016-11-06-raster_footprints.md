@@ -167,7 +167,7 @@ for (vn in vname_list) {
 }
 ```
 
-Output files will be multipart polygon types, if there was more than one 'island' of data in the input. If you want singleparts, use [v.dissolve](https://grass.osgeo.org/grass72/manuals/v.dissolve.html) (this is why I had to set all those python environment variables). Note that you'll see a lot of windows flashing up as v.dissolve runs, don't panic. After that, use flag -m with `v.out.ogr`:
+Output files will have multiple polygons if there was more than one 'island' of data in the input. If you want one multipolygon, use [v.dissolve](https://grass.osgeo.org/grass72/manuals/v.dissolve.html) (this is why I had to set all those python environment variables). Note that you'll see a lot of windows flashing up as v.dissolve runs, don't panic. After that, use flag -m with `v.out.ogr`:
 
 
 ```r
