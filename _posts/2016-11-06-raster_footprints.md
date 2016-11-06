@@ -197,4 +197,4 @@ for (dn in dissname_list) {
 End result:
 <img src="{{ site.url }}/images/raster-footprintsoutput-1.png" title="plot of chunk output" alt="plot of chunk output" style="display: block; margin: auto;" />
 
-You can find all the files related to this post in [https://github.com/obrl-soil/bits-n-pieces/footprint_test](https://github.com/obrl-soil/bits-n-pieces/footprint_test).
+You can find all the files related to this post in [https://github.com/obrl-soil/bits-n-pieces/footprint_test](https://github.com/obrl-soil/bits-n-pieces/tree/master/footprint_test).
