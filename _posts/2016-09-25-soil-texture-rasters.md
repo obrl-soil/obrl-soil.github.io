@@ -16,7 +16,7 @@ tags:
 
 
 
-A lot of new soil mapping projects are being delivered as a stack of attribute surfaces rather than an intepreted chloropleth map. This gives the end user freedom to mix and match components, generating custom products that suit their needs. That's great if you know how, but I haven't seen all that much documentation around, so. Here's a quick workflow for one of the simplest possible products, a soil texture class map from particle size distribution rasters.
+A lot of new soil mapping projects are being delivered as a stack of attribute surfaces rather than an intepreted choropleth map. This gives the end user freedom to mix and match components, generating custom products that suit their needs. That's great if you know how, but I haven't seen all that much documentation around, so. Here's a quick workflow for one of the simplest possible products, a soil texture class map from particle size distribution rasters.
 
 I'm demo-ing this using some modelled data I pinched from the [Soil and Landscape Grid of Australia](http://www.clw.csiro.au/aclep/soilandlandscapegrid), which is a pretty boss product. To be specific, I used the gdal_translate method [I blogged about here](https://obrl-soil.github.io/fun-with-gdal-part-1-of-x/) to extract a ~1 x 1 degree area from each of the 0-5cm clay, silt and sand datasets (ulx 148, uly -22).
 
