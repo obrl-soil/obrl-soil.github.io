@@ -33,22 +33,7 @@ Files can be in any GDAL/OGR compatible format, although I've only tested this w
 
 ### R/GRASS interface
 
-GRASS and R need a little help to speak to each other. Go to System > Advanced System Settings > Environment Variables and set the following:
-
-* GDAL_DATA: C:\\OSGeo4W64\\share\\gdal
-* GISBASE: C:\\OSGeo4W64\\apps\\grass\\grass-7.0.5
-* GISRC: C:\\Users\\obrl_soil\\AppData\\Roaming\\GRASS7\\rc
-* GRASS_PYTHON: C:\\OSGeo4W64\\bin\\pythonw.exe
-* PROJ_LIB: C:\\OSGeo4W64\\share\\proj
-* PYTHONPATH: C:\\OSGeo4W64\\apps\\grass\\grass-7.0.5\\etc\\python
-* PATH: add the following paths, in the same order as below
-    + C:\\OSGeo4W64\\bin
-    + C:\\OSGeo4W64\\apps\\grass\\grass-7.0.5\\bin
-    + C:\\OSGeo4W64\\apps\\grass\\grass-7.0.5\\lib
-    + C:\\OSGeo4W64\\apps\\qgis
-    + C:\\OSGeo4W64\\apps\\Python27
-
-If GRASS\_ADDON\_BASE is set on your machine, remove it for now. Also, if you have standalone versions of anything in the OSGeo4W installer, e.g. another version of Python or GDAL, consider carefully where you place the OSGeo4w paths. The path variable is scanned in order of entry. Just quietly, it was bit of a nightmare getting all that correct. I have suffered so you don't have to!
+GRASS and R need a little help to speak to each other. [Go to my blog post about setting environment variables and follow the instructions](https://obrl-soil.github.io/r-osgeo4w-windows/).
 
 ### GRASS setup
 
