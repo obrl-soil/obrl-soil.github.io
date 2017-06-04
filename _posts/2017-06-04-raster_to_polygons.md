@@ -57,9 +57,6 @@ cr <- raster("C:/DATA/r2p/cat_clip.tif")
 
 <img src="{{ site.url }}/images/raster-to_polygonsplot1-1.png" title="plot of chunk plot1" alt="plot of chunk plot1" style="display: block; margin: auto;" />
 
-```
-##   |                                                                         |                                                                 |   0%  |                                                                         |====                                                             |   6%  |                                                                         |========                                                         |  12%  |                                                                         |============                                                     |  19%  |                                                                         |================                                                 |  25%  |                                                                         |====================                                             |  31%  |                                                                         |========================                                         |  38%  |                                                                         |============================                                     |  44%  |                                                                         |================================                                 |  50%  |                                                                         |=====================================                            |  56%  |                                                                         |=========================================                        |  62%  |                                                                         |=============================================                    |  69%  |                                                                         |=================================================                |  75%  |                                                                         |=====================================================            |  81%  |                                                                         |=========================================================        |  88%  |                                                                         |=============================================================    |  94%  |                                                                         |=================================================================| 100%
-```
 
 Set up a new GRASS location:
 
@@ -149,24 +146,9 @@ st_write(cat_v_raw, file.path(getwd(), 'cat_v_raw.gpkg'),
          delete_dsn = TRUE, quiet = TRUE)
 ```
 
-```
-## Error in st_write(cat_v_raw, file.path(getwd(), "cat_v_raw.gpkg"), delete_dsn = TRUE, : unrecognized argument(s) TRUE
-```
-
-```
-## OGR data source with driver: SQLite 
-## Source: "C:/DATA/r2p\grassdata\PERMANENT\.tmp/unknown\506.0", layer: "cat_v_raw"
-## with 16225 features
-## It has 2 fields
-```
-
 Here's a zoomed-in look:
 
 <img src="{{ site.url }}/images/raster-to_polygonszoom1-1.png" title="plot of chunk zoom1" alt="plot of chunk zoom1" style="display: block; margin: auto;" />
-
-```
-##   |                                                                         |                                                                 |   0%  |                                                                         |==                                                               |   3%  |                                                                         |====                                                             |   7%  |                                                                         |======                                                           |  10%  |                                                                         |=========                                                        |  13%  |                                                                         |===========                                                      |  17%  |                                                                         |=============                                                    |  20%  |                                                                         |===============                                                  |  23%  |                                                                         |=================                                                |  27%  |                                                                         |====================                                             |  30%  |                                                                         |======================                                           |  33%  |                                                                         |========================                                         |  37%  |                                                                         |==========================                                       |  40%  |                                                                         |============================                                     |  43%  |                                                                         |==============================                                   |  47%  |                                                                         |================================                                 |  50%  |                                                                         |===================================                              |  53%  |                                                                         |=====================================                            |  57%  |                                                                         |=======================================                          |  60%  |                                                                         |=========================================                        |  63%  |                                                                         |===========================================                      |  67%  |                                                                         |==============================================                   |  70%  |                                                                         |================================================                 |  73%  |                                                                         |==================================================               |  77%  |                                                                         |====================================================             |  80%  |                                                                         |======================================================           |  83%  |                                                                         |========================================================         |  87%  |                                                                         |==========================================================       |  90%  |                                                                         |=============================================================    |  93%  |                                                                         |===============================================================  |  97%  |                                                                         |=================================================================| 100%
-```
 
 This is, of course, the only way to produce a vector dataset that fully represents the source data, but a perfect analog is not always desirable. Small pixels and large extents can result in massive polygon counts. Products like this perform poorly and are difficult to work with, particularly on tablets without a pointer or stylus. A better alternative is to simplify the output map somewhat before converting to vector.
 
@@ -220,17 +202,6 @@ st_write(cat_v_smoothed, file.path(getwd(), 'cat_v_smoothed.gpkg'),
          delete_dsn = TRUE, quiet = TRUE)
 ```
 
-```
-## Error in st_write(cat_v_smoothed, file.path(getwd(), "cat_v_smoothed.gpkg"), : unrecognized argument(s) TRUE
-```
-
-```
-## OGR data source with driver: SQLite 
-## Source: "C:/DATA/r2p\grassdata\PERMANENT\.tmp/unknown\177.0", layer: "cat_v_smoothed"
-## with 3880 features
-## It has 2 fields
-```
-
 The simplified vector map produced with v.clean above is usable, and we've dropped the number of polygons from 16225 to 3880, which is quite respectable (original raster data underneath for comparison):
 
 <img src="{{ site.url }}/images/raster-to_polygonszoom2-1.png" title="plot of chunk zoom2" alt="plot of chunk zoom2" style="display: block; margin: auto;" />
@@ -252,17 +223,6 @@ cat_v_pretty <- readVECT('cat_v_pretty') %>%
 # backup
 st_write(cat_v_pretty, file.path(getwd(), 'cat_v_pretty.gpkg'), 
          delete_dsn = TRUE, quiet = TRUE)
-```
-
-```
-## Error in st_write(cat_v_pretty, file.path(getwd(), "cat_v_pretty.gpkg"), : unrecognized argument(s) TRUE
-```
-
-```
-## OGR data source with driver: SQLite 
-## Source: "C:/DATA/r2p\grassdata\PERMANENT\.tmp/unknown\550.0", layer: "cat_v_pretty"
-## with 3600 features
-## It has 2 fields
 ```
 
 <img src="{{ site.url }}/images/raster-to_polygonszoom3-1.png" title="plot of chunk zoom3" alt="plot of chunk zoom3" style="display: block; margin: auto;" />
