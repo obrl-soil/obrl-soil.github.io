@@ -231,6 +231,6 @@ The final product has 3600 features and looks like :
 
 Outside GRASS, the results of this workflow can have self-intersection problems, for instance:
 
-<p align="center"><img src="topofail.PNG" alt = "screencap of topological problem"/></p>
+<p align="center"><img src="{{ site.url }}/images/topofail.PNG" alt = "screencap of topological problem"/></p>
 
 I feel like if this were easily fixed, a tool would exist already. A challenge for someone not-me!
