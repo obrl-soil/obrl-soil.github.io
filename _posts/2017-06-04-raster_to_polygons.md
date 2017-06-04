@@ -57,35 +57,30 @@ cr <- raster("C:/DATA/r2p/cat_clip.tif")
 
 <img src="{{ site.url }}/images/raster-to_polygonsplot1-1.png" title="plot of chunk plot1" alt="plot of chunk plot1" style="display: block; margin: auto;" />
 
-```
-##   |                                                                         |                                                                 |   0%  |                                                                         |====                                                             |   6%  |                                                                         |========                                                         |  12%  |                                                                         |============                                                     |  19%  |                                                                         |================                                                 |  25%  |                                                                         |====================                                             |  31%  |                                                                         |========================                                         |  38%  |                                                                         |============================                                     |  44%  |                                                                         |================================                                 |  50%  |                                                                         |=====================================                            |  56%  |                                                                         |=========================================                        |  62%  |                                                                         |=============================================                    |  69%  |                                                                         |=================================================                |  75%  |                                                                         |=====================================================            |  81%  |                                                                         |=========================================================        |  88%  |                                                                         |=============================================================    |  94%  |                                                                         |=================================================================| 100%
-```
-
 Set up a new GRASS location:
 
 
 ```r
 initGRASS(gisBase  = "C:/OSGeo4W64/apps/grass/grass-7.2.1",
-          gisDbase = 'C:/DATA/r2p',
+          gisDbase = getwd(),
           location = 'grassdata',
           mapset   = "PERMANENT", 
           override = TRUE)
 ```
 
 ```
-## gisdbase    C:/DATA/r2p 
+## gisdbase    C:/Users/Lauren/Documents/GitHub/obrl-soil.github.io/_drafts 
 ## location    grassdata 
 ## mapset      PERMANENT 
-## rows        919 
-## columns     971 
-## north       -16.76522 
-## south       -16.99697 
-## west        145.2097 
-## east        145.4547 
-## nsres       0.0002521752 
-## ewres       0.000252385 
-## projection  +proj=longlat +no_defs +a=6378137 +rf=298.257223563
-## +towgs84=0.000,0.000,0.000
+## rows        1 
+## columns     1 
+## north       1 
+## south       0 
+## west        0 
+## east        1 
+## nsres       1 
+## ewres       1 
+## projection  NA
 ```
 
 The location's crs must be matched to the input dataset before import. Use [`g.proj`](https://grass.osgeo.org/grass72/manuals/g.proj.html):
@@ -114,7 +109,7 @@ gmeta()
 ```
 
 ```
-## gisdbase    C:/DATA/r2p 
+## gisdbase    C:/Users/Lauren/Documents/GitHub/obrl-soil.github.io/_drafts 
 ## location    grassdata 
 ## mapset      PERMANENT 
 ## rows        919 
@@ -145,28 +140,12 @@ cat_v_raw <- readVECT('cat_v_raw') %>%
   st_cast('POLYGON', warn = FALSE)
 
 # backup
-st_write(cat_v_raw, file.path(getwd(), 'cat_v_raw.gpkg'), 
-         delete_dsn = TRUE, quiet = TRUE)
-```
-
-```
-## Error in st_write(cat_v_raw, file.path(getwd(), "cat_v_raw.gpkg"), delete_dsn = TRUE, : unrecognized argument(s) TRUE
-```
-
-```
-## OGR data source with driver: SQLite 
-## Source: "C:/DATA/r2p\grassdata\PERMANENT\.tmp/unknown\506.0", layer: "cat_v_raw"
-## with 16225 features
-## It has 2 fields
+st_write(cat_v_raw, file.path(getwd(), 'cat_v_raw.gpkg'), quiet = TRUE)
 ```
 
 Here's a zoomed-in look:
 
 <img src="{{ site.url }}/images/raster-to_polygonszoom1-1.png" title="plot of chunk zoom1" alt="plot of chunk zoom1" style="display: block; margin: auto;" />
-
-```
-##   |                                                                         |                                                                 |   0%  |                                                                         |==                                                               |   3%  |                                                                         |====                                                             |   7%  |                                                                         |======                                                           |  10%  |                                                                         |=========                                                        |  13%  |                                                                         |===========                                                      |  17%  |                                                                         |=============                                                    |  20%  |                                                                         |===============                                                  |  23%  |                                                                         |=================                                                |  27%  |                                                                         |====================                                             |  30%  |                                                                         |======================                                           |  33%  |                                                                         |========================                                         |  37%  |                                                                         |==========================                                       |  40%  |                                                                         |============================                                     |  43%  |                                                                         |==============================                                   |  47%  |                                                                         |================================                                 |  50%  |                                                                         |===================================                              |  53%  |                                                                         |=====================================                            |  57%  |                                                                         |=======================================                          |  60%  |                                                                         |=========================================                        |  63%  |                                                                         |===========================================                      |  67%  |                                                                         |==============================================                   |  70%  |                                                                         |================================================                 |  73%  |                                                                         |==================================================               |  77%  |                                                                         |====================================================             |  80%  |                                                                         |======================================================           |  83%  |                                                                         |========================================================         |  87%  |                                                                         |==========================================================       |  90%  |                                                                         |=============================================================    |  93%  |                                                                         |===============================================================  |  97%  |                                                                         |=================================================================| 100%
-```
 
 This is, of course, the only way to produce a vector dataset that fully represents the source data, but a perfect analog is not always desirable. Small pixels and large extents can result in massive polygon counts. Products like this perform poorly and are difficult to work with, particularly on tablets without a pointer or stylus. A better alternative is to simplify the output map somewhat before converting to vector.
 
@@ -216,19 +195,7 @@ cat_v_smoothed <- readVECT('cat_v_smoothed') %>%
   st_cast('POLYGON', warn = FALSE)
 
 # backup
-st_write(cat_v_smoothed, file.path(getwd(), 'cat_v_smoothed.gpkg'), 
-         delete_dsn = TRUE, quiet = TRUE)
-```
-
-```
-## Error in st_write(cat_v_smoothed, file.path(getwd(), "cat_v_smoothed.gpkg"), : unrecognized argument(s) TRUE
-```
-
-```
-## OGR data source with driver: SQLite 
-## Source: "C:/DATA/r2p\grassdata\PERMANENT\.tmp/unknown\177.0", layer: "cat_v_smoothed"
-## with 3880 features
-## It has 2 fields
+st_write(cat_v_smoothed, file.path(getwd(), 'cat_v_smoothed.gpkg'), quiet = TRUE)
 ```
 
 The simplified vector map produced with v.clean above is usable, and we've dropped the number of polygons from 16225 to 3880, which is quite respectable (original raster data underneath for comparison):
@@ -250,20 +217,9 @@ cat_v_pretty <- readVECT('cat_v_pretty') %>%
   st_cast('POLYGON', warn = FALSE)
 
 # backup
-st_write(cat_v_pretty, file.path(getwd(), 'cat_v_pretty.gpkg'), 
-         delete_dsn = TRUE, quiet = TRUE)
+st_write(cat_v_pretty, file.path(getwd(), 'cat_v_pretty.gpkg'), quiet = TRUE)
 ```
 
-```
-## Error in st_write(cat_v_pretty, file.path(getwd(), "cat_v_pretty.gpkg"), : unrecognized argument(s) TRUE
-```
-
-```
-## OGR data source with driver: SQLite 
-## Source: "C:/DATA/r2p\grassdata\PERMANENT\.tmp/unknown\550.0", layer: "cat_v_pretty"
-## with 3600 features
-## It has 2 fields
-```
 
 <img src="{{ site.url }}/images/raster-to_polygonszoom3-1.png" title="plot of chunk zoom3" alt="plot of chunk zoom3" style="display: block; margin: auto;" />
 
