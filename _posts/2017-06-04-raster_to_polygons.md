@@ -3,7 +3,7 @@ title: "Vectorising Rasters with R and GRASS"
 author: "@obrl_soil"
 date: "2017-06-04"
 layout: post
-permalink: /raster-to_polygons/
+permalink: /raster_to_polygons/
 categories: 
   - spatial
 tags: 
