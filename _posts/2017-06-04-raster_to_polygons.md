@@ -69,7 +69,7 @@ initGRASS(gisBase  = "C:/OSGeo4W64/apps/grass/grass-7.2.1",
 ```
 
 ```
-## gisdbase    C:/Users/Lauren/Documents/GitHub/obrl-soil.github.io/_drafts 
+## gisdbase    C:/DATA/r2p 
 ## location    grassdata 
 ## mapset      PERMANENT 
 ## rows        1 
@@ -109,7 +109,7 @@ gmeta()
 ```
 
 ```
-## gisdbase    C:/Users/Lauren/Documents/GitHub/obrl-soil.github.io/_drafts 
+## gisdbase    C:/DATA/r2p 
 ## location    grassdata 
 ## mapset      PERMANENT 
 ## rows        919 
