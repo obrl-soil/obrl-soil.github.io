@@ -20,7 +20,7 @@ In response to [this R-sig-geo email](https://stat.ethz.ch/pipermail/r-sig-geo/2
 
 This requires a software environment set up according to [my post on getting R and GRASS talking](https://obrl-soil.github.io/r-osgeo4w-windows/), so do that stuff first. 
 
-
+<!--more-->
 ```r
 library(sp)
 library(sf)
