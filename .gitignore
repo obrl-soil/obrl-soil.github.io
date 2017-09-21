@@ -8,4 +8,3 @@ node_modules
 Gemfile.lock
 .sass-cache
 .jekyll-metadata
-.Rproj.user
