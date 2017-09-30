@@ -205,7 +205,7 @@ clean_verts <- function(x = NULL, dir_tol = 0) {
         filter(!(X1 == LX1 & X2 == LX2)) %>%
         rowwise() %>%
         # get the direction of each segment (to the nearest degree)
-        mutate(DIR = round(geosphere::bearingRhumb(c(X1, X2), c(LX1, LX2)))) %>%
+        mutate(DIR = round(geosphere::bearingRhumb(c(X1, X2), c(LX1, LX2)), dir_tol)) %>%
         ungroup() %>%
         # tag segments that run in the same dir as the one previous
         mutate(DEL = ifelse(DIR == lag(DIR), 1, 0),  
@@ -241,6 +241,7 @@ So I've got the components of my cleaning routine sorted, now I just have to plu
 
 
 ```r
+library(readr)
 clean_verts_n <- function(x = NULL, dir_tol = 0) {
   g <- st_geometry(x)
   
@@ -253,7 +254,7 @@ clean_verts_n <- function(x = NULL, dir_tol = 0) {
         filter(!is.na(LX1)) %>%
         filter(!(X1 == LX1 & X2 == LX2)) %>%
         rowwise() %>%
-        mutate(DIR = round(geosphere::bearingRhumb(c(X1, X2), c(LX1, LX2)))) %>%
+        mutate(DIR = round(geosphere::bearingRhumb(c(X1, X2), c(LX1, LX2)), dir_tol)) %>%
         ungroup() %>%
         mutate(DEL = ifelse(DIR == lag(DIR), 1, 0),  
                DEL = ifelse(is.na(DEL), 0, DEL)) %>%
@@ -273,6 +274,7 @@ clean_verts_n <- function(x = NULL, dir_tol = 0) {
   message(paste0(Sys.time(), ': Running prepair...'))
   
   # now fix internal topology with prepair - this returns list of wkts
+  pb <- txtProgressBar(min = 0, max = length(clean_g_sf), style = 3)
   pr_g <- lapply(seq_along(clean_g_sf), function(row) {
     gt  <- st_as_text(clean_g_sf[[row]])
     
@@ -282,16 +284,17 @@ clean_verts_n <- function(x = NULL, dir_tol = 0) {
               args = c('--wkt', paste0('"', gt, '"')),
               stdout = TRUE)
     } else {
-      write(gt, file.path(getwd(), 'temp.txt'))
-      out <- system2('C:/prepair_win64/prepair.exe', 
-                     args = c('-f', file.path(getwd(), 'temp.txt')),
-                     stdout = TRUE)
-      do.call('paste0', as.list(out))
+      write_file(gt, file.path(getwd(), 'temp.txt'))
+      system2('C:/prepair_win64/prepair.exe', 
+              args = c('-f', file.path(getwd(), 'temp.txt')),
+              stdout = file.path(getwd(), 'temp_fixed.txt'))
+      read_file(file.path(getwd(), 'temp_fixed.txt'))
     }
-    #message(paste0("fixed ", row)) # for testing
+    setTxtProgressBar(pb, row)
     gpr
   })
   message(paste0(Sys.time(), ': ...complete'))
+  close(pb)
   # turn list of wkts back into a geometry column and replace the input
   prsf <- st_as_sfc(pr_g)
   st_geometry(x) <- prsf
