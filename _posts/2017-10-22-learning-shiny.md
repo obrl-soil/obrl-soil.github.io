@@ -24,7 +24,7 @@ The result is a huge store of soil data that only 'exists' for part of each prof
 The standard solution is to use a mass-preserving spline to interpolate between the available data, and produce estimates of mean values for continuous depth sections down the profile. The idea entered the scientific literature with Bishop, McBratney and Laslett's 1999 paper [Modelling soil attribute depth functions with equal-area quadratic smoothing splines](https://doi.org/10.1016/S0016-7061(99)00003-8) and became standard practice fairly quickly. In the mid-2000's the CSIRO-funded [Australian Collaborative Land Evaluation Program](http://www.clw.csiro.au/aclep/) (ACLEP) team released a standalone app to do the job, I suspect in response to too many homebrew implementations floating around. The app made certain that everyone doing splining would get the same results from a given dataset, and this was a big deal as the drive was on to produce unified national datasets like the [Australian Soil Resource Information System (ASRIS)](http://www.asris.csiro.au/index.html) and, later, the [Soil and Landscape Grid of Australia](http://www.clw.csiro.au/aclep/soilandlandscapegrid/).  
 
 <figure>
-    <img src='{{ site.url }}/images/learning-shiny/splinetool.png' alt='screencap of spline tool' />
+    <img src='{{ site.url }}/images/learning-shiny-splinetool.png' alt='screencap of spline tool' />
     <figcaption><i>Spline Tool v2.0 in action</i></figcaption>
 </figure>
 
