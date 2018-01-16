@@ -7,7 +7,7 @@
 ### make sure R is on your system path
 ### open powershell or cmd.exe
 ### > cd your\blog's\local\dir\_drafts 
-### > Rscript R2jekyll.Rmd file-name.Rmd
+### > Rscript R2jekyll.Rexec file-name.Rmd
 
 library(knitr)
 # Get the filename given as an argument in the shell.
