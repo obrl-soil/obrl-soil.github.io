@@ -30,15 +30,15 @@ There are a few blog posts around about accessing FitBit data in R, but they see
   * Go to https://dev.fitbit.com/ and click on Manage > Register an App. 
   * Login with fitbit credentials and follow the prompts. Name the 'app' something neutral like 'my-data', choose app type 'Personal' and throw in www.google.com or something similar wherever a URL is asked for (the only important one is callback url). 
 
-<img src="{{ site.url }}/images/register_app.png" title="plot of chunk cap1" alt="plot of chunk cap1" style="display: block; margin: auto;" />
+<img src="register_app.png" title="plot of chunk cap1" alt="plot of chunk cap1" style="display: block; margin: auto;" />
 
   * Once the app is created, click on the 'OAuth 2.0 tutorial page' link near the bottom of the screen:
   
-<img src="{{ site.url }}/images/fbapplanding.png" title="plot of chunk cap2" alt="plot of chunk cap2" style="display: block; margin: auto;" />
+<img src="fbapplanding.png" title="plot of chunk cap2" alt="plot of chunk cap2" style="display: block; margin: auto;" />
 
   * Scroll down to the end of section 1 and click on the provided authorisation URL. A new tab will open, showing the FitBit authorisation interface:
   
-<img src="{{ site.url }}/images/authpage.png" title="plot of chunk cap3" alt="plot of chunk cap3" style="display: block; margin: auto;" />
+<img src="authpage.png" title="plot of chunk cap3" alt="plot of chunk cap3" style="display: block; margin: auto;" />
 
   * I changed the auth period to 1 year so I don't have to go through this too often, and ticked all options before clicking Allow, because I'll probably play with the other endpoints at some point.
   * After clicking Allow, the browser tab redirects to the callback URL, but a whole lot of other stuff is now in the URL visible in the address bar. Copy the whole lot and go back to the OAuth 2.0 tutorial page. Paste that URL into the text box under the '2. Parse Response' header. The access token will appear below the text box - its a long string of characters. 
