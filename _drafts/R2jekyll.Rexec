@@ -3,7 +3,10 @@
 ### This is a copy of a script provided by Nicole White, available from 
 ### https://github.com/nicolewhite/nicolewhite.github.io/blob/master/_posts/2015-02-07-r-blogging-with-rmarkdown-knitr-jekyll.md
 ### To make this work in a windows environment:
-### set up .Rexec as a legit file extension using the instructions here - https://www.r-bloggers.com/making-r-files-executable-under-windows/
+### set up .Rexec as a legit file extension: open cmd as admin then
+## > ASSOC .Rexec=RScriptExecutable
+## > FTYPE RScriptExecutable=C:\R\R-3.5.0\bin\x64\Rscript.exe %1 %*
+## change version/path above as needed
 ### make sure R is on your system path
 ### open powershell or cmd.exe
 ### > cd your\blog's\local\dir\_drafts 
