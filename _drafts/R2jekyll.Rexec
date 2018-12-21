@@ -5,7 +5,7 @@
 ### To make this work in a windows environment:
 ### set up .Rexec as a legit file extension: open cmd as admin then
 ## > ASSOC .Rexec=RScriptExecutable
-## > FTYPE RScriptExecutable=C:\R\R-3.5.0\bin\x64\Rscript.exe %1 %*
+## > FTYPE RScriptExecutable=C:\R\R-3.5.1\bin\x64\Rscript.exe %1 %*
 ## change version/path above as needed
 ### make sure R is on your system path
 ### open powershell or cmd.exe
