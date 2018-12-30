@@ -5,12 +5,12 @@
 ### To make this work in a windows environment:
 ### set up .Rexec as a legit file extension: open cmd as admin then
 ## > ASSOC .Rexec=RScriptExecutable
-## > FTYPE RScriptExecutable=C:\R\R-3.5.1\bin\x64\Rscript.exe %1 %*
+## > FTYPE RScriptExecutable=C:\R\R-3.5.2\bin\x64\Rscript.exe %1 %*
 ## change version/path above as needed
 ### make sure R is on your system path
 ### open powershell or cmd.exe
 ### > cd your\blog's\local\dir\_drafts 
-### > Rscript R2jekyll.Rexec file-name.Rmd
+### > R2jekyll.Rexec file-name.Rmd
 
 library(knitr)
 # Get the filename given as an argument in the shell.
