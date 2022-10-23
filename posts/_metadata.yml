@@ -1,0 +1,24 @@
+# blog-specific metadata
+
+#author info
+author:
+  - name: Lauren O'Brien
+    url: https://obrl-soil.github.io
+    orcid: 0000-0002-7336-2171
+
+# license stuff
+license: "CC BY"
+citation: true
+
+# don't auto-regen posts with code
+freeze: true
+
+# layout - see blog.qmd
+
+# knitr
+execute:
+  echo: true
+  message: false
+  warning: false
+  code-fold: show
+  code-overflow: wrap

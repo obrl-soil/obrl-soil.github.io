@@ -1,0 +1,16 @@
+---
+title: "Blog"
+title-block-banner: true
+page-layout: full
+listing: 
+  contents: posts
+  sort: "date desc"
+  sort-ui: false
+  filter-ui: false
+  type: default
+  categories: true
+  page-size: 10
+  feed: 
+    title: "obrl-soil blog"
+    language: en
+---
