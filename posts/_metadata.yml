@@ -6,9 +6,8 @@ author:
     url: https://obrl-soil.github.io
     orcid: 0000-0002-7336-2171
 
-# license stuff
-license: "CC BY"
-citation: true
+citation:
+  type: manuscript
 
 # don't auto-regen posts with code
 freeze: true
@@ -22,3 +21,4 @@ execute:
   warning: false
   code-fold: show
   code-overflow: wrap
+  fig-align: center
