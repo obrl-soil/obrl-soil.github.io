@@ -10,6 +10,7 @@ website:
     creator: "@obrl_soil"
   open-graph:
     locale: en_NZ
+    image: images/obrlsoilavatarmon.jpg
   google-analytics:
     tracking-id: "G-TTL1M4BX0Y"
     storage: none
