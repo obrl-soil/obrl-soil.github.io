@@ -9,10 +9,10 @@ about:
   links:
     - icon: twitter
       aria-label: Twitter
-      href: https:/twitter.com/obrl_soil
+      href: https://twitter.com/obrl_soil
     - icon: github
       aria-label: Github
-      href: https:/github.com/obrl-soil
+      href: https://github.com/obrl-soil
     - text: "{{< ai orcid >}}"
       aria-label: ORCID
       href: https://orcid.org/0000-0002-7336-2171
