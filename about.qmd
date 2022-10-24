@@ -1,5 +1,5 @@
 ---
-title: "Lauren O'Brien"
+title: ''
 image: images/obrlsoilavatarmon.jpg
 comments: false
 sidebar: false
@@ -12,13 +12,13 @@ about:
       href: https:/twitter.com/obrl_soil
     - icon: github
       aria-label: Github
-      href: https:/github.com.com/obrl-soil
+      href: https:/github.com/obrl-soil
     - icon: mortarboard
       aria-label: ORCID
       href: https://orcid.org/0000-0002-7336-2171
     - icon: mortarboard-fill
       aria-label: Google Scholar
-      href: https://scholar.google.com/citations?user=njps9gQAAAAJ&hl=en
+      href: https://scholar.google.com/citations?user=njps9gQAAAAJ
     - icon: linkedin
       aria-label: LinkedIn
       href: https://www.linkedin.com/in/obrl-soil/
@@ -27,7 +27,7 @@ about:
 ::: column-page
 ## Hi!
 
-I'm a pedologist working for [Manaaki Whenua Landcare Research](https://www.landcareresearch.co.nz/) (MWLR) in the North Island of Aotearoa New Zealand. My primary focuses are expanding [S-Map](https://smap.landcareresearch.co.nz/) coverage, supporting soil research activities and training the next generation of MWLR pedologists. I have strong interests in soil description, classification standards, and informatics. I also program (mostly in R) with a focus on geospatial technologies.
+I'm a pedologist working for [Manaaki Whenua - Landcare Research](https://www.landcareresearch.co.nz/) (MWLR) in the North Island of Aotearoa New Zealand. My primary focuses are expanding [S-Map](https://smap.landcareresearch.co.nz/) coverage, supporting soil research activities and training the next generation of MWLR pedologists. I have strong interests in soil description, classification standards, and informatics. I also program (mostly in R) with a focus on geospatial technologies.
 
 I keep a [technical blog](blog.qmd) on this site.
 
@@ -37,14 +37,12 @@ I keep a [technical blog](blog.qmd) on this site.
 
 ### Publications
 
--   Quarto-fied [New Zealand Soil Classification](https://github.com/lauren-obrien/nzsc_v3)
+-   Quarto-fied [New Zealand Soil Classification](https://lauren-obrien.github.io/nzsc_v3/)
 -   Shiny web app for [splining soil data](https://obrl-soil.shinyapps.io/splineapp/) ([source code](https://github.com/obrl-soil/shiny_apps/tree/main/splineapp))
 
 ### R Packages
 
--   [**h3jsr**](https://github.com/obrl-soil/h3jsr)**:** Access Uber's h3-js library via R and V8
-
--   [**mpspline2**](https://github.com/obrl-soil/mpspline2)**:** A revamped mass-preserving spline function for soils data
-
--   [**em38**](https://github.com/obrl-soil/em38)**:** work with Geonics EM38 data files in R
+-   [h3jsr](https://github.com/obrl-soil/h3jsr): Access Uber's h3-js library via R and V8
+-   [mpspline2](https://github.com/obrl-soil/mpspline2): A mass-preserving spline function for soils data
+-   [em38](https://github.com/obrl-soil/em38): work with Geonics EM38 data files in R
 :::

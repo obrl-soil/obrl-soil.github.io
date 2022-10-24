@@ -15,6 +15,8 @@ website:
     storage: none
     anonymize-ip: true
   navbar:
+    background: light
+    foreground: gray-600
     right:
       - text: "Home"
         href: index.qmd
@@ -27,6 +29,8 @@ website:
   sidebar:
     style: docked
     border: false
+    background: light
+    foreground: gray-600
     alignment: left
     contents:
       - text: "Home"
@@ -36,6 +40,9 @@ website:
       - text: "Blog"
         href: blog.qmd
   page-footer:
+    background: light
+    foreground: gray-500
+    border: false
     left: "© Copyright 2022 Lauren O'Brien. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0."
 
 format:
@@ -43,6 +50,7 @@ format:
     theme: sandstone
     css: styles.css
     toc: true
+    fontcolor: $gray-600
 
 editor: visual
 
