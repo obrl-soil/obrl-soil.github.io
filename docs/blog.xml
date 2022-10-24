@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>obrl-soil blog</title>
+<link>https://obrl-soil.github.io/blog.html</link>
+<atom:link href="https://obrl-soil.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<language>en</language>
+<generator>quarto-1.2.237</generator>
+<lastBuildDate>Fri, 21 Oct 2022 11:00:00 GMT</lastBuildDate>
+<item>
+  <title>Website update</title>
+  <dc:creator>Lauren O&#39;Brien</dc:creator>
+  <link>https://obrl-soil.github.io/posts/2022-10-24_site-update/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="background" class="level3">
+<h3 class="anchored" data-anchor-id="background">Background</h3>
+<p>I let this site fall into disuse a couple of years ago. Life got busy, and then I decided to move overseas all by myself, and then a pandemic happened, you know, the usual.</p>
+<p>Lately I’ve been feeling like I want to start writing again<sup>1</sup>. Thing is, I hadn’t touched the blog in so long I could barely remember how to update it. I knew there was a simpler way, so I’ve bitten the bullet and converted to Quarto.</p>
+<p>I found moving to a Quarto website to be a fairly simple process thanks to the <a href="https://quarto.org/docs/reference/">excellent documentation</a>, linked examples (<a href="https://www.mm218.dev/">Mike Mahoney</a>, <a href="https://beamilz.com/">Bea Milz</a>) and Danielle Navarro’s <a href="https://blog.djnavarro.net/posts/2022-04-20_porting-to-quarto/">blog post</a> on migrating from distill (as well as her blog source code, of course). That said, I had a head start on Quarto generally as I’ve already been using it for standalone files, a book conversion, and a slide deck or two. I did this whole conversion in a day, and that wouldn’t have happened if this was my first attempt with Quarto.</p>
+</section>
+<section id="upgrade-process" class="level3">
+<h3 class="anchored" data-anchor-id="upgrade-process">Upgrade process</h3>
+<p>I started by nuking my old blog. First I copied the whole repo onto a portable HDD I use for storing Old Things (this turned out to be useful when migrating posts, be me, be a hoarder). Then I unpublished the site from Github Pages, and got the repo unhooked from its upstream fork. I had been using Jekyll with a fork of the <a href="https://github.com/mmistakes/jekyll-theme-hpstr">hpstr theme</a> and tbh I should have unhooked it a long time ago.</p>
+<p>The unhooking was an overnight wait, but once the nice people at GitHub has sorted that out I archived the blog onto a tagged git branch before starting fresh in a new one, per the <a href="https://stackoverflow.com/questions/1307114/how-can-i-archive-git-branches">advice here</a>. It was about time I got rid of <code>master</code> , if nothing else. The command-line invocation for this was:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="bu" style="color: null;">cd</span> my-blog-directory</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;"># tag and archive the current blog, with an annotated tag</span></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;"># make sure there's nothing uncommitted first!</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">git</span> tag archive/master master <span class="at" style="color: #657422;">-a</span> <span class="at" style="color: #657422;">-m</span> <span class="st" style="color: #20794D;">"Blog archive 2016-2018"</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;"># make a new main branch and check it out</span></span>
+<span id="cb1-8"><span class="fu" style="color: #4758AB;">git</span> checkout <span class="at" style="color: #657422;">-b</span> main</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;"># push changes to remote, including tags</span></span>
+<span id="cb1-11"><span class="fu" style="color: #4758AB;">git</span> push origin <span class="at" style="color: #657422;">--tags</span></span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="co" style="color: #5E5E5E;"># delete the local archived branch (it can stay on github)</span></span>
+<span id="cb1-14"><span class="fu" style="color: #4758AB;">git</span> branch <span class="at" style="color: #657422;">-d</span> master</span></code></pre></div>
+</div>
+<p>After that, I deleted everything from my local repo except for the <code>.git</code> and <code>.rProj.user</code> folders, plus the <code>.gitignore</code> and <code>*.Rproj</code> files. I then made a first commit to the new branch and started building.</p>
+<p>I admit I flailed around a bit trying to figure out how to make a ‘blog inside a website’. There’s probably simpler ways to do this! In the end I did the following:</p>
+<ul>
+<li>Since RStudio won’t start a new Quarto project in an existing folder, I started a new website project in a temp folder and copied over the <code>_quarto.yml</code>, <code>about.qmd</code>, <code>index.qmd</code> and <code>styles.css</code> that were generated.</li>
+<li>I then started a blog project in another temp folder and took a good look to compare. Once I realised how the two structures differed I just started a <code>posts</code> folder containing <code>_metadata.yml</code>, added <code>blog.qmd</code> to the root directory, and then cribbed from the examples I’d seen to get the layout right.</li>
+</ul>
+<p>My main issue was that I didn’t want my About to be the landing page, but I couldn’t decide what else to put there. I wanted a feed of the last few blog posts in their entirety just like the old site, but that’s not an option at present. I’ve gone with a list of the three most recent blog posts for now, followed by a few fieldwork pics.</p>
+</section>
+<section id="migrating-old-posts" class="level3">
+<h3 class="anchored" data-anchor-id="migrating-old-posts">Migrating old posts</h3>
+<p>Initially I wasn’t going to bother. I have a visceral hatred of looking at anything I did more than about 6 months ago, and besides which a lot of the code will be outdated. However, it seems a few pages still get regular hits, so I’ve caved in and converted the latest five. The process for each post was as follows:</p>
+<ul>
+<li><p>find the *.md file in the archived <code>_posts</code> folder. The posts were named using a <code>&lt;date&gt;_&lt;title&gt;</code> slug pattern (<em>self-high-five!</em>), so I used that template to create a new folder under <code>posts</code> with the same name.</p></li>
+<li><p>create an <code>index.qmd</code> in the post folder, switch to source view and copy in the contents of the *.md file.</p></li>
+<li><p>Tweak the YAML into compatibility by deleting the <code>author</code>, <code>layout</code>, and <code>permalink</code> tags, and converting my tags list into the format <code>categories: [tag1, tag2]</code> (note: I have <code>author</code> set globally in <code>_metadata.yaml</code>). Also, set</p>
+<pre><code>execute:
+  eval: false</code></pre>
+<p>to prevent any code from running again.</p></li>
+<li><p>fix up the r code blocks by adding <code>{}</code></p></li>
+<li><p>copy in any referenced images from the source blog archive and replace their html with simple markdown, e.g.</p>
+<pre><code>&lt;img src="{{ site.url }}/images/h3jsr-announcementplot1-1.png" title="plot of chunk plot1"
+alt="plot of chunk plot1" style="display: block; margin: auto;" /&gt;</code></pre>
+<p>became</p>
+<pre><code>![](h3jsr-announcementplot1-1.png){fig-alt="Map of imported datasets in their native spatial formats" 
+fig-align="center" width="80%"}</code></pre>
+<p>(I also took the time to add proper alt-text like I should have in the first place 😳)</p></li>
+<li><p>Switch back to visual mode and check the outputs, then check the final render with <code>quarto_preview()</code></p></li>
+<li><p>Add a “Background” heading to the start of each post, to make the contents sidebar look less wacky</p></li>
+<li><p>adjust the blog-level YAML to suppress images in the index using the <code>filter</code> tag because I don’t like the default choices and am too lazy to generate better ones</p></li>
+<li><p>steadfastly refuse to re-read any of the prose 🙃</p></li>
+</ul>
+<p>Doing it this way meant I didn’t have to re-run any code, and all the outputs were all still preserved. This took about an hour. Of course, I make no guarantees about the content - it remains as it was originally published. Do not at me, etc</p>
+</section>
+<section id="extensions" class="level3">
+<h3 class="anchored" data-anchor-id="extensions">Extensions</h3>
+<p><a href="https://quarto.org/docs/extensions/">Quarto extensions</a> are very new, so you need the dev version installed. I installed v1.2.237 before proceeding.</p>
+<p>I installed two extensions: <a href="https://github.com/quarto-ext/lightbox">lightbox</a> and <a href="https://github.com/schochastics/academicons">academicons</a>, both purely for The Aesthetic. I wanted an image gallery to brighten up the homepage, and I wanted orcid and google scholar icons on my About page, which the default set lacks.</p>
+<p>To do this on the command line,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="bu" style="color: null;">cd</span> my-blog-directory</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="ex" style="color: null;">quarto</span> install extension quarto-ext/lightbox</span>
+<span id="cb5-4"><span class="ex" style="color: null;">quarto</span> install extension schochastics/academicons</span></code></pre></div>
+</div>
+<p>NB: It took a minute for me to realise that one must <code>cd</code> to the blog repo before installing extensions. Don’t be me, RTFM.</p>
+<p>After that, I used e.g.&nbsp;</p>
+<pre><code>  - text: "{{&lt; ai orcid &gt;}}"</code></pre>
+<p>instead of my placeholder</p>
+<pre><code>  - icon: mortarboard</code></pre>
+<p>in <code>about.qmd</code>, and set up an image gallery in <code>index.qmd</code>. Note the use of a div and an id field in the source file to keep the recent posts sitting neatly above the image gallery.</p>
+</section>
+<section id="publishing" class="level3">
+<h3 class="anchored" data-anchor-id="publishing">Publishing</h3>
+<p>I’m using the Github Pages approach, so the main steps were</p>
+<ul>
+<li><p>in <code>_quarto.yml</code> , set</p>
+<pre><code>website:
+  output-dir: docs</code></pre></li>
+<li><p>install the <a href="https://giscus.app/">giscus app</a> for commenting</p></li>
+<li><p>set up comments in <code>/posts/_metadata.yml</code> with</p>
+<pre><code>comments:  
+  giscus: 
+    repo: obrl-soil/obrl-soil.github.io
+    category: Announcements
+    reactions-enabled: true
+    loading: lazy
+    input-position: bottom
+    theme: light</code></pre>
+<p>(and disable it on old posts with <code>comments: false</code>, <em>because</em>)</p></li>
+<li><p>enable Discussions on the blog repo (in Settings)</p></li>
+<li><p>push the new main branch to GitHub and set it as the new default branch in Settings</p></li>
+<li><p>go to Settings &gt; Pages and deploy the site from main/docs</p></li>
+<li><p>Rejoice!</p></li>
+</ul>
+</section>
+<section id="gripes" class="level3">
+<h3 class="anchored" data-anchor-id="gripes">Gripes</h3>
+<p>Pobody’s nerfect. Two things I’d like to see are</p>
+<ul>
+<li>an option to enable next/previous links for blog posts, as one can already do for book chapters</li>
+<li>properly centered bootswatch icons on buttons (the academicons are fine)</li>
+</ul>
+</section>
+<section id="finally" class="level3">
+<h3 class="anchored" data-anchor-id="finally">Finally</h3>
+<p>I feel ok about this! Writing new content will be a lot easier, I can experiment more easily with other programming languages, and the website as a whole is easier to expand.</p>
+<p>Onwards.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>to be clear: this is insane of me, life hasn’t gotten less busy…↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2022,
+  author = {Lauren O’Brien},
+  title = {Website Update},
+  date = {2022-10-22},
+  url = {https://obrl-soil.github.io/posts/2022-10-24_site-update},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2022" class="csl-entry quarto-appendix-citeas">
+Lauren O’Brien. 2022. <span>“Website Update.”</span> <a href="https://obrl-soil.github.io/posts/2022-10-24_site-update">https://obrl-soil.github.io/posts/2022-10-24_site-update</a>.
+</div></div></section></div> ]]></description>
+  <category>meta</category>
+  <category>blogging</category>
+  <category>quarto</category>
+  <guid>https://obrl-soil.github.io/posts/2022-10-24_site-update/index.html</guid>
+  <pubDate>Fri, 21 Oct 2022 11:00:00 GMT</pubDate>
+  <media:content url="https://obrl-soil.github.io/posts/2022-10-24_site-update/h3jsr-announcementplot1-1.png" medium="image" type="image/png"/>
+</item>
+<item>
+  <title>New R package: slga</title>
+  <dc:creator>Lauren O&#39;Brien</dc:creator>
+  <link>https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Catching up on package blogging, and juuuust managing to equal the low, low bar of four posts per year that I appear to have set myself.</p>
+<p>This post is about <a href="https://github.com/obrl-soil/slga"><code>slga</code></a>, a data-access package I wrote a month or so ago to facilitate R-based access to the <a href="http://www.clw.csiro.au/aclep/soilandlandscapegrid/index.html">Soil and Landscape Grid of Australia</a>, a set of geostatistically-modelled soil attributes and accompanying environmental covariate datasets.</p>
+<p><code>slga</code> is another one of those packages that happened because I read some interesting code (in this case, Ross Searle’s <a href="http://www.clw.csiro.au/aclep/soilandlandscapegrid/Resources/SoilAndLandScapeGrid_WCS_Downloader.txt">WCS access demo script</a>) and decided to tinker a bit and then… failed to stop. Whoops. The basic idea is to hook into the set of <a href="https://en.wikipedia.org/wiki/Web_Coverage_Service">OGC Web Coverage Services</a> available for the SLGA and make it as easy as possible to retrieve subsets of the parent datasets. My only requirement was that the subsets be ‘clean’; i.e.&nbsp;a perfect match in terms of cell value, cell size and alignment against the parent dataset. And thus the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(raster)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(slga)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;"># get surface clay content for King Island</span></span>
+<span id="cb1-6">aoi <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">143.75</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">40.17</span>, <span class="fl" style="color: #AD0000;">144.18</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">39.57</span>)</span>
+<span id="cb1-7">ki_surface_clay <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">get_slga_data</span>(<span class="at" style="color: #657422;">product =</span> <span class="st" style="color: #20794D;">'TAS'</span>, <span class="at" style="color: #657422;">attribute =</span> <span class="st" style="color: #20794D;">'CLY'</span>,</span>
+<span id="cb1-8">                                 <span class="at" style="color: #657422;">component =</span> <span class="st" style="color: #20794D;">'all'</span>, <span class="at" style="color: #657422;">depth =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb1-9">                                 <span class="at" style="color: #657422;">aoi =</span> aoi, <span class="at" style="color: #657422;">write_out =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
+</div>
+<p>retrieves this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/clayplot.png" class="img-fluid figure-img" style="width:85.0%" alt="plot of King Island surface clay content"></p>
+</figure>
+</div>
+<p>WCS services aren’t quite designed for this task - they’re mainly geared towards dynamic data access via web map portals or GIS GUIs, so they default to a lot of dynamic rescaling and resampling to make that efficient. Still, with a bit of mucking about its possible to bend them towards simple subsetting of very large raster datasets, at pretty reasonable speed (depending, of course, on one’s internet connection, insert NBN joke here).</p>
+<p>My other goal for this project was to figure out <code>pkgdown</code>, so I’m not going to reiterate how <code>slga</code> works in this post. I’m just going to smugly link to <a href="https://obrl-soil.github.io/slga/articles/slga.html"><code>slga's</code> vignette</a> where it sits on the package website.</p>
+<section id="thanks-to" class="level3">
+<h3 class="anchored" data-anchor-id="thanks-to">Thanks to</h3>
+<p>I really didn’t get OGC web services at all before diving in to this. The official documentation is pretty comprehensive, but I couldn’t find much higher level material about working with them. I definitely wouldn’t have known where to start without picking through Ross’ script; <code>slga</code> only exists because of his work (as does the grid itself!).</p>
+<p>I found Lorenzo Busetto’s <a href="https://lbusettspatialr.blogspot.com/2017/08/building-website-with-pkgdown-short.html">tutorial post</a> immensely helpful when getting started with pkgdown. Datacamp’s <a href="https://www.datacamp.com/community/tutorials/cd-package-docs-pkgdown-travis">deployment tutorial</a> was also super good. For customising my site, I left the default bootstrap theme in place and just overrode some CSS for nicer colours. Lest anyone think I’m actually good at CSS, this was largely accomplished by clicking ‘Inspect Element’ in Firefox and copypasting the relevant CSS code out. It is therefore probable that my extra.css file is an affront to god and man alike, but whatever, it works.</p>
+<p>Lastly, <a href="https://gis.stackexchange.com/a/104109/76240">this trick</a> for mosaicing a list of rasters is the bees’ knees, and enabled tiling requests over larger areas. That said, I still wouldn’t advise trying to download massive data extents at once with this package. Once you start going after whole state’s worth of data, you’re better off downloading the entire parent dataset from the <a href="https://data.csiro.au/dap/search?q=slga">CSIRO Data Access Portal</a> and cropping it.</p>
+</section>
+<section id="gripes" class="level3">
+<h3 class="anchored" data-anchor-id="gripes">Gripes</h3>
+<p>The only thing I don’t love about this project is the low-ish unit test coverage. I’m not sure how best to cover some of the core functions, since they hit web services, and the tests shouldn’t be eating bandwidth or relying on a http 200 return. If anyone has any advice, fire away.</p>
+<p>I also really wish the WCS spec had some kind of source-align/target-align flag a la gdalwarp’s ‘-tap’ option, because that would remove the need for about half the code I wrote for this package. Might stretching the concept too far though, idk.</p>
+<hr>
+<p>Anyway so there that is, if you’re working in Aus and you need a bit of quick soil and/or terrain data, this may be useful. I’m also drafting up a matching package for GeoScience Australia’s web services, so <a href="https://github.com/obrl-soil/geosciausws">watch this space</a>.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+  author = {Lauren O’Brien},
+  title = {New {R} Package: Slga},
+  date = {2018-12-31},
+  url = {https://obrl-soil.github.io/posts/2018-12-31_slga-announcement},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas">
+Lauren O’Brien. 2018. <span>“New R Package: Slga.”</span> <a href="https://obrl-soil.github.io/posts/2018-12-31_slga-announcement">https://obrl-soil.github.io/posts/2018-12-31_slga-announcement</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>soils</category>
+  <category>better living through APIs</category>
+  <category>raster</category>
+  <guid>https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/index.html</guid>
+  <pubDate>Sun, 30 Dec 2018 11:00:00 GMT</pubDate>
+  <media:content url="https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/clayplot.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>New R package: h3jsr</title>
+  <dc:creator>Lauren O&#39;Brien</dc:creator>
+  <link>https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Discrete Global Grids! <a href="http://geoawesomeness.com/discrete-global-grid-system-dggs-new-reference-system/">They’re pretty cool</a>, and slowly starting to catch on. Google’s been plugging away at <a href="https://github.com/google/s2geometry">S2</a> for a while now, and Uber recently released <a href="https://github.com/uber/h3">H3</a>. Both libraries are open-sourced and have their own sets of interesting features, but don’t seem to have found their way into traditional GIS software yet, so you need some coding skill to access them.</p>
+<p>I could see some interesting potential use cases for H3 as soon as I read the documentation, so I was super keen to start playing with it ASAP. There were some barriers between me and all the hexagons I could eat though, so I had to do a little work first.</p>
+<p>My process here was basically:</p>
+<ul>
+<li>realise that no R bindings were available for <code>H3</code> (apart from <a href="https://github.com/scottmmjackson/h3r">this attempt</a>, which appears to be slightly abandoned and doesn’t work in Windows), sulk a little</li>
+<li>realise there’s a transpiled version, <a href="https://github.com/uber/h3-js"><code>h3-js</code></a>, and that <a href="https://github.com/jeroen/V8">V8</a> is a thing (hot damn!)</li>
+<li>spend a Saturday morning figuring out how to get <code>h3-js</code> bundled into a v8 session</li>
+<li>realise I now have to learn some damn JavaScript; spend Saturday afternoon on codecademy</li>
+<li>briefly ponder whether six (6) hours of JS experience is enough to get by</li>
+<li>proceed anyway because I’ve got this far and f*&amp;k imposter syndrome, right? Right.</li>
+<li>…?</li>
+<li>profit!</li>
+</ul>
+<p><code>h3jsr</code> is <a href="https://github.com/obrl-soil/h3jsr">now available from GitHub</a>. I’m feeling pretty good about it.</p>
+</section>
+<section id="y-tho" class="level2">
+<h2 class="anchored" data-anchor-id="y-tho">Y tho</h2>
+<p>Right now my own applications for this package are nice data aggregation and pretty maps. That might seem basic, but that does seem to be <a href="https://www.youtube.com/watch?v=ay2uwtRO3QE">all that Uber are using it for themselves</a> so far, and its solved some substantial business problems.</p>
+</section>
+<section id="performance" class="level2">
+<h2 class="anchored" data-anchor-id="performance">Performance</h2>
+<p>You’ll be able to do a fair bit with this package so long as you think ahead. The most important thing to remember is that every call to a <code>h3jsr</code> function involves casting data into a JS environment via JSON, and that eats time. Aim to feed as much data into one function call as possible - use lists, vectors or dataframes as input wherever you can, don’t try and iterate over individual geometries. Bear in mind that there’s an upper limit to what V8 can transfer in one hit.</p>
+</section>
+<section id="demo-time" class="level2">
+<h2 class="anchored" data-anchor-id="demo-time">Demo time</h2>
+<p>I did the bulk of the work on this package back in July, and then idly tinkered with it while failing to complete this post - my examples were boring! Luckily the Uber Open Summit 2018 happened not long ago and as part of it, <code>h3-js</code> dev Nick Rabinowitz ran a great <a href="https://youtu.be/BsMIrBHLfLE">live tutorial</a> on <a href="https://beta.observablehq.com/@nrabinowitz/h3-tutorial-suitability-analysis">Suitability Analysis using h3-js and Mapbox GL JS</a>. Attempting a rebuild in R seems like a good way to demonstrate key functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(httr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(jsonlite)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(geojsonsf)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">library</span>(ggspatial)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;">library</span>(raster)</span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
+<span id="cb1-8"><span class="fu" style="color: #4758AB;">library</span>(h3jsr)</span>
+<span id="cb1-9"><span class="fu" style="color: #4758AB;">options</span>(<span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
+</div>
+<p>All the tutorial inputs are github gists, so I can download and convert them to <code>sf</code> data frames like so:</p>
+<p>Oakland crime reports, last 90 days. Source: data.oaklandnet.com:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">crime_90_days <span class="ot" style="color: #003B4F;">&lt;-</span> httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">GET</span>(<span class="st" style="color: #20794D;">'https://gist.githubusercontent.com/nrabinowitz/d3a5ca3e3e40727595dd137b65058c76/raw/f5ef0fed8972d04a27727ebb50e065265e2d853f/oakland_crime_90days.json'</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb2-2">  httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">content</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;">fromJSON</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb2-4">  sf<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">st_as_sf</span>(., <span class="at" style="color: #657422;">coords =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'lng'</span>, <span class="st" style="color: #20794D;">'lat'</span>), <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">4326</span>) <span class="co" style="color: #5E5E5E;"># JSON's always 4326</span></span>
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="fu" style="color: #4758AB;">head</span>(crime_90_days)</span></code></pre></div>
+</div>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## Simple feature collection with 6 features and 1 field</span></span>
+<span id="cb3-2"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## geometry type:  POINT</span></span>
+<span id="cb3-3"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## dimension:      XY</span></span>
+<span id="cb3-4"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## bbox:           xmin: -122.2758 ymin: 37.75606 xmax: -122.1889 ymax: 37.81339</span></span>
+<span id="cb3-5"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## epsg (SRID):    4326</span></span>
+<span id="cb3-6"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## proj4string:    +proj=longlat +datum=WGS84 +no_defs</span></span>
+<span id="cb3-7"><span class="do" style="color: #5E5E5E;
+font-style: italic;">##                   type                   geometry</span></span>
+<span id="cb3-8"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 1            VANDALISM POINT (-122.2655 37.81339)</span></span>
+<span id="cb3-9"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 2              ASSAULT  POINT (-122.2758 37.7969)</span></span>
+<span id="cb3-10"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 3        THEFT/LARCENY POINT (-122.2026 37.75606)</span></span>
+<span id="cb3-11"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 4              ROBBERY POINT (-122.2352 37.78423)</span></span>
+<span id="cb3-12"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 5 DISTURBING THE PEACE POINT (-122.1889 37.79133)</span></span>
+<span id="cb3-13"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 6            VANDALISM  POINT (-122.219 37.78628)</span></span></code></pre></div>
+<p>Oakland public school locations. Source: data.oaklandnet.com</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">public_schools <span class="ot" style="color: #003B4F;">&lt;-</span> httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">GET</span>(<span class="st" style="color: #20794D;">'https://gist.githubusercontent.com/nrabinowitz/d3a5ca3e3e40727595dd137b65058c76/raw/babf7357f15c99a1b2a507a33d332a4a87b7df8d/public_schools.json'</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb4-2">  httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">content</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;">fromJSON</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb4-4">  sf<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">st_as_sf</span>(., <span class="at" style="color: #657422;">coords =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'lng'</span>, <span class="st" style="color: #20794D;">'lat'</span>), <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">4326</span>)</span>
+<span id="cb4-5"></span>
+<span id="cb4-6"><span class="fu" style="color: #4758AB;">head</span>(public_schools)</span></code></pre></div>
+</div>
+<pre><code>## Simple feature collection with 6 features and 1 field
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: -122.2869 ymin: 37.74664 xmax: -122.1656 ymax: 37.813
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##         type                   geometry
+## 1    Charter POINT (-122.1849 37.79886)
+## 2    Charter  POINT (-122.225 37.77617)
+## 3     Middle POINT (-122.1656 37.74664)
+## 4       High   POINT (-122.2869 37.813)
+## 5 Elementary   POINT (-122.23 37.77982)
+## 6 Elementary POINT (-122.2371 37.80036)</code></pre>
+<p>BART station locations. Source: bart.gov. This is GeoJSON data, not straight JSON, so note how the import proccess is a little different.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">bart_stations <span class="ot" style="color: #003B4F;">&lt;-</span> httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">GET</span>(<span class="st" style="color: #20794D;">'https://gist.githubusercontent.com/nrabinowitz/d3a5ca3e3e40727595dd137b65058c76/raw/8f1a3e30113472404feebc288e83688a6d5cf33d/bart.json'</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-2">  httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">content</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;">geojson_sf</span>()</span>
+<span id="cb6-4"></span>
+<span id="cb6-5"><span class="fu" style="color: #4758AB;">head</span>(bart_stations[, <span class="dv" style="color: #AD0000;">1</span>])</span></code></pre></div>
+</div>
+<pre><code>## Simple feature collection with 6 features and 1 field
+## geometry type:  POINT
+## dimension:      XYZ
+## bbox:           xmin: -122.4475 ymin: 37.72158 xmax: -122.2686 ymax: 37.8528
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##                                  name                       geometry
+## 1 12th St. Oakland City Center (12TH) POINT Z (-122.2715 37.80377 0)
+## 2             16th St. Mission (16TH) POINT Z (-122.4197 37.76506 0)
+## 3             19th St. Oakland (19TH) POINT Z (-122.2686 37.80835 0)
+## 4             24th St. Mission (24TH) POINT Z (-122.4181 37.75247 0)
+## 5                        Ashby (ASHB)  POINT Z (-122.2701 37.8528 0)
+## 6                  Balboa Park (BALB) POINT Z (-122.4475 37.72158 0)</code></pre>
+<p>Travel times from Oakland to downtown SF by census tract. Source: movement.uber.com</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">sf_travel_times <span class="ot" style="color: #003B4F;">&lt;-</span> httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">GET</span>(<span class="st" style="color: #20794D;">'https://gist.githubusercontent.com/nrabinowitz/d3a5ca3e3e40727595dd137b65058c76/raw/657a9f3b64fedc718c3882cd4adc645ac0b4cfc5/oakland_travel_times.json'</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb8-2">  httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">content</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;">geojson_sf</span>()</span>
+<span id="cb8-4"></span>
+<span id="cb8-5"><span class="fu" style="color: #4758AB;">head</span>(sf_travel_times)</span></code></pre></div>
+</div>
+<pre><code>## Simple feature collection with 6 features and 3 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -122.3049 ymin: 37.74276 xmax: -122.1595 ymax: 37.84773
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##   MOVEMENT_ID                                DISPLAY_NAME travelTime
+## 1          46   500 Chester Street, West Oakland, Oakland        708
+## 2          47             9700 Birch Street, Cox, Oakland       1575
+## 3          58        5600 Genoa Street, Santa Fe, Oakland       1015
+## 4          98  500 10th Street, Downtown Oakland, Oakland        826
+## 5          99 2400 19th Avenue, Highland Terrace, Oakland       1166
+## 6         151  500 20th Street, Downtown Oakland, Oakland        908
+##                         geometry
+## 1 MULTIPOLYGON (((-122.304 37...
+## 2 MULTIPOLYGON (((-122.1725 3...
+## 3 MULTIPOLYGON (((-122.2779 3...
+## 4 MULTIPOLYGON (((-122.2796 3...
+## 5 MULTIPOLYGON (((-122.238 37...
+## 6 MULTIPOLYGON (((-122.276 37...</code></pre>
+<p>Oakland points of interest. Source: uber.com/local</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">pois <span class="ot" style="color: #003B4F;">&lt;-</span> httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">GET</span>(<span class="st" style="color: #20794D;">'https://gist.githubusercontent.com/nrabinowitz/d3a5ca3e3e40727595dd137b65058c76/raw/ded89c2acef426fe3ee59b05096ed1baecf02090/oakland-poi.json'</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb10-2">  httr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">content</span>()  <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;">fromJSON</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb10-4">  sf<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">st_as_sf</span>(., <span class="at" style="color: #657422;">coords =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'lng'</span>, <span class="st" style="color: #20794D;">'lat'</span>), <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">4326</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb10-5">  dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">filter</span>(type <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'Cafes'</span>, <span class="st" style="color: #20794D;">'Places to eat'</span>, <span class="st" style="color: #20794D;">'Restaurant'</span>))</span>
+<span id="cb10-6"></span>
+<span id="cb10-7"><span class="fu" style="color: #4758AB;">head</span>(pois)</span></code></pre></div>
+</div>
+<pre><code>## Simple feature collection with 6 features and 1 field
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: -122.2763 ymin: 37.77091 xmax: -122.211 ymax: 37.83476
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##         type                   geometry
+## 1 Restaurant  POINT (-122.2567 37.8281)
+## 2 Restaurant POINT (-122.2632 37.83476)
+## 3 Restaurant POINT (-122.2705 37.80706)
+## 4 Restaurant  POINT (-122.211 37.77091)
+## 5 Restaurant POINT (-122.2763 37.79486)
+## 6 Restaurant POINT (-122.2437 37.81062)</code></pre>
+<p>That’s a lot of messy data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">cropper <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_bbox</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'xmin'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">122.35</span>, <span class="st" style="color: #20794D;">'ymin'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="fl" style="color: #AD0000;">37.75</span>,</span>
+<span id="cb12-2">                     <span class="st" style="color: #20794D;">'xmax'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">122.20</span>, <span class="st" style="color: #20794D;">'ymax'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="fl" style="color: #AD0000;">37.85</span>), <span class="at" style="color: #657422;">crs =</span> <span class="fu" style="color: #4758AB;">st_crs</span>(<span class="dv" style="color: #AD0000;">4326</span>))</span>
+<span id="cb12-3">plot_these <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">lapply</span>(<span class="fu" style="color: #4758AB;">list</span>(sf_travel_times, crime_90_days, public_schools,</span>
+<span id="cb12-4">                          bart_stations, pois), <span class="cf" style="color: #003B4F;">function</span>(x) {</span>
+<span id="cb12-5">                            sf<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">st_crop</span>(x, cropper)</span>
+<span id="cb12-6">                            })</span>
+<span id="cb12-7"><span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-8">  <span class="fu" style="color: #4758AB;">layer_spatial</span>(plot_these[[<span class="dv" style="color: #AD0000;">1</span>]], <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill =</span> travelTime), <span class="at" style="color: #657422;">alpha =</span> <span class="fl" style="color: #AD0000;">0.9</span>,</span>
+<span id="cb12-9">                <span class="at" style="color: #657422;">show.legend =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-10">  <span class="fu" style="color: #4758AB;">scale_fill_viridis_c</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-11">  <span class="fu" style="color: #4758AB;">layer_spatial</span>(plot_these[[<span class="dv" style="color: #AD0000;">2</span>]], <span class="at" style="color: #657422;">col =</span> <span class="st" style="color: #20794D;">'red'</span>,     <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">20</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-12">  <span class="fu" style="color: #4758AB;">layer_spatial</span>(plot_these[[<span class="dv" style="color: #AD0000;">3</span>]], <span class="at" style="color: #657422;">col =</span> <span class="st" style="color: #20794D;">'cyan'</span>,    <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">19</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-13">  <span class="fu" style="color: #4758AB;">layer_spatial</span>(plot_these[[<span class="dv" style="color: #AD0000;">4</span>]], <span class="at" style="color: #657422;">col =</span> <span class="st" style="color: #20794D;">'yellow'</span>,  <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">18</span>, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb12-14">  <span class="fu" style="color: #4758AB;">layer_spatial</span>(plot_these[[<span class="dv" style="color: #AD0000;">5</span>]], <span class="at" style="color: #657422;">col =</span> <span class="st" style="color: #20794D;">'magenta'</span>, <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">17</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-15">  <span class="fu" style="color: #4758AB;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-16">  <span class="fu" style="color: #4758AB;">ggtitle</span>(<span class="st" style="color: #20794D;">'H3 Suitability analysis'</span>, <span class="at" style="color: #657422;">subtitle =</span> <span class="st" style="color: #20794D;">'Unprocessed input data'</span>)</span></code></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/h3jsr-announcementplot1-1.png" class="img-fluid figure-img" style="width:80.0%" alt="Map of imported datasets in their native spatial formats"></p>
+</figure>
+</div>
+<p>Time to make some sense of it.</p>
+<p>We’ll take each of the raw data layers we’re bringing in and convert them to hexagon layers. Each layer will be a map of H3 index to some value normalized between zero and 1 with this helper function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">normalise_layer <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(<span class="at" style="color: #657422;">layer =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="at" style="color: #657422;">b0 =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) {</span>
+<span id="cb13-2">  dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">filter</span>(layer, <span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">is.na</span>(h3)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb13-3">    dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">group_by</span>(h3) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb13-4">    dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">summarise</span>(<span class="st" style="color: #20794D;">'weight'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">sum</span>(weight, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb13-5">    dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">norm =</span> <span class="cf" style="color: #003B4F;">if</span> (b0) {</span>
+<span id="cb13-6">      scales<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">rescale</span>(weight, <span class="at" style="color: #657422;">to =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">1</span>), <span class="at" style="color: #657422;">from =</span>  <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="fu" style="color: #4758AB;">max</span>(weight, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)))</span>
+<span id="cb13-7">      } <span class="cf" style="color: #003B4F;">else</span> { scales<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">rescale</span>(weight, <span class="at" style="color: #657422;">to =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">1</span>)) }) <span class="co" style="color: #5E5E5E;"># from = range(x)</span></span>
+<span id="cb13-8">}</span></code></pre></div>
+</div>
+<p>Analysis is being conducted at four of H3’s 15 resolution levels - 7-10 - so each data layer must be binned and normalised four times. This is where <code>purrr</code> can be handy.</p>
+<p>For crime, the output layer is just a normalised count of incidents per hex.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">crime_hexes <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">point_to_h3</span>(crime_90_days, <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">7</span>, <span class="dv" style="color: #AD0000;">10</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb14-2">  purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(., <span class="cf" style="color: #003B4F;">function</span>(h3) {</span>
+<span id="cb14-3">   dat <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="st" style="color: #20794D;">'h3'</span> <span class="ot" style="color: #003B4F;">=</span> h3, <span class="st" style="color: #20794D;">'weight'</span> <span class="ot" style="color: #003B4F;">=</span> 1L, </span>
+<span id="cb14-4">                     <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb14-5">     <span class="fu" style="color: #4758AB;">normalise_layer</span>()</span>
+<span id="cb14-6">  })</span>
+<span id="cb14-7"><span class="fu" style="color: #4758AB;">head</span>(crime_hexes[[<span class="st" style="color: #20794D;">'h3_resolution_7'</span>]])</span></code></pre></div>
+</div>
+<pre><code>## # A tibble: 6 x 3
+##   h3              weight     norm
+##   &lt;chr&gt;            &lt;int&gt;    &lt;dbl&gt;
+## 1 872830802ffffff      5 0.000486
+## 2 872830810ffffff   2060 1       
+## 3 872830811ffffff    311 0.149   
+## 4 872830812ffffff    575 0.278   
+## 5 872830813ffffff    535 0.258   
+## 6 872830814ffffff    145 0.0686</code></pre>
+<p>For schools, there’s a bit of buffering added so that addresses adjacent to those containing a school are given some weight.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">school_hexes <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">point_to_h3</span>(public_schools, <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">7</span>, <span class="dv" style="color: #AD0000;">10</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb16-2">  purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(., <span class="cf" style="color: #003B4F;">function</span>(h3) {</span>
+<span id="cb16-3">    <span class="co" style="color: #5E5E5E;"># returns 7 addresses - input and neighbours </span></span>
+<span id="cb16-4">    near_school <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">get_kring</span>(h3, <span class="dv" style="color: #AD0000;">1</span>) </span>
+<span id="cb16-5">    near_wts <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="fu" style="color: #4758AB;">rep</span>(<span class="fl" style="color: #AD0000;">0.5</span>, <span class="dv" style="color: #AD0000;">6</span>)) <span class="co" style="color: #5E5E5E;"># surrounds are worth half</span></span>
+<span id="cb16-6">    <span class="co" style="color: #5E5E5E;"># combine and normalise</span></span>
+<span id="cb16-7">    dat <span class="ot" style="color: #003B4F;">&lt;-</span> purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map_dfr</span>(near_school, <span class="cf" style="color: #003B4F;">function</span>(h3) {</span>
+<span id="cb16-8">      <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="st" style="color: #20794D;">'h3'</span> <span class="ot" style="color: #003B4F;">=</span> h3, <span class="st" style="color: #20794D;">'weight'</span> <span class="ot" style="color: #003B4F;">=</span> near_wts, <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span>
+<span id="cb16-9">    }) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb16-10">      <span class="fu" style="color: #4758AB;">normalise_layer</span>()</span>
+<span id="cb16-11">  })</span>
+<span id="cb16-12"><span class="fu" style="color: #4758AB;">head</span>(school_hexes[[<span class="dv" style="color: #AD0000;">1</span>]])</span></code></pre></div>
+</div>
+<pre><code>## # A tibble: 6 x 3
+##   h3              weight   norm
+##   &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;
+## 1 872830802ffffff    2.5 0.0556
+## 2 872830806ffffff    1   0.0139
+## 3 872830810ffffff   25.5 0.694 
+## 4 872830811ffffff   14.5 0.389 
+## 5 872830812ffffff   23.5 0.639 
+## 6 872830813ffffff   22.5 0.611</code></pre>
+<p>For BART stations, the buffering is more sophisticated, with a smooth decay function implemented. This does a better job of preserving the area of influence around a station across different H3 resolutions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">km_to_radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(km, res) {</span>
+<span id="cb18-2">  <span class="fu" style="color: #4758AB;">floor</span>(km <span class="sc" style="color: #5E5E5E;">/</span> <span class="fu" style="color: #4758AB;">res_length</span>(res, <span class="at" style="color: #657422;">units =</span> <span class="st" style="color: #20794D;">'km'</span>))</span>
+<span id="cb18-3">}</span>
+<span id="cb18-4"></span>
+<span id="cb18-5">bart_hexes <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">point_to_h3</span>(bart_stations, <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">7</span>, <span class="dv" style="color: #AD0000;">10</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb18-6">  purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map2</span>(., <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">10</span>), <span class="cf" style="color: #003B4F;">function</span>(h3, res) {</span>
+<span id="cb18-7">    d <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">km_to_radius</span>(<span class="dv" style="color: #AD0000;">1</span>, res)</span>
+<span id="cb18-8">    near_bart <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">get_kring_list</span>(<span class="fu" style="color: #4758AB;">sort</span>(<span class="fu" style="color: #4758AB;">unique</span>(h3)), d)</span>
+<span id="cb18-9">    <span class="co" style="color: #5E5E5E;"># weights are the same for every feature so just make a template</span></span>
+<span id="cb18-10">    near_wts <span class="ot" style="color: #003B4F;">&lt;-</span> purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(near_bart[<span class="dv" style="color: #AD0000;">1</span>], <span class="cf" style="color: #003B4F;">function</span>(feature) {</span>
+<span id="cb18-11">      purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map2</span>(feature, <span class="fu" style="color: #4758AB;">seq_along</span>(feature), <span class="cf" style="color: #003B4F;">function</span>(ring, step) {</span>
+<span id="cb18-12">        wt <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">-</span> step <span class="sc" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">/</span> (d <span class="sc" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb18-13">        <span class="fu" style="color: #4758AB;">rep</span>(wt, <span class="fu" style="color: #4758AB;">length</span>(ring))</span>
+<span id="cb18-14">      })</span>
+<span id="cb18-15">    }) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">unlist</span>()</span>
+<span id="cb18-16">    purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(near_bart, unlist) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb18-17">      purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map_dfr</span>(., <span class="cf" style="color: #003B4F;">function</span>(x) {</span>
+<span id="cb18-18">        <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="st" style="color: #20794D;">'h3'</span> <span class="ot" style="color: #003B4F;">=</span> x, <span class="st" style="color: #20794D;">'weight'</span> <span class="ot" style="color: #003B4F;">=</span> near_wts, <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span>
+<span id="cb18-19">        }) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb18-20">      <span class="fu" style="color: #4758AB;">normalise_layer</span>() </span>
+<span id="cb18-21">      })</span>
+<span id="cb18-22"><span class="fu" style="color: #4758AB;">head</span>(bart_hexes[[<span class="dv" style="color: #AD0000;">1</span>]])</span></code></pre></div>
+</div>
+<pre><code>## # A tibble: 6 x 3
+##   h3              weight  norm
+##   &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;
+## 1 872830810ffffff      0   0.5
+## 2 872830813ffffff      0   0.5
+## 3 872830815ffffff      0   0.5
+## 4 872830828ffffff      0   0.5
+## 5 87283082affffff      0   0.5
+## 6 87283082cffffff      0   0.5</code></pre>
+<p>For travel time, we find all of the intersecting H3 addresses for each polygon in <code>sf_travel_times</code> before assigning them weights based on the travelTime attribute. The center of a given address must intersect the polygon before it can be returned. Weights are negative as lower travel times are better.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">travel_hexes <span class="ot" style="color: #003B4F;">&lt;-</span> purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(<span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">7</span>, <span class="dv" style="color: #AD0000;">10</span>), <span class="cf" style="color: #003B4F;">function</span>(res) {</span>
+<span id="cb20-2">  dat <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">polyfill</span>(sf_travel_times, res, <span class="at" style="color: #657422;">simple =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) </span>
+<span id="cb20-3">  dat <span class="ot" style="color: #003B4F;">&lt;-</span> purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map2_dfr</span>(<span class="fu" style="color: #4758AB;">as.list</span>(dat<span class="sc" style="color: #5E5E5E;">$</span>travelTime), </span>
+<span id="cb20-4">                         dat<span class="sc" style="color: #5E5E5E;">$</span>h3_polyfillers, </span>
+<span id="cb20-5">                         <span class="cf" style="color: #003B4F;">function</span>(x, y) {</span>
+<span id="cb20-6">                           <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="st" style="color: #20794D;">'h3'</span> <span class="ot" style="color: #003B4F;">=</span> y, <span class="st" style="color: #20794D;">'weight'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">/</span>x)</span>
+<span id="cb20-7">    }) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb20-8">    <span class="fu" style="color: #4758AB;">normalise_layer</span>(., <span class="cn" style="color: #8f5902;">TRUE</span>)</span>
+<span id="cb20-9">})</span>
+<span id="cb20-10"><span class="fu" style="color: #4758AB;">head</span>(travel_hexes[[<span class="dv" style="color: #AD0000;">1</span>]])</span></code></pre></div>
+</div>
+<pre><code>## # A tibble: 6 x 3
+##   h3               weight  norm
+##   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;
+## 1 872830802ffffff 0.00151 0.802
+## 2 872830810ffffff 0.00110 0.586
+## 3 872830811ffffff 0.00188 1    
+## 4 872830812ffffff 0.00127 0.673
+## 5 872830813ffffff 0.00137 0.727
+## 6 872830815ffffff 0.00129 0.686</code></pre>
+<p>Lastly, points of interest are tallied, just as crime was.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">food_hexes <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">point_to_h3</span>(pois, <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">7</span>, <span class="dv" style="color: #AD0000;">10</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb22-2">  purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(., <span class="cf" style="color: #003B4F;">function</span>(h3) {</span>
+<span id="cb22-3">   dat <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="st" style="color: #20794D;">'h3'</span> <span class="ot" style="color: #003B4F;">=</span> h3, <span class="st" style="color: #20794D;">'weight'</span> <span class="ot" style="color: #003B4F;">=</span> 1L, </span>
+<span id="cb22-4">                     <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb22-5">     <span class="fu" style="color: #4758AB;">normalise_layer</span>()</span>
+<span id="cb22-6">  })</span>
+<span id="cb22-7"><span class="fu" style="color: #4758AB;">head</span>(food_hexes[[<span class="dv" style="color: #AD0000;">1</span>]])</span></code></pre></div>
+</div>
+<pre><code>## # A tibble: 6 x 3
+##   h3              weight   norm
+##   &lt;chr&gt;            &lt;int&gt;  &lt;dbl&gt;
+## 1 872830810ffffff    851 1     
+## 2 872830811ffffff     16 0.0176
+## 3 872830812ffffff    407 0.478 
+## 4 872830813ffffff    331 0.388 
+## 5 872830814ffffff    173 0.202 
+## 6 872830816ffffff     98 0.114</code></pre>
+<p>Phew! Now we can plug the data together to get some overall weights. For each resolution, the following code adds up the normalised weights all of the ‘good’ layers, and then subtracts crime.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="co" style="color: #5E5E5E;"># arrange data by resolution instead of theme</span></span>
+<span id="cb24-2">datnm <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'crime'</span>, <span class="st" style="color: #20794D;">'school'</span>, <span class="st" style="color: #20794D;">'bart'</span>, <span class="st" style="color: #20794D;">'travel'</span>, <span class="st" style="color: #20794D;">'food'</span>)</span>
+<span id="cb24-3">dat <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list</span>(crime_hexes, school_hexes, bart_hexes,</span>
+<span id="cb24-4">                  travel_hexes, food_hexes) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-5">  purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">transpose</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-6">  purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(., setNames, datnm)</span>
+<span id="cb24-7"></span>
+<span id="cb24-8">final_surfaces <span class="ot" style="color: #003B4F;">&lt;-</span> purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(dat, <span class="cf" style="color: #003B4F;">function</span>(res) {</span>
+<span id="cb24-9">  <span class="co" style="color: #5E5E5E;"># rename cols for nicer joins</span></span>
+<span id="cb24-10">  purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map2</span>(res, datnm, <span class="cf" style="color: #003B4F;">function</span>(x,y) {</span>
+<span id="cb24-11">    dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">rename_at</span>(x, <span class="fu" style="color: #4758AB;">vars</span>(norm), <span class="fu" style="color: #4758AB;">funs</span>(<span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">'n_'</span>, y))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-12">      dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">select</span>(<span class="sc" style="color: #5E5E5E;">-</span>weight)</span>
+<span id="cb24-13">  }) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-14">    <span class="co" style="color: #5E5E5E;"># condense inputs</span></span>
+<span id="cb24-15">    purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">reduce</span>(., full_join, <span class="at" style="color: #657422;">by =</span> <span class="st" style="color: #20794D;">'h3'</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-16">    <span class="fu" style="color: #4758AB;">replace</span>(<span class="fu" style="color: #4758AB;">is.na</span>(.), <span class="dv" style="color: #AD0000;">0</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-17">    <span class="fu" style="color: #4758AB;">rowwise</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-18">    dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">weight =</span> </span>
+<span id="cb24-19">                    <span class="fu" style="color: #4758AB;">sum</span>(<span class="fu" style="color: #4758AB;">c</span>(n_school, n_bart, n_travel, n_food)) <span class="sc" style="color: #5E5E5E;">-</span> n_crime) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-20">    <span class="fu" style="color: #4758AB;">ungroup</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-21">    dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">select</span>(h3, weight) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-22">    <span class="fu" style="color: #4758AB;">normalise_layer</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb24-23">    <span class="fu" style="color: #4758AB;">h3_to_polygon</span>(., <span class="at" style="color: #657422;">simple =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span>
+<span id="cb24-24">})</span>
+<span id="cb24-25"><span class="fu" style="color: #4758AB;">head</span>(final_surfaces[[<span class="dv" style="color: #AD0000;">2</span>]])</span></code></pre></div>
+</div>
+<pre><code>## Simple feature collection with 6 features and 4 fields
+## geometry type:  POLYGON
+## dimension:      XY
+## bbox:           xmin: -122.3869 ymin: 37.79247 xmax: -122.3053 ymax: 37.8162
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##      weight       norm      h3_address h3_resolution
+## 1 0.0000000 0.02495816 882830801bfffff             8
+## 2 0.8024133 0.45593409 8828308021fffff             8
+## 3 0.8024133 0.45593409 8828308023fffff             8
+## 4 0.8024133 0.45593409 8828308025fffff             8
+## 5 1.0000000 0.56205787 8828308027fffff             8
+## 6 0.8024133 0.45593409 882830802bfffff             8
+##                         geometry
+## 1 POLYGON ((-122.3796 37.7924...
+## 2 POLYGON ((-122.3202 37.7985...
+## 3 POLYGON ((-122.3276 37.8044...
+## 4 POLYGON ((-122.3098 37.8009...
+## 5 POLYGON ((-122.3172 37.8068...
+## 6 POLYGON ((-122.3306 37.7961...</code></pre>
+<p>All that and I still can’t give you a cool interactive map like the source Observable notebook, but my plot below matches up nicely. Winner!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">cropper <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_bbox</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'xmin'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">122.35</span>, <span class="st" style="color: #20794D;">'ymin'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="fl" style="color: #AD0000;">37.75</span>,</span>
+<span id="cb26-2">                     <span class="st" style="color: #20794D;">'xmax'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">122.20</span>, <span class="st" style="color: #20794D;">'ymax'</span> <span class="ot" style="color: #003B4F;">=</span> <span class="fl" style="color: #AD0000;">37.85</span>), <span class="at" style="color: #657422;">crs =</span> <span class="fu" style="color: #4758AB;">st_crs</span>(<span class="dv" style="color: #AD0000;">4326</span>))</span>
+<span id="cb26-3">plot_that <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_crop</span>(<span class="fu" style="color: #4758AB;">do.call</span>(rbind, final_surfaces), cropper)</span>
+<span id="cb26-4"></span>
+<span id="cb26-5"><span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb26-6">  <span class="fu" style="color: #4758AB;">layer_spatial</span>(plot_that, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill =</span> norm), <span class="at" style="color: #657422;">alpha =</span> <span class="fl" style="color: #AD0000;">0.9</span>, <span class="at" style="color: #657422;">col =</span> <span class="cn" style="color: #8f5902;">NA</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb26-7">  <span class="fu" style="color: #4758AB;">facet_wrap</span>(. <span class="sc" style="color: #5E5E5E;">~</span> h3_resolution)  <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb26-8">  <span class="fu" style="color: #4758AB;">scale_fill_gradientn</span>(<span class="at" style="color: #657422;">colors =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'#ffffD9'</span>, <span class="st" style="color: #20794D;">'#50BAC3'</span>, <span class="st" style="color: #20794D;">'#1A468A'</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb26-9">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">122.32</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">122.27</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">122.22</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb26-10">  <span class="fu" style="color: #4758AB;">ggtitle</span>(<span class="st" style="color: #20794D;">'H3 Suitability Analysis'</span>, </span>
+<span id="cb26-11">          <span class="at" style="color: #657422;">subtitle =</span> <span class="st" style="color: #20794D;">'Liveability at four resolutions'</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb26-12">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">'Weight'</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb26-13">  <span class="fu" style="color: #4758AB;">theme_minimal</span>()</span></code></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/h3jsr-announcementplot-1.png" class="img-fluid figure-img" style="width:80.0%" alt="A map of the hexified and unified data, faceted over four increasingly detailed resolution levels"></p>
+</figure>
+</div>
+<p>Its nice to confirm that <code>h3jsr</code> does what it oughta, but my major take-home from this is that I really need to learn me some geospatial JS. The code is much more concise than the R equivalent. In fact, the above was worse before I took the time to revamp a couple of my wrapper functions. The JS is also very fast, and the interactive maps are a real winner. I know I could probably do something here with <code>mapview</code> or better yet, <code>mapdeck</code> and Shiny, but that would be even more code (not to mention getting it to work properly on my current blog setup, which I’m not sure is possible…). So I’m very impressed.</p>
+<p>Anyway, there it is, feel free to experiment with the package, and I welcome PRs that will speed it up or improve useability. Its been a worthwhile learning exercise, and I’m using <code>h3jsr</code> fairly often at work. I’m pretty sure that an <code>Rcpp</code>-powered version of this that hooks into original-flavour H3 will be much, much faster, though, so I don’t think this package will go to CRAN.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+  author = {Lauren O’Brien},
+  title = {New {R} Package: H3jsr},
+  date = {2018-12-21},
+  url = {https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas">
+Lauren O’Brien. 2018. <span>“New R Package: H3jsr.”</span> <a href="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement">https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>H3</category>
+  <category>JavaScript</category>
+  <category>DGGS</category>
+  <guid>https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/index.html</guid>
+  <pubDate>Thu, 20 Dec 2018 11:00:00 GMT</pubDate>
+  <media:content url="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/h3jsr-announcementplot1-1.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Playing with the Fitbit API in R</title>
+  <dc:creator>Lauren O&#39;Brien</dc:creator>
+  <link>https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>So I’ve been going to this boxing/HIIT style gym for a while, which is fantastic because it turns out I love punching things and suffering. I almost have abs now! The gym is quite big on using personal analytics to track progress, so they offer the <a href="http://myzone.org/">MyZone</a> brand of fitness tracker, which is centred around the use of a chest strap. The strap monitors heart rate and uses it to calculate ‘MyZone Effort Points’ (MEPS). More suffering == more points, and there’s a big TV in the gym where MyZone user’s scores are visible for comparison. I’m well aware that the only person I’m really competing with is me-last-week, but I’m still curious about what kind of scores I get during my workouts.</p>
+<p>I’ve worn a Fitbit for several years, is the thing, and I’m both averse to change and an inveterate cheapskate, so I didn’t really want to switch brands (or worse, wear both). So, how can I compare the data FitBit records for me when I’m working out to the data recorded by MyZone?</p>
+<p>R, of course. And the magic of APIs. Read on for how.</p>
+<p>First, I needed to see if I could access minute-by-minute heart rate data from FitBit, because I couldn’t calculate MEPS without that. I’m using a Charge 2 at present, and the FitBit mobile app provides graphs of heart-rate data during activities that are clearly high-resolution. That data’s gotta be somewhere and I wants it *grabby hands*</p>
+<p>There are a few blog posts around about accessing FitBit data in R, but they seem to date quickly - access methods have not been very stable over time. Same goes for Stack Overflow and Fitbit’s own forums! There was also a package or two floating about, but they appear defunct. Distilling a few posts like <a href="http://pdwhomeautomation.blogspot.com/2016/01/fitbit-api-access-using-oauth20-and.html">this one</a> and <a href="https://erle.io/blog/working-with-fitbit-data-in-r/">this one</a> together with the <a href="https://dev.fitbit.com/build/reference/web-api/heart-rate/">official documentation</a> got me where I needed to be, so current to July 2018, my procedure to get at my own intraday heart rate data is this:</p>
+<ul>
+<li>Go to https://dev.fitbit.com/ and click on Manage &gt; Register an App.</li>
+<li>Login with fitbit credentials and follow the prompts. Name the ‘app’ something neutral like ‘my-data’, choose app type ‘Personal’ and throw in www.google.com or something similar wherever a URL is asked for (the only important one is callback url).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/register_app.PNG" class="img-fluid figure-img" style="width:50.0%" alt="screenshot of the app registration page, filled out correctly"></p>
+</figure>
+</div>
+<ul>
+<li>Once the app is created, click on the ‘OAuth 2.0 tutorial page’ link near the bottom of the screen:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/fbapplanding.PNG" class="img-fluid figure-img" style="width:50.0%" alt="screenshot of the registered app, with the link to the OAuth 2 tutorial highlighted"></p>
+</figure>
+</div>
+<ul>
+<li>Scroll down to the end of section 1 and click on the provided authorisation URL. A new tab will open, showing the FitBit authorisation interface:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/authpage.PNG" class="img-fluid figure-img" style="width:50.0%" alt="screenshot of the app authorisation page"></p>
+</figure>
+</div>
+<ul>
+<li>I changed the auth period to 1 year so I don’t have to go through this too often, and ticked all options before clicking Allow, because I’ll probably play with the other endpoints at some point.</li>
+<li>After clicking Allow, the browser tab redirects to the callback URL, but a whole lot of other stuff is now in the URL visible in the address bar. Copy the whole lot and go back to the OAuth 2.0 tutorial page. Paste that URL into the text box under the ‘2. Parse Response’ header. The access token will appear below the text box - its a long string of characters.</li>
+<li>Save that token as an environment variable so its not stored unsecured. Clicking around on Windows, this is Control Panel &gt; System &gt; Advanced System Settings &gt; Environment Variables… . I save mine as a User variable called ‘FITB_AUTH’. NB: You’ll then have to close and reopen RStudio if you do all this while its running.</li>
+</ul>
+<p>With all that in place, I can finally write some damn R code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(httr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span></code></pre></div>
+</div>
+<p>Before starting to extract data, its a good idea to check that one’s token is definitely working. The FitBit API has a “<a href="https://dev.fitbit.com/build/reference/web-api/oauth2/">Retrieve State of Tokens</a>” endpoint for this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">check_state <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(<span class="at" style="color: #657422;">token =</span> <span class="cn" style="color: #8f5902;">NULL</span>) {</span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;">POST</span>(<span class="at" style="color: #657422;">url =</span> <span class="st" style="color: #20794D;">'https://api.fitbit.com/1.1/oauth2/introspect'</span>,</span>
+<span id="cb2-3">       <span class="fu" style="color: #4758AB;">add_headers</span>(<span class="at" style="color: #657422;">Authorization =</span> <span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">'Bearer '</span>, token)),</span>
+<span id="cb2-4">       <span class="at" style="color: #657422;">body =</span> <span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">'token='</span>, token),</span>
+<span id="cb2-5">       <span class="fu" style="color: #4758AB;">content_type</span>(<span class="st" style="color: #20794D;">'application/x-www-form-urlencoded'</span>))</span>
+<span id="cb2-6">}</span>
+<span id="cb2-7"></span>
+<span id="cb2-8">state <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">check_state</span>(<span class="at" style="color: #657422;">token =</span> <span class="fu" style="color: #4758AB;">Sys.getenv</span>(<span class="st" style="color: #20794D;">'FITB_AUTH'</span>))</span>
+<span id="cb2-9"></span>
+<span id="cb2-10"><span class="fu" style="color: #4758AB;">content</span>(state)<span class="sc" style="color: #5E5E5E;">$</span>active</span></code></pre></div>
+</div>
+<pre><code>## [1] TRUE</code></pre>
+<p>My token is active, so I can proceed.</p>
+<p>My last workout was Monday night. I used the Charge 2’s manual logging feature, so I know exactly when my workout started and finished. A GET request to retrieve minute-by-minute heart rate data for a set period looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">get_workout <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(<span class="at" style="color: #657422;">date =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="at" style="color: #657422;">start_time =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="at" style="color: #657422;">end_time =</span> <span class="cn" style="color: #8f5902;">NULL</span>, </span>
+<span id="cb4-2">                        <span class="at" style="color: #657422;">token =</span> <span class="fu" style="color: #4758AB;">Sys.getenv</span>(<span class="st" style="color: #20794D;">'FITB_AUTH'</span>)) {</span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;">GET</span>(<span class="at" style="color: #657422;">url =</span></span>
+<span id="cb4-4">        <span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">'https://api.fitbit.com/1/user/-/activities/heart/date/'</span>,</span>
+<span id="cb4-5">               date, <span class="st" style="color: #20794D;">'/1d/1min/time/'</span>, start_time, <span class="st" style="color: #20794D;">'/'</span>, end_time, <span class="st" style="color: #20794D;">'.json'</span>),</span>
+<span id="cb4-6">      <span class="fu" style="color: #4758AB;">add_headers</span>(<span class="at" style="color: #657422;">Authorization =</span> <span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">"Bearer "</span>, token)))</span>
+<span id="cb4-7">}</span>
+<span id="cb4-8"></span>
+<span id="cb4-9">got_workout <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">get_workout</span>(<span class="at" style="color: #657422;">date =</span> <span class="st" style="color: #20794D;">'2018-07-30'</span>, </span>
+<span id="cb4-10">                           <span class="at" style="color: #657422;">start_time =</span> <span class="st" style="color: #20794D;">'18:47'</span>, <span class="at" style="color: #657422;">end_time =</span> <span class="st" style="color: #20794D;">'19:28'</span>)</span></code></pre></div>
+</div>
+<p>The actual data can be seen using <code>content()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">workout <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">content</span>(got_workout)</span></code></pre></div>
+</div>
+<p>It does come in all list-ified, which can be a little tricky to sort out. <code>purrr</code> functions are real lifesavers here. I’m going to turn a couple of sub-lists into data frames below - FitBit’s own workout summary, and the actual heart rate by minute data I’m after:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;"># json-as-list to dataframe (for simple cases without nesting!)</span></span>
+<span id="cb6-2">jsonlist_to_df <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(<span class="at" style="color: #657422;">data =</span> <span class="cn" style="color: #8f5902;">NULL</span>) {</span>
+<span id="cb6-3">    purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">transpose</span>(data) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-4">    purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map</span>(., unlist) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-5">    <span class="fu" style="color: #4758AB;">as_tibble</span>(., <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span>
+<span id="cb6-6">}</span>
+<span id="cb6-7"></span>
+<span id="cb6-8"><span class="co" style="color: #5E5E5E;"># summary</span></span>
+<span id="cb6-9">workout[[<span class="st" style="color: #20794D;">'activities-heart'</span>]][[<span class="dv" style="color: #AD0000;">1</span>]][[<span class="st" style="color: #20794D;">'heartRateZones'</span>]] <span class="ot" style="color: #003B4F;">&lt;-</span> </span>
+<span id="cb6-10">  <span class="fu" style="color: #4758AB;">jsonlist_to_df</span>(workout[[<span class="st" style="color: #20794D;">'activities-heart'</span>]][[<span class="dv" style="color: #AD0000;">1</span>]][[<span class="st" style="color: #20794D;">'heartRateZones'</span>]])</span>
+<span id="cb6-11"></span>
+<span id="cb6-12"><span class="co" style="color: #5E5E5E;"># the good stuff</span></span>
+<span id="cb6-13">workout[[<span class="st" style="color: #20794D;">'activities-heart-intraday'</span>]][[<span class="st" style="color: #20794D;">'dataset'</span>]] <span class="ot" style="color: #003B4F;">&lt;-</span></span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;">jsonlist_to_df</span>(workout[[<span class="st" style="color: #20794D;">'activities-heart-intraday'</span>]][[<span class="st" style="color: #20794D;">'dataset'</span>]]) </span>
+<span id="cb6-15"></span>
+<span id="cb6-16"><span class="co" style="color: #5E5E5E;"># also let's get time formatted properly</span></span>
+<span id="cb6-17">workout<span class="sc" style="color: #5E5E5E;">$</span><span class="st" style="color: #20794D;">`</span><span class="at" style="color: #657422;">activities-heart-intraday</span><span class="st" style="color: #20794D;">`</span><span class="sc" style="color: #5E5E5E;">$</span>dataset<span class="sc" style="color: #5E5E5E;">$</span>time <span class="ot" style="color: #003B4F;">&lt;-</span> </span>
+<span id="cb6-18">  <span class="fu" style="color: #4758AB;">as.POSIXlt</span>(workout<span class="sc" style="color: #5E5E5E;">$</span><span class="st" style="color: #20794D;">`</span><span class="at" style="color: #657422;">activities-heart-intraday</span><span class="st" style="color: #20794D;">`</span><span class="sc" style="color: #5E5E5E;">$</span>dataset<span class="sc" style="color: #5E5E5E;">$</span>time, <span class="at" style="color: #657422;">format =</span> <span class="st" style="color: #20794D;">'%H:%M:%S'</span>)</span>
+<span id="cb6-19">lubridate<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">date</span>(workout<span class="sc" style="color: #5E5E5E;">$</span><span class="st" style="color: #20794D;">`</span><span class="at" style="color: #657422;">activities-heart-intraday</span><span class="st" style="color: #20794D;">`</span><span class="sc" style="color: #5E5E5E;">$</span>dataset<span class="sc" style="color: #5E5E5E;">$</span>time) <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">'2018-07-30'</span></span>
+<span id="cb6-20">lubridate<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">tz</span>(workout<span class="sc" style="color: #5E5E5E;">$</span><span class="st" style="color: #20794D;">`</span><span class="at" style="color: #657422;">activities-heart-intraday</span><span class="st" style="color: #20794D;">`</span><span class="sc" style="color: #5E5E5E;">$</span>dataset<span class="sc" style="color: #5E5E5E;">$</span>time) <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">'Australia/Brisbane'</span></span>
+<span id="cb6-21"></span>
+<span id="cb6-22"><span class="co" style="color: #5E5E5E;"># looks better now:</span></span>
+<span id="cb6-23">workout</span></code></pre></div>
+</div>
+<pre><code>## $`activities-heart`
+## $`activities-heart`[[1]]
+## $`activities-heart`[[1]]$customHeartRateZones
+## list()
+## 
+## $`activities-heart`[[1]]$dateTime
+## [1] "2018-07-30"
+## 
+## $`activities-heart`[[1]]$heartRateZones
+## # A tibble: 4 x 5
+##   caloriesOut   max   min minutes name        
+##         &lt;dbl&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;chr&gt;       
+## 1        0       93    30       0 Out of Range
+## 2       62.1    130    93      11 Fat Burn    
+## 3      230.     158   130      30 Cardio      
+## 4        9.30   220   158       1 Peak        
+## 
+## $`activities-heart`[[1]]$value
+## [1] "136.67"
+## 
+## 
+## 
+## $`activities-heart-intraday`
+## $`activities-heart-intraday`$dataset
+## # A tibble: 42 x 2
+##    time                value
+##    &lt;S3: POSIXlt&gt;       &lt;int&gt;
+##  1 2018-07-30 18:47:00    99
+##  2 2018-07-30 18:48:00   113
+##  3 2018-07-30 18:49:00   135
+##  4 2018-07-30 18:50:00   146
+##  5 2018-07-30 18:51:00   153
+##  6 2018-07-30 18:52:00   152
+##  7 2018-07-30 18:53:00   155
+##  8 2018-07-30 18:54:00   160
+##  9 2018-07-30 18:55:00   152
+## 10 2018-07-30 18:56:00   151
+## # ... with 32 more rows
+## 
+## $`activities-heart-intraday`$datasetInterval
+## [1] 1
+## 
+## $`activities-heart-intraday`$datasetType
+## [1] "minute"</code></pre>
+<p>Now, as I mentioned way back up top, MEPS are calculated minute-by-minute as a percentage of max heart rate. The formula used to calculate max heart rate is on the MyZone website:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">meps_max <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(<span class="at" style="color: #657422;">age =</span> <span class="cn" style="color: #8f5902;">NULL</span>) { <span class="dv" style="color: #AD0000;">207</span> <span class="sc" style="color: #5E5E5E;">-</span> (<span class="fl" style="color: #AD0000;">0.7</span> <span class="sc" style="color: #5E5E5E;">*</span> age) }</span></code></pre></div>
+</div>
+<p>Which makes mine 183. Note that this can be less accurate for some people, but as a depressingly average soul I don’t get to complain. <a href="http://myzone.org/meps/">Five MEPS zones</a> are defined using percentage range of max HR (e.g.&nbsp;3 MEPS/min at 70-79% of max HR), and I can calculate the appropriate heart-rate ranges for myself like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;"># I &lt;3 tribble</span></span>
+<span id="cb9-2">my_MEPS <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tribble</span>(<span class="sc" style="color: #5E5E5E;">~</span>MEPS, <span class="sc" style="color: #5E5E5E;">~</span>hr_range, <span class="sc" style="color: #5E5E5E;">~</span>hr_lo, <span class="sc" style="color: #5E5E5E;">~</span>hr_hi, </span>
+<span id="cb9-3">                       <span class="dv" style="color: #AD0000;">1</span>,  <span class="st" style="color: #20794D;">'50-59%'</span>,   <span class="fl" style="color: #AD0000;">0.50</span>,   <span class="fl" style="color: #AD0000;">0.59</span>,</span>
+<span id="cb9-4">                       <span class="dv" style="color: #AD0000;">2</span>,  <span class="st" style="color: #20794D;">'60-69%'</span>,   <span class="fl" style="color: #AD0000;">0.60</span>,   <span class="fl" style="color: #AD0000;">0.69</span>,</span>
+<span id="cb9-5">                       <span class="dv" style="color: #AD0000;">3</span>,  <span class="st" style="color: #20794D;">'70-79%'</span>,   <span class="fl" style="color: #AD0000;">0.70</span>,   <span class="fl" style="color: #AD0000;">0.79</span>,</span>
+<span id="cb9-6">                       <span class="dv" style="color: #AD0000;">4</span>,    <span class="st" style="color: #20794D;">'&gt;=80'</span>,   <span class="fl" style="color: #AD0000;">0.80</span>,   <span class="fl" style="color: #AD0000;">1.00</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb9-7">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">my_hr_low =</span> <span class="fu" style="color: #4758AB;">floor</span>(<span class="fu" style="color: #4758AB;">meps_max</span>(<span class="dv" style="color: #AD0000;">34</span>) <span class="sc" style="color: #5E5E5E;">*</span> hr_lo),</span>
+<span id="cb9-8">         <span class="at" style="color: #657422;">my_hr_hi  =</span> <span class="fu" style="color: #4758AB;">ceiling</span>(<span class="fu" style="color: #4758AB;">meps_max</span>(<span class="dv" style="color: #AD0000;">34</span>) <span class="sc" style="color: #5E5E5E;">*</span> hr_hi))</span>
+<span id="cb9-9">my_MEPS</span></code></pre></div>
+</div>
+<pre><code>## # A tibble: 4 x 6
+##    MEPS hr_range hr_lo hr_hi my_hr_low my_hr_hi
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1     1 50-59%     0.5  0.59        91      109
+## 2     2 60-69%     0.6  0.69       109      127
+## 3     3 70-79%     0.7  0.79       128      145
+## 4     4 &gt;=80       0.8  1          146      184</code></pre>
+<p>Using that data, calculating total MEPS goes like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;">mutate</span>(workout<span class="sc" style="color: #5E5E5E;">$</span><span class="st" style="color: #20794D;">`</span><span class="at" style="color: #657422;">activities-heart-intraday</span><span class="st" style="color: #20794D;">`</span><span class="sc" style="color: #5E5E5E;">$</span>dataset,</span>
+<span id="cb11-2">       <span class="at" style="color: #657422;">meps =</span> <span class="fu" style="color: #4758AB;">case_when</span>(value <span class="sc" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">146</span> <span class="sc" style="color: #5E5E5E;">~</span> <span class="dv" style="color: #AD0000;">4</span>,</span>
+<span id="cb11-3">                        value <span class="sc" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">128</span> <span class="sc" style="color: #5E5E5E;">~</span> <span class="dv" style="color: #AD0000;">3</span>,</span>
+<span id="cb11-4">                        value <span class="sc" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">109</span> <span class="sc" style="color: #5E5E5E;">~</span> <span class="dv" style="color: #AD0000;">2</span>,</span>
+<span id="cb11-5">                        value <span class="sc" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">91</span>  <span class="sc" style="color: #5E5E5E;">~</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb11-6">                        <span class="cn" style="color: #8f5902;">TRUE</span> <span class="sc" style="color: #5E5E5E;">~</span> <span class="dv" style="color: #AD0000;">0</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb11-7">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="st" style="color: #20794D;">"Total MEPS"</span> <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">sum</span>(meps))</span></code></pre></div>
+</div>
+<pre><code>## # A tibble: 1 x 1
+##   `Total MEPS`
+##          &lt;dbl&gt;
+## 1          130</code></pre>
+<p>Given that the maximum possible MEPS in a 42-minute workout is 168, this isn’t too bad. Its also fairly consistent with past workouts. I kind of knew I’d done ok from how I had trouble lifting my arms after, but its nice to have the numbers to back that up :P</p>
+<hr>
+<p>So there it is. Unfortunately this setup still isn’t ideal - httr’s Oauth 2.0 authorisation code flow doesn’t seem to quite work for FitBit and I’m not 100% sure why. The request functions above would be a bit simpler if I could get the ‘oauth dance’ to work, and I could also skip that whole ‘faffing around on dev.fitbit.com’ section. As it stands, I get to the <code>oauth2.0_token()</code> step and then it just sits in the browser while waiting for authentication. I’ve been poking away at this post on and off for literal months trying to crack it, but no dice. So whatever, perfect is the enemy of good and I know as soon as I post this, someone’s going to reply with an amazingly simple solution :P</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+  author = {Lauren O’Brien},
+  title = {Playing with the {Fitbit} {API} in {R}},
+  date = {2018-08-01},
+  url = {https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas">
+Lauren O’Brien. 2018. <span>“Playing with the Fitbit API in R.”</span>
+<a href="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r">https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>better living through APIs</category>
+  <category>the quantified life</category>
+  <category>punching on</category>
+  <category>fitbit</category>
+  <guid>https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/index.html</guid>
+  <pubDate>Tue, 31 Jul 2018 12:00:00 GMT</pubDate>
+  <media:content url="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/register_app.PNG" medium="image"/>
+</item>
+<item>
+  <title>dsmartr: My first R package</title>
+  <dc:creator>Lauren O&#39;Brien</dc:creator>
+  <link>https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Welp, I’ve written my first R package so I guess I oughta blog about it. <a href="https://github.com/obrl-soil/dsmartr"><code>dsmartr</code></a> is a digital soils mapping package which implements the DSMART algorithm of <a href="http://dx.doi.org/10.1016/j.geoderma.2013.09.024">Odgers et al (2014)</a>. The idea is to take existing polygon-based soils mapping and correlate it with various dense gridded environmental datasets (covariates), allowing production of a more detailed soils map. ‘Soil map disaggregation’ is a common phrase used to describe the process. I’m going to demonstrate the package’s use in a series of future blog posts, but today I want to stay meta and talk about how I got to this point in the first place.</p>
+<p>In mid-2016 I was handed a work project that had two goals: 1) Use DSMART to disaggregate a whole lot of 1:100,000 scale soils mapping along the Queensland coast, and 2) use the disaggregated outputs as a basis for mapping soils attributes and constraints to agriculture at a fine scale (30m pixels). If the process worked well enough, it could put property-scale soils mapping in the hands of local landowners without the need for a lot of extra field and lab-work. If the process didn’t work that well, it would be a clear demonstration that we can only push legacy soils data so far.</p>
+<p>I came into this with fairly minimal Python and R skills - I’d done some 101-level courses and mucked around with basic scripting, and I had a strong background in point-and-click GIS software (oh, and soil science, of course!). That alone might have got me through to some acceptable products without too much fuss, but I’d been reading a lot about reproducible workflows and had a bee in my bonnet about making the project fully open-source and replicable. Point-and-click was out of the question, I had to up my scripting game.</p>
+<p>My learning from this point on was frustration-driven and somewhat chaotic, but since it gave me a lot of small, clear goals to work on, I think it was actually a good way to learn deeply. A lot of my intial upskilling was centered around input data preparation, which gave me a solid grounding in the R packages responsible for spatial data and database interaction. Tasks included:</p>
+<ul>
+<li>Connecting to our Oracle-based soils database to extract both spatial and attribute data (skills: prying non-standard connection details out of database admin staff (‘…Why can’t you just use <a href="https://gohubble.com/hubbleology/213/support-for-oracle-discoverer-has-ended-">Discoverer</a>?’ ‘SO. MANY. REASONS.’); using <code>DBI</code>; writing SQL in R scripts)</li>
+<li>Cleaning the input map data and arranging it in a format suitable for disaggregation (skills: cleaning spatial data; combining multiple adjacent soils map projects into one coherent dataset; rearranging and reformatting attributes)</li>
+<li>Finding and downloading environmental covariates from internal and external repositories (skills: finding out about covariates from the literature, conversations with colleagues, strategic googling; using GDAL to extract portions of large (e.g.&nbsp;Australia-sized) rasters stored in online repositories; appeasing my &amp;*%^ing workplace firewall)</li>
+<li>Creating new covariates using some of the downloaded data and a wide range of existing algorithms (skills: Using open source GIS tools like GRASS and SAGA via R with <code>raster</code>, <code>rgrass7</code>, and good ol’ <code>base::system2()</code>; picking up enough OS knowledge to get all those programs to talk to each other).</li>
+</ul>
+<p>Other skills I picked up in this stage related to using RStudio to properly document my work. I started using R projects to manage each sub-area of my project, as the data had to be processed in geographically distinct sections. I moved from .R scripts to .Rmds, generating low-level reporting for each processing step I took from raw data to final product. I also started adding tables and graphs to my Rmd reports with packages like <code>DT</code>, <code>ggplot2</code>, and <code>mapview</code>. The process of learning to write these reports was incredibly valuable as it forced me to work out a solid structure for my data analysis process - one that worked both for me and for the less-technical people who were funding my project and supervising my work.</p>
+<p>As I was developing these processes, I started to look more closely at the DSMART code I was using. The DSMART algorithm was originally implemented in Python, and later <a href="https://bitbucket.org/brendo1001/dsmart">ported to R</a> (non-CRAN). I had started my project using the Python version because ‘Everybody Says Python Is Better’. In this case… nope. I switched to R after realising the Py code couldn’t handle the data volume I was throwing at it. Also, I’d spent a couple of weeks battling obscure dependencies and compatibility issues that had arisen as the package aged, and I was heartily sick of it. I could have persisted trying to learn Py for this work, but R was just far more accessible. Better docs, more tutorials, and easier setup. CRAN really is amazing.</p>
+<p>Anyway, the existing R version was more stable, if slightly slower, but still didn’t quite meet my needs…so I started tinkering, and things kind of snowballed from there. The R package I was using had some bugs and RAM-consumption issues that needed attention. I started small, fixing the bugs and tweaking some output files, and before long I had <a href="https://github.com/obrl-soil/disaggregation">alternate versions of the main package functions</a> that could handle much bigger input datasets without falling over. This was a huge confidence booster, so when the sf package was released as the successor to sp, I felt capable of modifying the code to take advantage of the newer package. This led to substantial speed gains and more readable code, although unfortunately I couldn’t drop sp completely as raster is not sf-compatible. At around this point (late 2016), I was achieving good enough outputs with my pilot study area to present my work at the joint <a href="https://nzsss.science.org.nz/nzasss-conference/">Aus/NZ soils conference</a> in Christchurch.</p>
+<p>After that I decided I should go ahead and package my functions rather than relying on standalone scripts. Colleagues in my office wanted to use my scripts, and getting them to run on multiple machines without my supervision was difficult. After having spent all that time learning to code and applying my fancy new skills, I was having to rush through disaggregating the rest of the soils maps on my list, and I still had to get a good process for attribute mapping off the ground. I didn’t need distractions! I also wanted a packaged version of my code to make it easy to demonstrate exactly which code I’d used for my project, and so I could cite it clearly.</p>
+<p>Starting the packaging process was very easy with the help of github and <a href="http://r-pkgs.had.co.nz/">R packages</a>. Quiet shout-out to the GitHub for Windows desktop app, incidentally. Getting version control set up was the easy part, though - going from scripts to packaged functions involved a lot more code modification than I thought.</p>
+<p>My functions used a lot of tidyverse-style piped code which doesn’t really work inside packages without substantial modification, and I’d gotten a bit caught up using fancy new functions where base R was perfectly fine. I love tidyverse for data prep and display, but I don’t fully grok programming tidyverse-style yet and I confess I’m not in a huge hurry to learn.</p>
+<p>I then learnt how to document my R code properly using <code>roxygen2</code> and actually spent a lot of time on that - I’ve often been frustrated by other packages’ docs and couldn’t bear to be a hypocrite on that front. I also added quite a few functions to handle data preparation and post-processing evaluation. <a href="https://github.com/obrl-soil/dsmartr/releases/tag/v0.0.0.9013">Draft version 0.0.0.9013</a> wound up being the version I used to finalise my disaggregation project in early November 2017, as I was over deadline and also quite burnt out after 18 months of very steep learning curve.</p>
+<p>That’s probably the downside of learning the way I did - I got into this spiral of learning some new trick, immediately having to try it out, and then if it worked, having to re-run my code for half a dozen sub-project-areas so that all the outputs were consistent. This was time-consuming and stressful even though it did lead to stronger products, and it was difficult for me to draw a line and say ‘enough’. Eventually I admitted how exhausted I was getting and forced myself to wrap things up. At that point my outputs weren’t going to get any better, and I was basically running on Berocca and spite. D-minus work/life balance management, would not reccommend.</p>
+<p>I’ve since recharged enough to progress the package to something I’m content to publicise - the last task was to unit test as much as possible. The main functions are now just wrappers that handle things like on-disk file creation and parallel processing, whereas before they contained a lot of sub-functions that did the actual work of disaggregation. The wrappers still make life a lot easier for the end user, but the important parts of the process like polygon sampling are now separated, documented and covered by unit tests so its clear to everyone that they do what they ought to. I’m not actually sure how best to extend unit test coverage beyond where it is now (ideas welcome!), but I’m confident that the package works as it should.</p>
+<section id="learning-resources" class="level3">
+<h3 class="anchored" data-anchor-id="learning-resources">Learning resources</h3>
+<p>Throughout this project I’ve been very reliant on free online learning resources, as not many people in my workplace do any kind of programming, and there was no funding for formal training. Resources I found invaluable include:</p>
+<ul>
+<li>Twitter: Twitter is amazing for #rstats. Following the right people and hashtags kept me up to date with everything from Big Stuff like new R packages to useful little tips like ‘<a href="https://twitter.com/bhaskar_vk/status/852180763101581312">use <code>file.path()</code> instead of <code>paste0()</code></a>’. The only downside is managing the onslaught of new ideas; this is a very fast-moving space.</li>
+<li><a href="https://rweekly.org/">rweekly.org</a> has become a fantastic digest of all things #rstats.</li>
+<li><a href="https://gis.stackexchange.com/">GIS-SE</a> and <a href="https://stackoverflow.com/">Stack Overflow</a> - I know SE sites have an intimidating reputation, but its still worth wading in, you just have to pay attention to the social norms there. They do exist for a reason, which others have mentioned but bears repeating: I solved at least half a dozen major problems I was having without even asking a question. The act of trying to formulate an acceptable question that wouldn’t get locked led me straight to the solution. Better than a rubber duck. I’d like to think I’ve given back a bit, too.</li>
+<li>Edzer Pebesma’s vignettes for sf, and his blog posts on <a href="http://r-spatial.org/">r-spatial</a> were invaluable for the move from sp to sf, and to gaining a deeper understanding of how spatial data stuff really works. This is something that a lot of point-and-click GIS users don’t even realise they don’t understand - I’ve had some uncomfortable <a href="https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect">Dunning-Kruger</a> moments this past year, but I’m better off for it.</li>
+<li>GitHub issues pages - if your problem is not on SE, its probably here.</li>
+<li>Hadley Wickham’s online books ‘<a href="http://r4ds.had.co.nz/">R for Data Science</a>’ and ‘<a href="http://r-pkgs.had.co.nz/">R packages</a>’ (especially the latter). I know, me and everyone else, but they’re popular for a reason.</li>
+<li>Yihui Xie’s knitr documentation: https://yihui.name/knitr/options/#chunk_options may as well have been my homepage for while there.</li>
+<li>Kieran Healy’s ‘<a href="http://socviz.co/">Data Visualisation: A practical introduction</a>’. This is just so well-written, it doesn’t matter that its not aimed at my field. It works well as a general intro to R and to best-practice data visualisation, as well as providing specific coding instruction.</li>
+</ul>
+<p>Honourable mention for the upcoming <a href="https://geocompr.robinlovelace.net/">‘Geocomputation with R’</a> ebook, which came along a little too late for me, but is worth a read for anyone new to this space. It’ll save you a lot of time. The <a href="https://community.rstudio.com/">RStudio community forums</a> also launched recently and they’re pretty cool.</p>
+</section>
+<section id="where-to-from-here" class="level3">
+<h3 class="anchored" data-anchor-id="where-to-from-here">Where to from here?</h3>
+<ul>
+<li>At some point I should consider a CRAN submission, but that can wait until the various versions of R-based DSMART code have been reconciled. I don’t think anyone wants multiple versions of the same idea on CRAN, and I’ve had a few idle chats with Nathan Odgers and Brendan Malone about combining our efforts. Herding soil scientists is worse than herding cats though, so don’t hold your breath :P</li>
+<li>Oh gosh <a href="https://github.com/r-spatial/stars"><code>stars</code></a> is coming! I might be able to move away from sp/raster later this year, which will be nice as dsmartr’s dependency list is quite long. Not going to bother until <code>stars</code> is on CRAN, though.</li>
+<li>Train myself to type ‘dsmartr’ correctly the first time instead of having to constantly change it from dsamrtr <em>*sigh*</em></li>
+</ul>
+<p>Ok, I’ve rambled enough. Next time, how to DSMART.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+  author = {Lauren O’Brien},
+  title = {Dsmartr: {My} First {R} Package},
+  date = {2018-01-16},
+  url = {https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas">
+Lauren O’Brien. 2018. <span>“Dsmartr: My First R Package.”</span> <a href="https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement">https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>dsmart</category>
+  <category>meta</category>
+  <category>ramblings</category>
+  <category>digital soil mapping</category>
+  <guid>https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/index.html</guid>
+  <pubDate>Mon, 15 Jan 2018 11:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Learning Shiny with the Spline Tool</title>
+  <dc:creator>Lauren O&#39;Brien</dc:creator>
+  <link>https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>My current project is about to produce a Giant Heap of data for end users to play with, and I’m concerned that it might be a bit overwhelming to digest. Even I’m having trouble trawling through it all to make sure everything is correct. A web app that allows the user to drill into that heap and just pull out what they need may be necessary…better learn how to build one, I guess!</p>
+<p>I’ve done just about everything else for the project in R, so I figured I’d maintain consistency and learn Shiny. As a bit of a ‘Hello World’ project, I decided to try and replicate a small standalone app used by soil scientists to pre-process soil laboratory data.</p>
+<p>Soil lab data is collected on a sample basis: you dig your hole, you grab ~200-500g of soil within a set of given depth ranges, you bag the samples up, and send them to the lab. Budget and time constraints generally mean that you don’t get to sample every depth interval in a profile, so you must attempt to pick representative depth ranges. Best practice is one sample per horizon and/or one every half a metre or so, if the horizon is thick. It’s also good to grab one at the surface, and one at top of the B horizon, as the most interesting things tend to happen there (and as a result, data from those parts of the profile are often used in classification systems).</p>
+<p>The result is a huge store of soil data that only ‘exists’ for part of each profile. I might have pH values for 0-10cm, 20-30, 50-60, 80-90, and 110-120, but I <em>only</em> have data for those depth slices. This makes it difficult to compare profiles from different locations, and it makes environmental modelling almost impossible.</p>
+<p>The standard solution is to use a mass-preserving spline to interpolate between the available data, and produce estimates of mean values for continuous depth sections down the profile. The idea entered the scientific literature with Bishop, McBratney and Laslett’s 1999 paper <a href="https://doi.org/10.1016/S0016-7061(99)00003-8">Modelling soil attribute depth functions with equal-area quadratic smoothing splines</a> and became standard practice fairly quickly. In the mid-2000’s the CSIRO-funded <a href="http://www.clw.csiro.au/aclep/">Australian Collaborative Land Evaluation Program</a> (ACLEP) team released a standalone app to do the job, I suspect in response to too many homebrew implementations floating around. The app made certain that everyone doing splining would get the same results from a given dataset, and this was a big deal as the drive was on to produce unified national datasets like the <a href="http://www.asris.csiro.au/index.html">Australian Soil Resource Information System (ASRIS)</a> and, later, the <a href="http://www.clw.csiro.au/aclep/soilandlandscapegrid/">Soil and Landscape Grid of Australia</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/learning-shiny-splinetool.png" class="img-fluid figure-img" style="width:80.0%" alt="screenshot of the original spline app"></p>
+</figure>
+</div>
+<p>The standalone app is still available from the <a href="http://www.asris.csiro.au/methods.html">ASRIS website</a>, but ACLEP and ASRIS are sadly underloved these days and I don’t know how much longer they’ll be around. The app itself hasn’t been updated since ~2012 - the authors may have jinxed themselves by promising regular updates in the metadata :P.</p>
+<p>Luckily, the core functionality of SplineTool has been replicated in R, with <a href="https://github.com/cran/GSIF/blob/master/R/mpspline.R"><code>GSIF::mpsline</code></a>. That means all I had to do is wrap that function up in a web-app interface that mimics the existing tool. ‘Hello World’, indeed.</p>
+<p>The webapp is now online at <a href="https://obrl-soil.shinyapps.io/splineapp/"><strong>https://obrl-soil.shinyapps.io/splineapp/</strong></a>, so check it out and let me know what you think. Hopefully its of use to people who can’t run the existing app, or don’t want to learn R just to get this one task done. It has all the original app features, except for RMSE and ‘singles reports’, which <code>mpspline</code> doesn’t produce. To make up for it, you can view outputs as well as inputs by site, save plots, and either download .csv outputs or an .rds containing the complete object output by <code>mpspline</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/learning-shiny-splineapp.png" class="img-fluid figure-img" style="width:80.0%" alt="screenshot of the new spline app"></p>
+</figure>
+</div>
+<p>Read on if you care about how I got it working…</p>
+<section id="process" class="level3">
+<h3 class="anchored" data-anchor-id="process">Process</h3>
+<p>I allowed myself a week to do this, and spent… probably a solid 24 hours of that on the app, mostly because I have no self control. At least half of that was dicking around with the UI styling, I must admit, but there was still a fairly steep learning curve to negotiate.</p>
+<p>I went in to this with intermediate R skills and pretty basic html/css - I’d played around with making websites as a teenager mumble years ago, and then did the first few modules of <a href="https://www.freecodecamp.org/">freecodecamp’s</a> course back in March before getting distracted and wandering off. The basic knowledge of Bootstrap I picked up there really helped, though.</p>
+<p>The <a href="https://shiny.rstudio.com/tutorial/">offical documentation and tutorials for Shiny</a> are very good, so just working through them step by step got me most of the way there. For the rest, StackOverflow generally came to the rescue. <a href="https://stackoverflow.com/questions/23874674/add-to-a-list-in-shiny">This question about users adding to a list of values</a> helped me implement custom output depth ranges, and <a href="https://stackoverflow.com/questions/14810409/save-plots-made-in-a-shiny-app">this one got me a ‘save plots’ option</a>, which the original app didn’t have.</p>
+<p>There’s still a few things I couldn’t manage to crack, notably the ability to handle more flexible inputs. I wanted to be able to get the user to identify the input columns appropriately, rather than relying on a strictly formatted input dataset. Being able to upload a file with multiple attribute columns and then pick which to spline would have been nice. Oh well, there’s always version 2.0… jinx!</p>
+<p>The source code is <a href="https://github.com/obrl-soil/shiny_apps/blob/master/splineapp/app.R">on my github</a>, if you have any ideas for improvement I’d love to hear them.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2017,
+  author = {Lauren O’Brien},
+  title = {Learning {Shiny} with the {Spline} {Tool}},
+  date = {2017-10-22},
+  url = {https://obrl-soil.github.io/posts/2017-10-22_learning-shiny},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2017" class="csl-entry quarto-appendix-citeas">
+Lauren O’Brien. 2017. <span>“Learning Shiny with the Spline
+Tool.”</span> <a href="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny">https://obrl-soil.github.io/posts/2017-10-22_learning-shiny</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>shiny</category>
+  <category>mass-preserving spline</category>
+  <guid>https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/index.html</guid>
+  <pubDate>Sat, 21 Oct 2017 11:00:00 GMT</pubDate>
+  <media:content url="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/learning-shiny-splinetool.png" medium="image" type="image/png" height="98" width="144"/>
+</item>
+</channel>
+</rss>

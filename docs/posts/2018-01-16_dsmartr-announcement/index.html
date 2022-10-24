@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.237">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lauren O’Brien">
+<meta name="dcterms.date" content="2018-01-16">
+<meta name="description" content="and some thoughts on learning to code">
+
+<title>Lauren O’Brien - dsmartr: My first R package</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TTL1M4BX0Y"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+ 
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied'
+  });
+gtag('config', 'G-TTL1M4BX0Y', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Lauren O’Brien - dsmartr: My first R package">
+<meta property="og:description" content="and some thoughts on learning to code">
+<meta property="og:site-name" content="Lauren O'Brien">
+<meta property="og:locale" content="en_NZ">
+<meta name="twitter:title" content="Lauren O’Brien - dsmartr: My first R package">
+<meta name="twitter:description" content="and some thoughts on learning to code">
+<meta name="twitter:creator" content="@obrl_soil">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Lauren O’Brien</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blog.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">dsmartr: My first R package</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Home</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../blog.html" class="sidebar-item-text sidebar-link">Blog</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#learning-resources" id="toc-learning-resources" class="nav-link" data-scroll-target="#learning-resources">Learning resources</a></li>
+  <li><a href="#where-to-from-here" id="toc-where-to-from-here" class="nav-link" data-scroll-target="#where-to-from-here">Where to from here?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">dsmartr: My first R package</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">dsmart</div>
+    <div class="quarto-category">meta</div>
+    <div class="quarto-category">ramblings</div>
+    <div class="quarto-category">digital soil mapping</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    and some thoughts on learning to code
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lauren O’Brien <a href="https://orcid.org/0000-0002-7336-2171" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 16, 2018</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Welp, I’ve written my first R package so I guess I oughta blog about it. <a href="https://github.com/obrl-soil/dsmartr"><code>dsmartr</code></a> is a digital soils mapping package which implements the DSMART algorithm of <a href="http://dx.doi.org/10.1016/j.geoderma.2013.09.024">Odgers et al (2014)</a>. The idea is to take existing polygon-based soils mapping and correlate it with various dense gridded environmental datasets (covariates), allowing production of a more detailed soils map. ‘Soil map disaggregation’ is a common phrase used to describe the process. I’m going to demonstrate the package’s use in a series of future blog posts, but today I want to stay meta and talk about how I got to this point in the first place.</p>
+<p>In mid-2016 I was handed a work project that had two goals: 1) Use DSMART to disaggregate a whole lot of 1:100,000 scale soils mapping along the Queensland coast, and 2) use the disaggregated outputs as a basis for mapping soils attributes and constraints to agriculture at a fine scale (30m pixels). If the process worked well enough, it could put property-scale soils mapping in the hands of local landowners without the need for a lot of extra field and lab-work. If the process didn’t work that well, it would be a clear demonstration that we can only push legacy soils data so far.</p>
+<p>I came into this with fairly minimal Python and R skills - I’d done some 101-level courses and mucked around with basic scripting, and I had a strong background in point-and-click GIS software (oh, and soil science, of course!). That alone might have got me through to some acceptable products without too much fuss, but I’d been reading a lot about reproducible workflows and had a bee in my bonnet about making the project fully open-source and replicable. Point-and-click was out of the question, I had to up my scripting game.</p>
+<p>My learning from this point on was frustration-driven and somewhat chaotic, but since it gave me a lot of small, clear goals to work on, I think it was actually a good way to learn deeply. A lot of my intial upskilling was centered around input data preparation, which gave me a solid grounding in the R packages responsible for spatial data and database interaction. Tasks included:</p>
+<ul>
+<li>Connecting to our Oracle-based soils database to extract both spatial and attribute data (skills: prying non-standard connection details out of database admin staff (‘…Why can’t you just use <a href="https://gohubble.com/hubbleology/213/support-for-oracle-discoverer-has-ended-">Discoverer</a>?’ ‘SO. MANY. REASONS.’); using <code>DBI</code>; writing SQL in R scripts)</li>
+<li>Cleaning the input map data and arranging it in a format suitable for disaggregation (skills: cleaning spatial data; combining multiple adjacent soils map projects into one coherent dataset; rearranging and reformatting attributes)</li>
+<li>Finding and downloading environmental covariates from internal and external repositories (skills: finding out about covariates from the literature, conversations with colleagues, strategic googling; using GDAL to extract portions of large (e.g.&nbsp;Australia-sized) rasters stored in online repositories; appeasing my &amp;*%^ing workplace firewall)</li>
+<li>Creating new covariates using some of the downloaded data and a wide range of existing algorithms (skills: Using open source GIS tools like GRASS and SAGA via R with <code>raster</code>, <code>rgrass7</code>, and good ol’ <code>base::system2()</code>; picking up enough OS knowledge to get all those programs to talk to each other).</li>
+</ul>
+<p>Other skills I picked up in this stage related to using RStudio to properly document my work. I started using R projects to manage each sub-area of my project, as the data had to be processed in geographically distinct sections. I moved from .R scripts to .Rmds, generating low-level reporting for each processing step I took from raw data to final product. I also started adding tables and graphs to my Rmd reports with packages like <code>DT</code>, <code>ggplot2</code>, and <code>mapview</code>. The process of learning to write these reports was incredibly valuable as it forced me to work out a solid structure for my data analysis process - one that worked both for me and for the less-technical people who were funding my project and supervising my work.</p>
+<p>As I was developing these processes, I started to look more closely at the DSMART code I was using. The DSMART algorithm was originally implemented in Python, and later <a href="https://bitbucket.org/brendo1001/dsmart">ported to R</a> (non-CRAN). I had started my project using the Python version because ‘Everybody Says Python Is Better’. In this case… nope. I switched to R after realising the Py code couldn’t handle the data volume I was throwing at it. Also, I’d spent a couple of weeks battling obscure dependencies and compatibility issues that had arisen as the package aged, and I was heartily sick of it. I could have persisted trying to learn Py for this work, but R was just far more accessible. Better docs, more tutorials, and easier setup. CRAN really is amazing.</p>
+<p>Anyway, the existing R version was more stable, if slightly slower, but still didn’t quite meet my needs…so I started tinkering, and things kind of snowballed from there. The R package I was using had some bugs and RAM-consumption issues that needed attention. I started small, fixing the bugs and tweaking some output files, and before long I had <a href="https://github.com/obrl-soil/disaggregation">alternate versions of the main package functions</a> that could handle much bigger input datasets without falling over. This was a huge confidence booster, so when the sf package was released as the successor to sp, I felt capable of modifying the code to take advantage of the newer package. This led to substantial speed gains and more readable code, although unfortunately I couldn’t drop sp completely as raster is not sf-compatible. At around this point (late 2016), I was achieving good enough outputs with my pilot study area to present my work at the joint <a href="https://nzsss.science.org.nz/nzasss-conference/">Aus/NZ soils conference</a> in Christchurch.</p>
+<p>After that I decided I should go ahead and package my functions rather than relying on standalone scripts. Colleagues in my office wanted to use my scripts, and getting them to run on multiple machines without my supervision was difficult. After having spent all that time learning to code and applying my fancy new skills, I was having to rush through disaggregating the rest of the soils maps on my list, and I still had to get a good process for attribute mapping off the ground. I didn’t need distractions! I also wanted a packaged version of my code to make it easy to demonstrate exactly which code I’d used for my project, and so I could cite it clearly.</p>
+<p>Starting the packaging process was very easy with the help of github and <a href="http://r-pkgs.had.co.nz/">R packages</a>. Quiet shout-out to the GitHub for Windows desktop app, incidentally. Getting version control set up was the easy part, though - going from scripts to packaged functions involved a lot more code modification than I thought.</p>
+<p>My functions used a lot of tidyverse-style piped code which doesn’t really work inside packages without substantial modification, and I’d gotten a bit caught up using fancy new functions where base R was perfectly fine. I love tidyverse for data prep and display, but I don’t fully grok programming tidyverse-style yet and I confess I’m not in a huge hurry to learn.</p>
+<p>I then learnt how to document my R code properly using <code>roxygen2</code> and actually spent a lot of time on that - I’ve often been frustrated by other packages’ docs and couldn’t bear to be a hypocrite on that front. I also added quite a few functions to handle data preparation and post-processing evaluation. <a href="https://github.com/obrl-soil/dsmartr/releases/tag/v0.0.0.9013">Draft version 0.0.0.9013</a> wound up being the version I used to finalise my disaggregation project in early November 2017, as I was over deadline and also quite burnt out after 18 months of very steep learning curve.</p>
+<p>That’s probably the downside of learning the way I did - I got into this spiral of learning some new trick, immediately having to try it out, and then if it worked, having to re-run my code for half a dozen sub-project-areas so that all the outputs were consistent. This was time-consuming and stressful even though it did lead to stronger products, and it was difficult for me to draw a line and say ‘enough’. Eventually I admitted how exhausted I was getting and forced myself to wrap things up. At that point my outputs weren’t going to get any better, and I was basically running on Berocca and spite. D-minus work/life balance management, would not reccommend.</p>
+<p>I’ve since recharged enough to progress the package to something I’m content to publicise - the last task was to unit test as much as possible. The main functions are now just wrappers that handle things like on-disk file creation and parallel processing, whereas before they contained a lot of sub-functions that did the actual work of disaggregation. The wrappers still make life a lot easier for the end user, but the important parts of the process like polygon sampling are now separated, documented and covered by unit tests so its clear to everyone that they do what they ought to. I’m not actually sure how best to extend unit test coverage beyond where it is now (ideas welcome!), but I’m confident that the package works as it should.</p>
+<section id="learning-resources" class="level3">
+<h3 class="anchored" data-anchor-id="learning-resources">Learning resources</h3>
+<p>Throughout this project I’ve been very reliant on free online learning resources, as not many people in my workplace do any kind of programming, and there was no funding for formal training. Resources I found invaluable include:</p>
+<ul>
+<li>Twitter: Twitter is amazing for #rstats. Following the right people and hashtags kept me up to date with everything from Big Stuff like new R packages to useful little tips like ‘<a href="https://twitter.com/bhaskar_vk/status/852180763101581312">use <code>file.path()</code> instead of <code>paste0()</code></a>’. The only downside is managing the onslaught of new ideas; this is a very fast-moving space.</li>
+<li><a href="https://rweekly.org/">rweekly.org</a> has become a fantastic digest of all things #rstats.</li>
+<li><a href="https://gis.stackexchange.com/">GIS-SE</a> and <a href="https://stackoverflow.com/">Stack Overflow</a> - I know SE sites have an intimidating reputation, but its still worth wading in, you just have to pay attention to the social norms there. They do exist for a reason, which others have mentioned but bears repeating: I solved at least half a dozen major problems I was having without even asking a question. The act of trying to formulate an acceptable question that wouldn’t get locked led me straight to the solution. Better than a rubber duck. I’d like to think I’ve given back a bit, too.</li>
+<li>Edzer Pebesma’s vignettes for sf, and his blog posts on <a href="http://r-spatial.org/">r-spatial</a> were invaluable for the move from sp to sf, and to gaining a deeper understanding of how spatial data stuff really works. This is something that a lot of point-and-click GIS users don’t even realise they don’t understand - I’ve had some uncomfortable <a href="https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect">Dunning-Kruger</a> moments this past year, but I’m better off for it.</li>
+<li>GitHub issues pages - if your problem is not on SE, its probably here.</li>
+<li>Hadley Wickham’s online books ‘<a href="http://r4ds.had.co.nz/">R for Data Science</a>’ and ‘<a href="http://r-pkgs.had.co.nz/">R packages</a>’ (especially the latter). I know, me and everyone else, but they’re popular for a reason.</li>
+<li>Yihui Xie’s knitr documentation: https://yihui.name/knitr/options/#chunk_options may as well have been my homepage for while there.</li>
+<li>Kieran Healy’s ‘<a href="http://socviz.co/">Data Visualisation: A practical introduction</a>’. This is just so well-written, it doesn’t matter that its not aimed at my field. It works well as a general intro to R and to best-practice data visualisation, as well as providing specific coding instruction.</li>
+</ul>
+<p>Honourable mention for the upcoming <a href="https://geocompr.robinlovelace.net/">‘Geocomputation with R’</a> ebook, which came along a little too late for me, but is worth a read for anyone new to this space. It’ll save you a lot of time. The <a href="https://community.rstudio.com/">RStudio community forums</a> also launched recently and they’re pretty cool.</p>
+</section>
+<section id="where-to-from-here" class="level3">
+<h3 class="anchored" data-anchor-id="where-to-from-here">Where to from here?</h3>
+<ul>
+<li>At some point I should consider a CRAN submission, but that can wait until the various versions of R-based DSMART code have been reconciled. I don’t think anyone wants multiple versions of the same idea on CRAN, and I’ve had a few idle chats with Nathan Odgers and Brendan Malone about combining our efforts. Herding soil scientists is worse than herding cats though, so don’t hold your breath :P</li>
+<li>Oh gosh <a href="https://github.com/r-spatial/stars"><code>stars</code></a> is coming! I might be able to move away from sp/raster later this year, which will be nice as dsmartr’s dependency list is quite long. Not going to bother until <code>stars</code> is on CRAN, though.</li>
+<li>Train myself to type ‘dsmartr’ correctly the first time instead of having to constantly change it from dsamrtr <em>*sigh*</em></li>
+</ul>
+<p>Ok, I’ve rambled enough. Next time, how to DSMART.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+  author = {Lauren O’Brien},
+  title = {Dsmartr: {My} First {R} Package},
+  date = {2018-01-16},
+  url = {https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Lauren O’Brien. 2018. <span>“Dsmartr: My First R Package.”</span> <a href="https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement">https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2022 Lauren O’Brien. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
+  </div>
+</footer>
+
+
+
+</body></html>

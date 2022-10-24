@@ -1,0 +1,24 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/2022-10-24_site-update/index.html",
+      "/posts/2018-12-31_slga-announcement/index.html",
+      "/posts/2018-12-21_h3jsr-announcement/index.html",
+      "/posts/2018-08-01_fitbit-api-r/index.html",
+      "/posts/2018-01-16_dsmartr-announcement/index.html",
+      "/posts/2017-10-22_learning-shiny/index.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/2022-10-24_site-update/index.html",
+      "/posts/2018-12-31_slga-announcement/index.html",
+      "/posts/2018-12-21_h3jsr-announcement/index.html",
+      "/posts/2018-08-01_fitbit-api-r/index.html",
+      "/posts/2018-01-16_dsmartr-announcement/index.html",
+      "/posts/2017-10-22_learning-shiny/index.html"
+    ]
+  }
+]

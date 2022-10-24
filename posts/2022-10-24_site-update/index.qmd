@@ -1,0 +1,170 @@
+---
+title: "Website update"
+description: "In which the author learns a few new tricks"
+date: "2022-10-22"
+categories: [meta, blogging, quarto]
+editor: visual
+engine: knitr
+execute: 
+  eval: false
+---
+
+### Background
+
+I let this site fall into disuse a couple of years ago. Life got busy, and then I decided to move overseas all by myself, and then a pandemic happened, you know, the usual.
+
+Lately I've been feeling like I want to start writing again[^1]. Thing is, I hadn't touched the blog in so long I could barely remember how to update it. I knew there was a simpler way, so I've bitten the bullet and converted to Quarto.
+
+[^1]: to be clear: this is insane of me, life hasn't gotten less busy...
+
+I found moving to a Quarto website to be a fairly simple process thanks to the [excellent documentation](https://quarto.org/docs/reference/), linked examples ([Mike Mahoney](https://www.mm218.dev/), [Bea Milz](https://beamilz.com/)) and Danielle Navarro's [blog post](https://blog.djnavarro.net/posts/2022-04-20_porting-to-quarto/) on migrating from distill (as well as her blog source code, of course). That said, I had a head start on Quarto generally as I've already been using it for standalone files, a book conversion, and a slide deck or two. I did this whole conversion in a day, and that wouldn't have happened if this was my first attempt with Quarto.
+
+### Upgrade process
+
+I started by nuking my old blog. First I copied the whole repo onto a portable HDD I use for storing Old Things (this turned out to be useful when migrating posts, be me, be a hoarder). Then I unpublished the site from Github Pages, and got the repo unhooked from its upstream fork. I had been using Jekyll with a fork of the [hpstr theme](https://github.com/mmistakes/jekyll-theme-hpstr) and tbh I should have unhooked it a long time ago.
+
+The unhooking was an overnight wait, but once the nice people at GitHub has sorted that out I archived the blog onto a tagged git branch before starting fresh in a new one, per the [advice here](https://stackoverflow.com/questions/1307114/how-can-i-archive-git-branches). It was about time I got rid of `master` , if nothing else. The command-line invocation for this was:
+
+```{bash}
+#| eval: false
+cd my-blog-directory
+
+# tag and archive the current blog, with an annotated tag
+# make sure there's nothing uncommitted first!
+git tag archive/master master -a -m "Blog archive 2016-2018"
+
+# make a new main branch and check it out
+git checkout -b main
+
+# push changes to remote, including tags
+git push origin --tags
+
+# delete the local archived branch (it can stay on github)
+git branch -d master
+```
+
+After that, I deleted everything from my local repo except for the `.git` and `.rProj.user` folders, plus the `.gitignore` and `*.Rproj` files. I then made a first commit to the new branch and started building.
+
+I admit I flailed around a bit trying to figure out how to make a 'blog inside a website'. There's probably simpler ways to do this! In the end I did the following:
+
+-   Since RStudio won't start a new Quarto project in an existing folder, I started a new website project in a temp folder and copied over the `_quarto.yml`, `about.qmd`, `index.qmd` and `styles.css` that were generated.
+-   I then started a blog project in another temp folder and took a good look to compare. Once I realised how the two structures differed I just started a `posts` folder containing `_metadata.yml`, added `blog.qmd` to the root directory, and then cribbed from the examples I'd seen to get the layout right.
+
+My main issue was that I didn't want my About to be the landing page, but I couldn't decide what else to put there. I wanted a feed of the last few blog posts in their entirety just like the old site, but that's not an option at present. I've gone with a list of the three most recent blog posts for now, followed by a few fieldwork pics.
+
+### Migrating old posts
+
+Initially I wasn't going to bother. I have a visceral hatred of looking at anything I did more than about 6 months ago, and besides which a lot of the code will be outdated. However, it seems a few pages still get regular hits, so I've caved in and converted the latest five. The process for each post was as follows:
+
+-   find the \*.md file in the archived `_posts` folder. The posts were named using a `<date>_<title>` slug pattern (*self-high-five!*), so I used that template to create a new folder under `posts` with the same name.
+
+-   create an `index.qmd` in the post folder, switch to source view and copy in the contents of the \*.md file.
+
+-   Tweak the YAML into compatibility by deleting the `author`, `layout`, and `permalink` tags, and converting my tags list into the format `categories: [tag1, tag2]` (note: I have `author` set globally in `_metadata.yaml`). Also, set
+
+        execute:
+          eval: false
+
+    to prevent any code from running again.
+
+-   fix up the r code blocks by adding `{}`
+
+-   copy in any referenced images from the source blog archive and replace their html with simple markdown, e.g.
+
+        <img src="{{ site.url }}/images/h3jsr-announcementplot1-1.png" title="plot of chunk plot1"
+        alt="plot of chunk plot1" style="display: block; margin: auto;" />
+
+    became
+
+        ![](h3jsr-announcementplot1-1.png){fig-alt="Map of imported datasets in their native spatial formats" 
+        fig-align="center" width="80%"}
+
+    (I also took the time to add proper alt-text like I should have in the first place 😳)
+
+-   Switch back to visual mode and check the outputs, then check the final render with `quarto_preview()`
+
+-   Add a "Background" heading to the start of each post, to make the contents sidebar look less wacky
+
+-   adjust the blog-level YAML to suppress images in the index using the `filter` tag because I don't like the default choices and am too lazy to generate better ones
+
+-   steadfastly refuse to re-read any of the prose 🙃
+
+Doing it this way meant I didn't have to re-run any code, and all the outputs were all still preserved. This took about an hour. Of course, I make no guarantees about the content - it remains as it was originally published. Do not at me, etc
+
+### Extensions
+
+[Quarto extensions](https://quarto.org/docs/extensions/) are very new, so you need the dev version installed. I installed v1.2.237 before proceeding.
+
+I installed two extensions: [lightbox](https://github.com/quarto-ext/lightbox) and [academicons](https://github.com/schochastics/academicons), both purely for The Aesthetic. I wanted an image gallery to brighten up the homepage, and I wanted orcid and google scholar icons on my About page, which the default set lacks.
+
+To do this on the command line,
+
+```{bash}
+#| eval: false
+cd my-blog-directory
+
+quarto install extension quarto-ext/lightbox
+quarto install extension schochastics/academicons
+
+```
+
+NB: It took a minute for me to realise that one must `cd` to the blog repo before installing extensions. Don't be me, RTFM.
+
+After that, I used e.g. 
+
+```
+  - text: "{{{< ai orcid >}}}"
+```
+
+instead of my placeholder
+
+```
+  - icon: mortarboard
+```
+
+in `about.qmd`, and set up an image gallery in `index.qmd`. Note the use of a div and an id field in the source file to keep the recent posts sitting neatly above the image gallery.
+
+### Publishing
+
+I'm using the Github Pages approach, so the main steps were
+
+-   in `_quarto.yml` , set
+
+    ```
+    website:
+      output-dir: docs
+    ```
+    
+-   install the [giscus app](https://giscus.app/) for commenting
+-   set up comments in `/posts/_metadata.yml` with
+
+    ```
+    comments:  
+      giscus: 
+        repo: obrl-soil/obrl-soil.github.io
+        category: Announcements
+        reactions-enabled: true
+        loading: lazy
+        input-position: bottom
+        theme: light
+    ```
+    
+    (and disable it on old posts with `comments: false`, *because*)
+
+-   enable Discussions on the blog repo (in Settings)
+-   push the new main branch to GitHub and set it as the new default branch in Settings
+- go to Settings > Pages and deploy the site from main/docs
+- Rejoice!
+
+### Gripes
+
+Pobody's nerfect. Two things I'd like to see are
+
+-  an option to enable next/previous links for blog posts, as one can already do for book chapters
+-  properly centered bootswatch icons on buttons (the academicons are fine)
+
+### Finally
+
+I feel ok about this! Writing new content will be a lot easier, I can experiment more easily with other programming languages, and the website as a whole is easier to expand.
+
+Onwards.
