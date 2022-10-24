@@ -1,7 +1,9 @@
 ---
-title: "h3jsr: Probably should have learned more JavaScript instead >.>"
+title: "New R package: h3jsr"
+description: "Probably should have learned more JavaScript instead >.>"
 date: "2018-12-21"
 categories: [R, H3, JavaScript, DGGS]
+comments: false
 execute:
     eval: false
 ---
@@ -431,5 +433,3 @@ ggplot() +
 Its nice to confirm that `h3jsr` does what it oughta, but my major take-home from this is that I really need to learn me some geospatial JS. The code is much more concise than the R equivalent. In fact, the above was worse before I took the time to revamp a couple of my wrapper functions. The JS is also very fast, and the interactive maps are a real winner. I know I could probably do something here with `mapview` or better yet, `mapdeck` and Shiny, but that would be even more code (not to mention getting it to work properly on my current blog setup, which I'm not sure is possible...). So I'm very impressed.
 
 Anyway, there it is, feel free to experiment with the package, and I welcome PRs that will speed it up or improve useability. Its been a worthwhile learning exercise, and I'm using `h3jsr` fairly often at work. I'm pretty sure that an `Rcpp`-powered version of this that hooks into original-flavour H3 will be much, much faster, though, so I don't think this package will go to CRAN.
-
-------------------------------------------------------------------------

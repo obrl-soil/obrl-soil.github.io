@@ -1,11 +1,14 @@
 ---
-title: "slga: soils data for the people"
+title: "New R package: slga"
+description: "soils data for the people"
 date: "2018-12-31"
 categories: [R, soils, better living through APIs, raster]
-image: slga_img.png
+comments: false
 execute:
   eval: false
 ---
+
+## Background
 
 Catching up on package blogging, and juuuust managing to equal the low, low bar of four posts per year that I appear to have set myself.
 
