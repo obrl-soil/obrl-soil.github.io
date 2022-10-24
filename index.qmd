@@ -1,16 +1,14 @@
 ---
-title: "Lauren O'Brien"
-title-block-banner: true
-page-layout: full
+title: "Recent posts"
+title-block-banner: false
+page-layout: article
 listing: 
   contents: posts
   sort: "date desc"
+  max-items: 3
   sort-ui: false
   filter-ui: false
   type: default
-  categories: true
-  page-size: 10
-  feed: 
-    title: "obrl-soil blog"
-    language: en
+  date-format: medium
+  categories: false
 ---

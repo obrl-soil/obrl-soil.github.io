@@ -9,3 +9,5 @@ Gemfile.lock
 .sass-cache
 .jekyll-metadata
 .Rproj.user
+
+/.quarto/

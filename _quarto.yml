@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Lauren O'Brien"
@@ -24,7 +25,6 @@ website:
       - icon: rss
         href: blog.xml
   sidebar:
-    logo: images/obrlsoilavatarmon.jpg
     style: docked
     border: false
     alignment: left
