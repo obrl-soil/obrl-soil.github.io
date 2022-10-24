@@ -2,17 +2,45 @@ project:
   type: website
 
 website:
-  title: "My site" # naming things is hard
+  title: "Lauren O'Brien"
+  site-url: https://obrl-soil.github.io
+  repo-url: https://github.com/obrl-soil/obrl-soil.github.io
+  twitter-card:
+    creator: "@obrl_soil"
+  open-graph:
+    locale: en_NZ
+  google-analytics:
+    tracking-id: "G-TTL1M4BX0Y"
+    storage: none
+    anonymize-ip: true
   navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-      - blog.qmd
+    right:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Blog"
+        href: blog.qmd
+      - icon: rss
+        href: blog.xml
+  sidebar:
+    logo: images/obrlsoilavatarmon.jpg
+    style: docked
+    border: false
+    alignment: left
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Blog"
+        href: blog.qmd
+  page-footer:
+    left: "© Copyright 2022 Lauren O'Brien. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0."
 
 format:
   html:
-    theme: cosmo
+    theme: sandstone
     css: styles.css
     toc: true
 
