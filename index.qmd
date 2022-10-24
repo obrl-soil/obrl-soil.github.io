@@ -3,13 +3,35 @@ title: "Recent posts"
 title-block-banner: false
 page-layout: article
 listing: 
-  contents: posts
-  sort: "date desc"
-  fields: [title, subtitle, author, date, description]
-  max-items: 3
-  sort-ui: false
-  filter-ui: false
-  type: default
-  date-format: medium
-  categories: false
+  - id: recent-posts
+    contents: posts
+    sort: "date desc"
+    fields: [title, subtitle, author, date, description]
+    max-items: 3
+    sort-ui: false
+    filter-ui: false
+    type: default
+    date-format: medium
+    categories: false
+filters:
+  - lightbox
+lightbox:
+  loop: true
 ---
+
+::: {#recent-posts}
+:::
+
+# Recent fieldwork
+
+::: {.column-screen-inset-right}
+
+![](images/field-gallery/IMG_20221019_152435.jpg){.lightbox group="field-gallery" width="30%"}
+![](images/field-gallery/IMG_20221019_111752.jpg){.lightbox group="field-gallery" width="30%"}
+![](images/field-gallery/IMG_20221019_102947.jpg){.lightbox group="field-gallery" width="30%"}
+
+![](images/field-gallery/IMG_20221019_154944.jpg){.lightbox group="field-gallery" width="30%"}
+![](images/field-gallery/IMG_20221020_092222.jpg){.lightbox group="field-gallery" width="30%"}
+![](images/field-gallery/IMG_20221021_112418.jpg){.lightbox group="field-gallery" width="30%"}
+
+:::

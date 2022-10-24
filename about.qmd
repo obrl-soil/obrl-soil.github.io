@@ -2,8 +2,8 @@
 title: ''
 image: images/obrlsoilavatarmon.jpg
 comments: false
-sidebar: false
 about:
+  id: bio
   template: trestles
   image-shape: round
   links:
@@ -13,10 +13,10 @@ about:
     - icon: github
       aria-label: Github
       href: https:/github.com/obrl-soil
-    - icon: mortarboard
+    - text: "{{< ai orcid >}}"
       aria-label: ORCID
       href: https://orcid.org/0000-0002-7336-2171
-    - icon: mortarboard-fill
+    - text: "{{< ai google-scholar >}}"
       aria-label: Google Scholar
       href: https://scholar.google.com/citations?user=njps9gQAAAAJ
     - icon: linkedin
@@ -24,7 +24,7 @@ about:
       href: https://www.linkedin.com/in/obrl-soil/
 ---
 
-::: column-page
+::: {#bio}
 ## Hi!
 
 I'm a pedologist working for [Manaaki Whenua - Landcare Research](https://www.landcareresearch.co.nz/) (MWLR) in the North Island of Aotearoa New Zealand. My primary focuses are expanding [S-Map](https://smap.landcareresearch.co.nz/) coverage, supporting soil research activities and training the next generation of MWLR pedologists. I have strong interests in soil description, classification standards, and informatics. I also program (mostly in R) with a focus on geospatial technologies.

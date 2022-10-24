@@ -1,16 +1,6 @@
 ---
 title: "Blog"
 title-block-banner: false
-page-layout: full
-sidebar: false
-comments:
-  giscus: 
-    repo: obrl-soil/obrl-soil.github.io
-    category: Announcements
-    reactions-enabled: true
-    loading: lazy
-    input-position: bottom
-    theme: light
 listing: 
   contents: posts
   sort: "date desc"

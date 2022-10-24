@@ -14,6 +14,16 @@ freeze: true
 
 # layout - see blog.qmd
 
+# commenting system
+comments:
+  giscus:
+    repo: obrl-soil/obrl-soil.github.io
+    category: Announcements
+    reactions-enabled: true
+    loading: lazy
+    input-position: bottom
+    theme: light
+
 # knitr
 execute:
   echo: true
