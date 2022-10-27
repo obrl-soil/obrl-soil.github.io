@@ -39,8 +39,11 @@ git checkout -b main
 # push changes to remote, including tags
 git push origin --tags
 
-# delete the local archived branch (it can stay on github)
+# delete the local archived branch 
 git branch -d master
+
+# delete the remote (it can still be found under the tags tab)
+git push origin --delete master
 ```
 
 After that, I deleted everything from my local repo except for the `.git` and `.rProj.user` folders, plus the `.gitignore` and `*.Rproj` files. I then made a first commit to the new branch and started building.

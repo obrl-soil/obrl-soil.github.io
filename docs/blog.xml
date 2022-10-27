@@ -43,8 +43,11 @@
 <span id="cb1-10"><span class="co" style="color: #5E5E5E;"># push changes to remote, including tags</span></span>
 <span id="cb1-11"><span class="fu" style="color: #4758AB;">git</span> push origin <span class="at" style="color: #657422;">--tags</span></span>
 <span id="cb1-12"></span>
-<span id="cb1-13"><span class="co" style="color: #5E5E5E;"># delete the local archived branch (it can stay on github)</span></span>
-<span id="cb1-14"><span class="fu" style="color: #4758AB;">git</span> branch <span class="at" style="color: #657422;">-d</span> master</span></code></pre></div>
+<span id="cb1-13"><span class="co" style="color: #5E5E5E;"># delete the local archived branch </span></span>
+<span id="cb1-14"><span class="fu" style="color: #4758AB;">git</span> branch <span class="at" style="color: #657422;">-d</span> master</span>
+<span id="cb1-15"></span>
+<span id="cb1-16"><span class="co" style="color: #5E5E5E;"># delete the remote (it can still be found under the tags tab)</span></span>
+<span id="cb1-17"><span class="fu" style="color: #4758AB;">git</span> push origin <span class="at" style="color: #657422;">--delete</span> master</span></code></pre></div>
 </div>
 <p>After that, I deleted everything from my local repo except for the <code>.git</code> and <code>.rProj.user</code> folders, plus the <code>.gitignore</code> and <code>*.Rproj</code> files. I then made a first commit to the new branch and started building.</p>
 <p>I admit I flailed around a bit trying to figure out how to make a ‘blog inside a website’. There’s probably simpler ways to do this! In the end I did the following:</p>

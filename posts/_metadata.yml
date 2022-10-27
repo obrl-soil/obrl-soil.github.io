@@ -14,7 +14,7 @@ freeze: true
 
 # layout - see blog.qmd
 
-# commenting system
+# commenting system (use comments: false to disable on individual posts)
 comments:
   giscus:
     repo: obrl-soil/obrl-soil.github.io
