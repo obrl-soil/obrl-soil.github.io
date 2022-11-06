@@ -7,6 +7,9 @@ about:
   template: trestles
   image-shape: round
   links:
+    - icon: mastodon
+      aria-label: Mastodon
+      href: https://mastodon.social/@obrl_soil
     - icon: twitter
       aria-label: Twitter
       href: https://twitter.com/obrl_soil
