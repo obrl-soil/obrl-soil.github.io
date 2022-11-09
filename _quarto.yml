@@ -13,8 +13,12 @@ website:
     image: images/obrlsoilavatarmon.jpg
   google-analytics:
     tracking-id: "G-TTL1M4BX0Y"
-    storage: none
+    storage: cookies
     anonymize-ip: true
+  cookie-consent:
+    type: implied
+    style: simple
+    palette: light
   navbar:
     background: light
     foreground: gray-600
