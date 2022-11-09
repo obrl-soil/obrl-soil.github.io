@@ -27,6 +27,16 @@ website:
         href: blog.qmd
       - icon: rss
         href: blog.xml
+    left:
+      - icon: envelope-fill
+        aria-label: Email
+        href: mailto:obrlsoilau@gmail.com
+      - icon: mastodon
+        aria-label: Mastodon
+        href: https://mastodon.social/@obrl_soil
+      - icon: github
+        aria-label: Github
+        href: https://github.com/obrl-soil
   sidebar:
     style: docked
     border: false

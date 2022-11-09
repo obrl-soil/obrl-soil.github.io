@@ -7,6 +7,9 @@ about:
   template: trestles
   image-shape: round
   links:
+    - icon: envelope-fill
+      aria-label: Email
+      href: mailto:obrlsoilau@gmail.com
     - icon: mastodon
       aria-label: Mastodon
       href: https://mastodon.social/@obrl_soil

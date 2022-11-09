@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
- 
+
   gtag('consent', 'default', {
     'ad_storage': 'denied',
     'analytics_storage': 'denied'
@@ -101,24 +101,41 @@ gtag('config', 'G-TTL1M4BX0Y', { 'anonymize_ip': true});
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:obrlsoilau@gmail.com"><i class="bi bi-envelope-fill" role="img" aria-label="Email">
+</i>
+ <span class="menu-text"></span></a>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" rel="me" href="https://mastodon.social/@obrl_soil"><i class="bi bi-mastodon" role="img" aria-label="Mastodon">
+</i>
+ <span class="menu-text"></span></a>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/obrl-soil"><i class="bi bi-github" role="img" aria-label="Github">
+</i>
+ <span class="menu-text"></span></a>
+  </li>
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./about.html">
  <span class="menu-text">About</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./blog.html">
  <span class="menu-text">Blog</span></a>
-  </li>  
+  </li>
   <li class="nav-item compact">
     <a class="nav-link" href="./blog.xml"><i class="bi bi-rss" role="img">
-</i> 
+</i>
  <span class="menu-text"></span></a>
-  </li>  
+  </li>
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -137,20 +154,20 @@ gtag('config', 'G-TTL1M4BX0Y', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
+    <div class="sidebar-menu-container">
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
+  <div class="sidebar-item-container">
   <a href="./index.html" class="sidebar-item-text sidebar-link">Home</a>
   </div>
 </li>
         <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
+  <div class="sidebar-item-container">
   <a href="./about.html" class="sidebar-item-text sidebar-link active">About</a>
   </div>
 </li>
         <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
+  <div class="sidebar-item-container">
   <a href="./blog.html" class="sidebar-item-text sidebar-link">Blog</a>
   </div>
 </li>
@@ -158,7 +175,7 @@ gtag('config', 'G-TTL1M4BX0Y', { 'anonymize_ip': true});
     </div>
 </nav>
 <!-- margin-sidebar -->
-    
+
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -169,7 +186,11 @@ gtag('config', 'G-TTL1M4BX0Y', { 'anonymize_ip': true});
     <img src="images/obrlsoilavatarmon.jpg" class="about-image
   round " style="height: 20em; width: 20em;">
     <div class="about-links">
-  <a href="https://mastodon.social/@obrl_soil" class="about-link" rel="me">
+  <a href="mailto:obrlsoilau@gmail.com" class="about-link">
+    <i class="bi bi-envelope-fill"></i>
+     <span class="about-link-text"></span>
+  </a>
+  <a href="https://mastodon.social/@obrl_soil" class="about-link">
     <i class="bi bi-mastodon"></i>
      <span class="about-link-text"></span>
   </a>
@@ -245,7 +266,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       toggleBodyColorMode(bsSheetEl);
     }
   }
-  toggleBodyColorPrimary();  
+  toggleBodyColorPrimary();
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
@@ -265,11 +286,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
       button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
+      tooltip = new bootstrap.Tooltip(button,
+        { trigger: "manual",
           customClass: "code-copy-button-tooltip",
           offset: [0, -8]});
-      tooltip.show();    
+      tooltip.show();
     }
     setTimeout(function() {
       if (tooltip) {
@@ -299,7 +320,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       theme: 'quarto',
       placement: 'bottom-start'
     };
-    window.tippy(el, config); 
+    window.tippy(el, config);
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
   for (var i=0; i<noterefs.length; i++) {
@@ -355,7 +376,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© Copyright 2022 Lauren O’Brien. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
+    <div class="nav-footer-left">© Copyright 2022 Lauren O’Brien. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>
   </div>
 </footer>
 
