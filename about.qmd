@@ -1,6 +1,7 @@
 ---
 title: ''
 image: images/obrlsoilavatarmon.jpg
+image-alt: "A photo of the author doing soil coring fieldwork."
 comments: false
 about:
   id: bio
@@ -13,21 +14,27 @@ about:
     - icon: mastodon
       aria-label: Mastodon
       href: https://mastodon.social/@obrl_soil
+      rel: me
     - icon: twitter
       aria-label: Twitter
       href: https://twitter.com/obrl_soil
+      rel: me
     - icon: github
       aria-label: Github
       href: https://github.com/obrl-soil
+      rel: me
     - text: "{{< ai orcid >}}"
       aria-label: ORCID
       href: https://orcid.org/0000-0002-7336-2171
+      rel: me
     - text: "{{< ai google-scholar >}}"
       aria-label: Google Scholar
       href: https://scholar.google.com/citations?user=njps9gQAAAAJ
+      rel: me
     - icon: linkedin
       aria-label: LinkedIn
       href: https://www.linkedin.com/in/obrl-soil/
+      rel: me
 ---
 
 ::: {#bio}

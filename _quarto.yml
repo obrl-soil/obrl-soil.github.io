@@ -38,9 +38,11 @@ website:
       - icon: mastodon
         aria-label: Mastodon
         href: https://mastodon.social/@obrl_soil
+        rel: me
       - icon: github
         aria-label: Github
         href: https://github.com/obrl-soil
+        rel: me
   sidebar:
     style: docked
     border: false

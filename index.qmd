@@ -24,14 +24,8 @@ lightbox:
 
 # Recent fieldwork
 
-::: {.column-screen-inset-right}
+::: column-screen-inset-right
+![](images/field-gallery/IMG_20221019_152435.jpg){.lightbox group="field-gallery" width="30%"} ![](images/field-gallery/IMG_20221019_111752.jpg){.lightbox group="field-gallery" width="30%"} ![](images/field-gallery/IMG_20221019_102947.jpg){.lightbox group="field-gallery" width="30%"}
 
-![](images/field-gallery/IMG_20221019_152435.jpg){.lightbox group="field-gallery" width="30%"}
-![](images/field-gallery/IMG_20221019_111752.jpg){.lightbox group="field-gallery" width="30%"}
-![](images/field-gallery/IMG_20221019_102947.jpg){.lightbox group="field-gallery" width="30%"}
-
-![](images/field-gallery/IMG_20221019_154944.jpg){.lightbox group="field-gallery" width="30%"}
-![](images/field-gallery/IMG_20221020_092222.jpg){.lightbox group="field-gallery" width="30%"}
-![](images/field-gallery/IMG_20221021_112418.jpg){.lightbox group="field-gallery" width="30%"}
-
+![](images/field-gallery/IMG_20221019_154944.jpg){.lightbox group="field-gallery" width="30%"} ![](images/field-gallery/IMG_20221020_092222.jpg){.lightbox group="field-gallery" width="30%"} ![](images/field-gallery/IMG_20221021_112418.jpg){.lightbox group="field-gallery" width="30%"}
 :::
