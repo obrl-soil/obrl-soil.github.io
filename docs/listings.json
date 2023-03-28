@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/2023-03-28_obsidian-setup-2023/index.html",
       "/posts/2022-10-24_site-update/index.html",
       "/posts/2018-12-31_slga-announcement/index.html",
       "/posts/2018-12-21_h3jsr-announcement/index.html",
@@ -13,6 +14,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-03-28_obsidian-setup-2023/index.html",
       "/posts/2022-10-24_site-update/index.html",
       "/posts/2018-12-31_slga-announcement/index.html",
       "/posts/2018-12-21_h3jsr-announcement/index.html",

@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://obrl-soil.github.io/about.html</loc>
-    <lastmod>2022-11-19T20:57:34.593Z</lastmod>
+    <lastmod>2023-03-28T09:41:47.796Z</lastmod>
   </url>
   <url>
     <loc>https://obrl-soil.github.io/blog.html</loc>
-    <lastmod>2022-11-19T20:57:35.938Z</lastmod>
+    <lastmod>2023-03-28T09:41:49.415Z</lastmod>
   </url>
   <url>
     <loc>https://obrl-soil.github.io/index.html</loc>
-    <lastmod>2022-11-19T20:57:37.278Z</lastmod>
+    <lastmod>2023-03-28T09:41:50.565Z</lastmod>
   </url>
   <url>
     <loc>https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/index.html</loc>
-    <lastmod>2022-11-19T20:57:38.478Z</lastmod>
+    <lastmod>2023-03-28T09:41:51.911Z</lastmod>
   </url>
   <url>
     <loc>https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/index.html</loc>
-    <lastmod>2022-11-19T20:57:39.802Z</lastmod>
+    <lastmod>2023-03-28T09:41:53.557Z</lastmod>
   </url>
   <url>
     <loc>https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/index.html</loc>
-    <lastmod>2022-11-19T20:57:41.550Z</lastmod>
+    <lastmod>2023-03-28T09:41:55.436Z</lastmod>
   </url>
   <url>
     <loc>https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/index.html</loc>
-    <lastmod>2022-11-19T20:57:43.248Z</lastmod>
+    <lastmod>2023-03-28T09:41:57.284Z</lastmod>
   </url>
   <url>
     <loc>https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/index.html</loc>
-    <lastmod>2022-11-19T20:57:44.617Z</lastmod>
+    <lastmod>2023-03-28T09:41:58.757Z</lastmod>
   </url>
   <url>
     <loc>https://obrl-soil.github.io/posts/2022-10-24_site-update/index.html</loc>
-    <lastmod>2022-11-19T20:57:46.679Z</lastmod>
+    <lastmod>2023-03-28T09:42:00.952Z</lastmod>
+  </url>
+  <url>
+    <loc>https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/index.html</loc>
+    <lastmod>2023-03-28T09:42:05.278Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.290">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lauren O’Brien">
+<meta name="dcterms.date" content="2023-03-28">
+<meta name="description" content="Second brain? I barely have a first brain!">
+
+<title>Lauren O’Brien - Research Notes Setup 2023</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TTL1M4BX0Y"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TTL1M4BX0Y', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Lauren O’Brien - Research Notes Setup 2023">
+<meta property="og:description" content="Second brain? I barely have a first brain!">
+<meta property="og:image" content="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/obrlsoilavatarmon.jpg">
+<meta property="og:site-name" content="Lauren O'Brien">
+<meta property="og:locale" content="en_NZ">
+<meta name="twitter:title" content="Lauren O’Brien - Research Notes Setup 2023">
+<meta name="twitter:description" content="Second brain? I barely have a first brain!">
+<meta name="twitter:image" content="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/image-112718324.png">
+<meta name="twitter:creator" content="@obrl_soil">
+<meta name="twitter:image-height" content="40">
+<meta name="twitter:image-width" content="584">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Lauren O’Brien</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:obrlsoilau@gmail.com" rel="" target=""><i class="bi bi-envelope-fill" role="img" aria-label="Email">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://mastodon.social/(obrl_soil?)" rel="me" target=""><i class="bi bi-mastodon" role="img" aria-label="Mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/obrl-soil" rel="me" target=""><i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blog.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Research Notes Setup 2023</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../blog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Blog</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#workflow-example" id="toc-workflow-example" class="nav-link" data-scroll-target="#workflow-example">Workflow example</a></li>
+  <li><a href="#why-dont-i" id="toc-why-dont-i" class="nav-link" data-scroll-target="#why-dont-i">Why don’t I…?</a></li>
+  <li><a href="#things-i-like" id="toc-things-i-like" class="nav-link" data-scroll-target="#things-i-like">Things I like</a></li>
+  <li><a href="#things-i-dont-like" id="toc-things-i-dont-like" class="nav-link" data-scroll-target="#things-i-dont-like">Things I don’t like</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Research Notes Setup 2023</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">research management</div>
+    <div class="quarto-category">professional organisation</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Second brain? I barely have a first brain!
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="https://obrl-soil.github.io">Lauren O’Brien</a> <a href="https://orcid.org/0000-0002-7336-2171" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 28, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>I’ve seen a few posts and videos lately<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> about how various people manage the avalanche of technical literature coming their way<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. There are many helpful tips available in those posts, but nothing quite fit my own situation and needs end-to-end. So: this post is about how I currently manage a natural resource science-heavy reference library and associated knowledge generation infrastructure.</p>
+<p>To be clear, I don’t necessarily <em>love</em> this setup. Its the best I’ve managed so far though, so hopefully writing about what works and what could be better will be inspirational.</p>
+<section id="requirements" class="level3">
+<h3 class="anchored" data-anchor-id="requirements">Requirements</h3>
+<p>I am:</p>
+<ul>
+<li>a translational research worker with high anxiety and a short attention span</li>
+</ul>
+<p>I need/want:</p>
+<ul>
+<li>A setup that is compatible with my work IT environment but not dependent on it, because that is <em>safe</em></li>
+<li>A setup that is relatively easy to upgrade and extend and generally futz around with, because that is <em>fun</em>.</li>
+</ul>
+</section>
+<section id="setup" class="level3">
+<h3 class="anchored" data-anchor-id="setup">Setup</h3>
+<p>I am currently using:</p>
+<ul>
+<li><strong>Reference manager:</strong> <a href="https://www.zotero.org/">Zotero</a>, with the following extensions (‘add-ons’):
+<ul>
+<li><a href="http://zotfile.com/">Zotfile</a>, for reference and source document management. Offers a one-click solution for moving a file into a designated spot and renaming it according to a given pattern.</li>
+<li><a href="https://retorque.re/zotero-better-bibtex/">Better Bibtex</a>, which assigns unique IDs to Zotero references and automates their export to a <code>*.bib</code> file that can be picked up by other software that doesn’t have close integration with Zotero.</li>
+</ul></li>
+<li><strong>Notes manager:</strong> <a href="https://obsidian.md/">Obsidian</a>, with the following extensions (‘community plugins’):
+<ul>
+<li><a href="https://github.com/hans/obsidian-citation-plugin">Citations</a>: picks up the <code>*.bib</code> file that Better Bibtex puts down, and allows me to generate a markdown-format literature note for each reference with a matching name, some nice metadata, and a pre-formatted space all ready for me to add my notes.</li>
+<li><a href="https://github.com/valentine195/obsidian-admonition">Admonition</a>: (optional extra) makes it easy to add relative dates by e.g.&nbsp;typing in, e.g.&nbsp;<code>@today</code>, which then becomes a link named after today’s date.</li>
+<li><a href="https://github.com/marcusolsson/obsidian-projects">Projects</a>: (optional extra) This plugin is very new, so maybe not super stable in the medium term, but I really like the ability to create table, kanban, gallery and calendar views of my notes. Its currently about as <a href="https://www.notion.so/">Notion</a> or <a href="https://anytype.io/">Anytype</a> as you can get with markdown powering everything.</li>
+</ul></li>
+<li><strong>Storage:</strong> Office 365 OneDrive. Its whatever, I get it for free through work, just about any cloud storage environment could be dropped in its place.</li>
+<li><strong>Authoring:</strong> Sometimes Obsidian, sometimes <a href="https://quarto.org/">Quarto</a> in <a href="https://posit.co/">RStudio</a>, sometimes even (<em>gasp</em>) MS Word. The important part is that only Word and RStudio have full Zotero integration; other apps have to interact with it via the aforementioned <code>*.bib</code> file.</li>
+</ul>
+<section id="zotero" class="level4">
+<h4 class="anchored" data-anchor-id="zotero">Zotero</h4>
+<p>I’ve installed Zotero the usual way on a Windows machine. I have then added Zotfile, and set up my preferences as follows:</p>
+<ul>
+<li><strong>General Settings &gt; Location of Files:</strong> I have chosen ‘Custom Location’, and instructed it to place any new <a href="https://www.zotero.org/support/attaching_files">linked file attachments</a> in a particular folder in my OneDrive. I will call it ✨The&nbsp;Hoard✨ going forward. The only important thing about ✨The&nbsp;Hoard✨ is that it lives inside an <a href="https://forum.obsidian.md/t/what-exactly-is-a-vault/4369/2">Obsidian Vault</a>. A Vault is just another folder, with some extra bits inside.</li>
+<li><strong>Renaming Rules:</strong> This determines what the names of linked file attachments look like once they’re moved into ✨The&nbsp;Hoard✨. I use the template <code>{%a}_{%y}_{%t}</code> , which is first author surname, year, title, separated by underscores. I have also ticked “change to lower case”, “truncate title after . or : or ?”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> , set “maximum length of title” to 160, and maximum number of authors to 1. As such most of my linked files start out looking like, e.g.&nbsp;“darwin_1859_on_the_origin_of_species.pdf”.
+<ul>
+<li>I can’t leave well enough alone, so I tend to do a bit more manual tweaking 🙄. I add an “item type” slug like <code>_PAPER_</code> or <code>_THESIS_</code> , I remove filler words like ‘and’, ‘the’ and ‘novel’ from the title, and I change underscores in titles to dashes, after <a href="https://www.slideshare.net/milkers/naming-things">Jenny Bryan’s advice</a>. They come out looking a bit like, e.g.&nbsp;“Darwin_1859_BOOK_origin-species-1e.pdf”. I do this because I want ✨The&nbsp;Hoard✨ to be navigable on its own.</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Maximum length of title becomes important if you use cloud storage. OneDrive’s maximum path length is 400 characters and some client software makes a fuss past 260 characters, so if your Hoard folder is nested deeply you have less to work with.</p>
+</div>
+</div>
+<ul>
+<li><strong>Advanced Settings:</strong> I expanded the ‘Only work with the following filetypes’ option to cover some extra attachment file types I often use, e.g.&nbsp;MS Office formats, common image formats, ebooks, markdown, html and zip files. If you don’t do this, automated move-and-rename won’t work properly.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This option seems to mostly exist to protect against unintended consequences from enabling another setting in General Options - ‘source folder for attaching new files’ grabs the most recently modified file in a nominated folder. This seems like more trouble than its worth, so if you actually use it, please explain…</p>
+</div>
+</div>
+<p>Continuing, I have added Better Bibtex, and left all the defaults except:</p>
+<ul>
+<li><strong>Automatic export:</strong> “When Idle”, delayed for 60 seconds. This is a compromise; I work with a lot of grey literature and other Old Stuff that has to be manually entered into Zotero. The default setting was fast enough that I was running into freeze-ups and sync errors because I was still editing a reference while BB was trying to re-export my whole library. Waiting longer means I sometimes have to manually trigger an export to make a new reference available outside Zotero.</li>
+<li>The plugin is instructed to export my library to a <code>*.bib</code> file in Better Bibtex format that sits in the same folder as ✨The&nbsp;Hoard✨.</li>
+</ul>
+</section>
+<section id="other-zotero-add-ons" class="level4">
+<h4 class="anchored" data-anchor-id="other-zotero-add-ons">Other Zotero add-ons</h4>
+<p>These aren’t important, but they are nice.</p>
+<ul>
+<li><a href="https://github.com/wshanks/Zutilo">Zutilo</a> - allows mass editing of reference item tags and attachment paths</li>
+<li>Scite - <a href="https://scite.ai/">scite.ai</a> integration - citation records with context! I like what they’re doing. The service is still a bit incomplete in my main research fields, but improving all the time. One day I’ll convince my work to pay for it…</li>
+<li><a href="https://www.zotero.org/support/word_processor_plugin_usage">Word integration</a> - eh, why wouldn’t you?</li>
+<li><a href="https://argentinaos.com/zotero-mdnotes/">Mdnotes</a> - not actually using this at the moment, but if you have a lot of notes already in Zotero and you want to move them into Obsidian, it would be very helpful.</li>
+</ul>
+</section>
+<section id="obsidian" class="level4">
+<h4 class="anchored" data-anchor-id="obsidian">Obsidian</h4>
+<p>I have installed the software and set up a vault in my OneDrive called, imaginatively, <code>Work_Stuff</code>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may have to pay for a commercial license to use Obsidian. I’m not currently as I don’t qualify according to the EULA (NZ Crown Research Institutes are a weird public/private monstrosity, but fundamentally I’m employed as a non-profit government researcher). You may or may not have to depending on your circumstances, look into it and do the right thing.</p>
+</div>
+</div>
+<p>✨The&nbsp;Hoard✨ lives in a subfolder of <code>Work_Stuff</code>, as mentioned.</p>
+<p>I have then installed the Citations community plugin, with the following settings:</p>
+<ul>
+<li>Citation database format: BibLatex</li>
+<li>Citation database path: points at the <code>*.bib</code> file exported from Zotero by BB.</li>
+<li>Literature Note folder: do what you want here. I started a specific <code>Notes - sources</code> folder inside the Vault (at the same level as ✨The&nbsp;Hoard✨). You can get more specific and organise by project, or just store your notes in a big pile in the vault’s root directory if you’re a filthy zoomer who doesn’t understand file systems, I’m not judging<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</li>
+</ul>
+</section>
+<section id="literature-notes-template" class="level4">
+<h4 class="anchored" data-anchor-id="literature-notes-template">Literature Notes template</h4>
+<p>My templating choices are a little off-label, and this is where things get brittle. The key is that I use the ‘Short Title’ field in Zotero to store the name of the file attachment I want to write about, sans file extension<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. This means I can do two things: generate a note with a title that matches its source, and link to the source within the note template. In the main Zotero panel, an entry for Darwin <span class="citation" data-cites="darwin1859">(<a href="#ref-darwin1859" role="doc-biblioref">1859</a>)</span> might look like</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-112718324.png" class="quarto-discovered-preview-image img-fluid figure-img" alt=")A screenshot of my zotero listing for Charles Darwin's 'On the origin of species' ("></p>
+</figure>
+</div>
+<p>and in the item details:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-277859624.png" class="img-fluid figure-img" alt="The Details view of the aforementioned reference, showing the information stored in each field"></p>
+</figure>
+</div>
+<p>Now, in the Citations plugin settings,</p>
+<ul>
+<li><p>Literature note title template: <code>{{titleShort}}</code></p></li>
+<li><p>Literature note content template:<br>
+</p>
+<pre class="---"><code>title: "{{title}}"
+first author: {{entry.data.creators.author.[0].lastName}}, {{entry.data.creators.author.[0].firstName}}
+year: {{year}}
+doi: {{DOI}}
+type: {{entry.type}}
+---
+ref::[Open reference in Zotero]({{zoteroSelectURI}})
+pdf::[[{{titleShort}}.pdf|Open stored document]]
+***
+
+***
+## Abstract
+{{abstract}}
+
+## Notes
+
+## Cites
+
+## Cited by
+
+## Why I read this</code></pre></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The double quotes around <code>{{title}}</code> stop the metadata breaking if you have any YAML-reserved characters in the article title, like <code>:</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I put tags in between the two <code>***</code> rows, which render as a horizontal line in reading view.</p>
+</div>
+</div>
+<p>Example:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/darwin-notes.png" class="img-fluid figure-img" alt="A screenshot of my Obsidian Notes page for Charles Darwin's 'On the Origin of Species', demonstrating the general layout of the template I use."></p>
+<p></p><figcaption class="figure-caption">I might even give this reference the attention it deserves at some point…</figcaption><p></p>
+</figure>
+</div>
+<p>You’ll note the ‘ref’ and ‘pdf’ rows use some syntax from the <a href="https://github.com/blacksmithgu/obsidian-dataview">Obsidian Dataview</a> plugin. This is a bit of future-proofing in case I get into using that extension - no immediate plans.</p>
+<p>I didn’t originally have a ‘why I read this’ line in the template, but I’ve found that useful for adding context to my notes. A lot of my sources have multiple potential applications so its become worth noting what I cared about each time I accessed them. This also helps me avoid falling down a rabbit-hole of chasing interesting facts when I don’t have time - I can add a ‘come back to this’ tag and just let it go otherwise, no pressure.</p>
+</section>
+<section id="projects-plugin" class="level4">
+<h4 class="anchored" data-anchor-id="projects-plugin">Projects plugin</h4>
+<p>I set up a Project over my <code>Notes - sources</code> folder, with a Table view. I pull in a few metadata fields that make finding things easy - note filename, first author, title, article type, year. At present there’s no proper date handling so year just looks like a large number, but it still works for sort/filter. An extra nice thing about Projects is that it forces me to make sure my note metadata is actually correctly populated and formatted<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/projects-scshot.png" class="img-fluid figure-img" alt="A screenshot of the Table view over my Notes_sources folder, showing the first few items in surname-alphabetical order"></p>
+<p></p><figcaption class="figure-caption">Now you know what I’ve been reading lately 😁</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="workflow-example" class="level3">
+<h3 class="anchored" data-anchor-id="workflow-example">Workflow example</h3>
+<p>I find a reference I want to collect, and maybe even read. Delightful! I rub my little hands together gleefully and prepare to add it to Zotero. If its a new reference it’ll generally have a <a href="https://en.wikipedia.org/wiki/Digital_object_identifier">DOI</a>, which is the best of all possible worlds. I click the ‘magic wand’ icon in Zotero, paste in the DOI, and the reference appears in my collection.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-1029666134.png" class="img-fluid figure-img" alt="A screenshot of the Zotero 'magic wand' item addition panel"></p>
+<p></p><figcaption class="figure-caption">&lt;3 &lt;3 &lt;3</figcaption><p></p>
+</figure>
+</div>
+<p>If a full-text PDF is freely available and scrapeable, Zotero finds and downloads it for me. There’s a right-click &gt; ‘Find available PDF’ option that may need to be triggered. If that doesn’t work, I do my best to find that fulltext myself<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, and use Zotfile’s context menu to add it as an attachment and automatically rename it and move it to ✨The&nbsp;Hoard✨. I do my little extra tidying steps, and that’s that.</p>
+<p>For older references, I add in the details and attach, move and rename files manually.</p>
+<p>Once I want to start reading and taking notes, I move to Obsidian and use <code>ctrl+shift+o</code> to open the Citations dialog box, search and select the reference I want, and click to create a new note. The note appears, ready with basic metadata, places to add text and tags, and working links back to a) the Zotero entry itself and b) the source document. I can open the source document in Obsidian by using <code>ctrl+click</code> on the PDF link, and can pin it in the app alongside my notes page, letting me read and write easily.</p>
+</section>
+<section id="why-dont-i" class="level3">
+<h3 class="anchored" data-anchor-id="why-dont-i">Why don’t I…?</h3>
+<ul>
+<li><p><strong>Take notes in Zotero?</strong> I used to, but it has very limited capability for cross-linking <em>between</em> notes, so no real capacity for generating syntheses. I like to do things like build literature timelines, and Obsidian is simply a better place for this. Zotero’s notes attachments are handy for a few things like meta notes I don’t want to share (“this paper sucks!”) or PDF TOC exports, but otherwise I don’t find them useful.</p></li>
+<li><p><strong>Use Zotero’s ‘Attach Stored Copy’ functionality?</strong> Because then I can’t easily get at the document <em>except</em> by using Zotero, and often I just want to find a source quickly and e.g.&nbsp;email it to someone. Stored copies on Windows wind up in <code>\\Users\%USERNAME%\Zotero\storage\%RANDOMFOLDER%</code>, where <code>%RANDOMFOLDER%</code> is an alphanumeric internally associated with the reference entry, making them poorly discoverable.</p></li>
+<li><p><strong>Annotate PDFs and export?</strong> Basically I don’t remember anything I highlight, that’s just pretty colours. I have to rewrite things in my own words to take them in properly. I also work with a lot of old, bad PDF scans with crappy OCR or none at all, so it can be frustrating to even try. People who lean on a PDF-annotation workflow seem to never have to access anything older than 5-10 years, and that makes me equal parts jealous and suspicious.</p></li>
+</ul>
+</section>
+<section id="things-i-like" class="level3">
+<h3 class="anchored" data-anchor-id="things-i-like">Things I like</h3>
+<ul>
+<li>I’m actually using this, instead of setting it up and then ignoring it!</li>
+<li>I’m actually using this, instead of setting it up and then endlessly trying to optimise it!</li>
+<li>If I don’t use this for a few weeks, its not impossible to remember how everything works together.</li>
+<li>Within notes I can add additional links to specific pages in the source pdf, using syntax like <code>[[Darwin_1859_origin-Species-1e.pdf#page=112|Chapter 4 - Natural Selection]]</code>. This is fabulous.</li>
+<li>I can also do (as needed) a bunch of other stuff like add stored images, paste in screenshots, attach/link to other files and other notes, embed <a href="https://github.com/valentine195/obsidian-leaflet-plugin">maps</a>, and add other kinds of rich content like youtube videos to my notes.</li>
+<li>I can link all this stuff to my ‘daily notes’ diary setup, also in Obsidian, and do some productivity/focus tracking and task management - a topic for another time<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</li>
+</ul>
+</section>
+<section id="things-i-dont-like" class="level3">
+<h3 class="anchored" data-anchor-id="things-i-dont-like">Things I don’t like</h3>
+<ul>
+<li>OneDrive has to be running and logged in properly before interacting with the other software, otherwise things won’t sync correctly.</li>
+<li>I have to be careful to update Obsidian, Zotero, and the necessary plugins on both my home and work machines. I also need to close Obsidian before moving from one physical device to another to prevent sync issues.</li>
+<li>My use of the ‘Short Title’ field in Zotero is decidedly off-label and may cause problems in the long term. I also have to populate it manually before starting a new note, so adding a new reference takes longer.</li>
+<li>Re-addressing all the linked file attachments after moving ✨The&nbsp;Hoard✨ seems to be a high-risk operation; somehow I didn’t quite get it right the first time I moved it inside my Vault and have been slowly repairing links in Zotero ever since 😕 At least my naming convention makes things easy.</li>
+<li>Obsidian’s table support sucks, because tables suck when implemented in any plaintext format. I need and love tables. I don’t see an immediate solution for this. I’d at least be happy if I could reliably copy+paste markdown table data between different apps, but that’s not a thing right now.</li>
+<li>Zotero is annoying in some ways. Despite being definitely overall best in show for referencing:
+<ul>
+<li>it lacks specific reference types for some things that really should be handled better, like datasets, databases, and preprints</li>
+<li>It only enables the DOI field on a few item types, but people will whack a DOI on anything these days. I don’t like having to store it in the ‘extra’ field!</li>
+<li>The Windows GUI has a number of non-critical but highly irritating bugs, like laggy tabbing between fields.</li>
+<li>Mass editing capability isn’t quite there yet. I’d like to do some clean-up and consistency work, but that’s not easy right now.</li>
+<li>The help forum has that clueless-newb vs hostile-oldtimer vibe so common to software and programming support. Its pretty mild compared to a lot of places, but still tiresome.</li>
+</ul></li>
+<li>The ‘linked files’ approach is good for me but maybe not optimal for sharing with colleagues…but I can still potentially extend read access to ✨The&nbsp;Hoard✨over OneDrive and they can import the <code>*.bib</code> file as needed - there’s just no auto-sync. I haven’t tried this yet - there would certainly be some issues around integrating with their existing reference library that I don’t want to have to debug.</li>
+<li>Exporting notes in a normie-friendly format is a problem. Most of my colleagues don’t use Obsidian or markdown. I’ve said it before, but some kind of Quarto-based Obsidian-alike would be amazing, then I could throw html files or PDFs at them all day.</li>
+</ul>
+<p>Anyway, that’s that on that.</p>
+
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-darwin1859" class="csl-entry" role="listitem">
+Darwin, Charles. 1859. <em>On the Origin of Species</em>. 1st ed. John Murray. <a href="https://en.wikisource.org/wiki/On_the_Origin_of_Species_(1859)">https://en.wikisource.org/wiki/On_the_Origin_of_Species_(1859)</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>search ‘obsidian zotero’, you’ll be occupied for a while<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Like, technically, not emotionally.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Nothing good ever happens after that point.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Yes, I am.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>It doesn’t seem to be used for anything else, near as I can tell, but that’s not future-proof.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>The trick going forward will be to not accidentally rebuild Zotero in Obsidian.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>IYKNK<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>No promises.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2023,
+  author = {O’Brien, Lauren},
+  title = {Research {Notes} {Setup} 2023},
+  date = {2023-03-28},
+  url = {https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+O’Brien, Lauren. 2023. <span>“Research Notes Setup 2023.”</span> <a href="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023">https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="obrl-soil/obrl-soil.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk2OTA2NjUxNg==" data-category="Announcements" data-category-id="DIC_kwDOBB3fFM4CSKSN" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2022 Lauren O’Brien. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

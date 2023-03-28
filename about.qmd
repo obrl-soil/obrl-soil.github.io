@@ -51,6 +51,7 @@ I keep a [technical blog](blog.qmd) on this site.
 ### Publications
 
 -   Quarto-fied [New Zealand Soil Classification](https://lauren-obrien.github.io/nzsc_v3/)
+-   Quarto-fied [World Reference Base for Soil Resources](https://obrl-soil.github.io/wrbsoil2022/)
 -   Shiny web app for [splining soil data](https://obrl-soil.shinyapps.io/splineapp/) ([source code](https://github.com/obrl-soil/shiny_apps/tree/main/splineapp))
 
 ### R Packages
