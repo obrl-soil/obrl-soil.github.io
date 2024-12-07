@@ -13,8 +13,6 @@ listing:
     type: default
     date-format: medium
     categories: false
-filters:
-  - lightbox
 lightbox:
   loop: true
 ---

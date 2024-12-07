@@ -10,13 +10,14 @@
 <atom:link href="https://obrl-soil.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <language>en</language>
-<generator>quarto-1.3.290</generator>
-<lastBuildDate>Tue, 28 Mar 2023 09:41:48 GMT</lastBuildDate>
+<generator>quarto-1.6.39</generator>
+<lastBuildDate>Mon, 27 Mar 2023 11:00:00 GMT</lastBuildDate>
 <item>
   <title>Research Notes Setup 2023</title>
   <dc:creator>Lauren O&#39;Brien</dc:creator>
-  <link>https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/index.html</link>
+  <link>https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -138,18 +139,18 @@ Important
 <p>My templating choices are a little off-label, and this is where things get brittle. The key is that I use the ‘Short Title’ field in Zotero to store the name of the file attachment I want to write about, sans file extension<sup>5</sup>. This means I can do two things: generate a note with a title that matches its source, and link to the source within the note template. In the main Zotero panel, an entry for Darwin <span class="citation" data-cites="darwin1859">(1859)</span> might look like</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/image-112718324.png" class="quarto-discovered-preview-image img-fluid figure-img" alt=")A screenshot of my zotero listing for Charles Darwin's 'On the origin of species' ("></p>
+<p><img src="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/image-112718324.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt=")A screenshot of my zotero listing for Charles Darwin's 'On the origin of species' ("></p>
 </figure>
 </div>
 <p>and in the item details:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/image-277859624.png" class="img-fluid figure-img" alt="The Details view of the aforementioned reference, showing the information stored in each field"></p>
+<p><img src="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/image-277859624.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="The Details view of the aforementioned reference, showing the information stored in each field"></p>
 </figure>
 </div>
 <p>Now, in the Citations plugin settings,</p>
 <ul>
-<li><p>Literature note title template: <code>{{titleShort}}</code></p></li>
+<li><p>Literature note title template: <code>{titleShort}</code></p></li>
 <li><p>Literature note content template:<br>
 </p>
 <pre class="---"><code>title: "{{title}}"
@@ -184,7 +185,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The double quotes around <code>{{title}}</code> stop the metadata breaking if you have any YAML-reserved characters in the article title, like <code>:</code>.</p>
+<p>The double quotes around <code>{title}</code> stop the metadata breaking if you have any YAML-reserved characters in the article title, like <code>:</code>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -204,7 +205,7 @@ Note
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/darwin-notes.png" class="img-fluid figure-img" alt="A screenshot of my Obsidian Notes page for Charles Darwin's 'On the Origin of Species', demonstrating the general layout of the template I use."></p>
-<p></p><figcaption class="figure-caption">I might even give this reference the attention it deserves at some point…</figcaption><p></p>
+<figcaption>I might even give this reference the attention it deserves at some point…</figcaption>
 </figure>
 </div>
 <p>You’ll note the ‘ref’ and ‘pdf’ rows use some syntax from the <a href="https://github.com/blacksmithgu/obsidian-dataview">Obsidian Dataview</a> plugin. This is a bit of future-proofing in case I get into using that extension - no immediate plans.</p>
@@ -216,7 +217,7 @@ Note
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/projects-scshot.png" class="img-fluid figure-img" alt="A screenshot of the Table view over my Notes_sources folder, showing the first few items in surname-alphabetical order"></p>
-<p></p><figcaption class="figure-caption">Now you know what I’ve been reading lately 😁</figcaption><p></p>
+<figcaption>Now you know what I’ve been reading lately 😁</figcaption>
 </figure>
 </div>
 </section>
@@ -227,7 +228,7 @@ Note
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/images/image-1029666134.png" class="img-fluid figure-img" alt="A screenshot of the Zotero 'magic wand' item addition panel"></p>
-<p></p><figcaption class="figure-caption">&lt;3 &lt;3 &lt;3</figcaption><p></p>
+<figcaption>&lt;3 &lt;3 &lt;3</figcaption>
 </figure>
 </div>
 <p>If a full-text PDF is freely available and scrapeable, Zotero finds and downloads it for me. There’s a right-click &gt; ‘Find available PDF’ option that may need to be triggered. If that doesn’t work, I do my best to find that fulltext myself<sup>7</sup>, and use Zotfile’s context menu to add it as an attachment and automatically rename it and move it to ✨The&nbsp;Hoard✨. I do my little extra tidying steps, and that’s that.</p>
@@ -280,7 +281,7 @@ Note
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-darwin1859" class="csl-entry">
 Darwin, Charles. 1859. <em>On the Origin of Species</em>. 1st ed. John Murray. <a href="https://en.wikisource.org/wiki/On_the_Origin_of_Species_(1859)">https://en.wikisource.org/wiki/On_the_Origin_of_Species_(1859)</a>.
 </div>
@@ -296,26 +297,27 @@ Darwin, Charles. 1859. <em>On the Origin of Species</em>. 1st ed. John Murray. <
 <li id="fn7"><p>IYKNK↩︎</p></li>
 <li id="fn8"><p>No promises.↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2023,
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2023,
   author = {O’Brien, Lauren},
   title = {Research {Notes} {Setup} 2023},
   date = {2023-03-28},
-  url = {https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023},
+  url = {https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2023" class="csl-entry quarto-appendix-citeas">
-O’Brien, Lauren. 2023. <span>“Research Notes Setup 2023.”</span> <a href="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023">https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023</a>.
+O’Brien, Lauren. 2023. <span>“Research Notes Setup 2023.”</span> <a href="https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/">https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/</a>.
 </div></div></section></div> ]]></description>
   <category>research management</category>
   <category>professional organisation</category>
-  <guid>https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/index.html</guid>
-  <pubDate>Tue, 28 Mar 2023 09:41:48 GMT</pubDate>
+  <guid>https://obrl-soil.github.io/posts/2023-03-28_obsidian-setup-2023/</guid>
+  <pubDate>Mon, 27 Mar 2023 11:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Website update</title>
   <dc:creator>Lauren O&#39;Brien</dc:creator>
-  <link>https://obrl-soil.github.io/posts/2022-10-24_site-update/index.html</link>
+  <link>https://obrl-soil.github.io/posts/2022-10-24_site-update/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -489,27 +491,28 @@ font-style: inherit;">quarto</span> install extension schochastics/academicons</
 <ol>
 <li id="fn1"><p>to be clear: this is insane of me, life hasn’t gotten less busy…↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2022,
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2022,
   author = {O’Brien, Lauren},
   title = {Website Update},
   date = {2022-10-22},
-  url = {https://obrl-soil.github.io/posts/2022-10-24_site-update},
+  url = {https://obrl-soil.github.io/posts/2022-10-24_site-update/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2022" class="csl-entry quarto-appendix-citeas">
-O’Brien, Lauren. 2022. <span>“Website Update.”</span> <a href="https://obrl-soil.github.io/posts/2022-10-24_site-update">https://obrl-soil.github.io/posts/2022-10-24_site-update</a>.
+O’Brien, Lauren. 2022. <span>“Website Update.”</span> <a href="https://obrl-soil.github.io/posts/2022-10-24_site-update/">https://obrl-soil.github.io/posts/2022-10-24_site-update/</a>.
 </div></div></section></div> ]]></description>
   <category>meta</category>
   <category>blogging</category>
   <category>quarto</category>
-  <guid>https://obrl-soil.github.io/posts/2022-10-24_site-update/index.html</guid>
+  <guid>https://obrl-soil.github.io/posts/2022-10-24_site-update/</guid>
   <pubDate>Fri, 21 Oct 2022 11:00:00 GMT</pubDate>
 </item>
 <item>
   <title>New R package: slga</title>
   <dc:creator>Lauren O&#39;Brien</dc:creator>
-  <link>https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/index.html</link>
+  <link>https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -582,7 +585,7 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
 <p>retrieves this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/clayplot.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:85.0%" alt="plot of King Island surface clay content"></p>
+<p><img src="https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/clayplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%" alt="plot of King Island surface clay content"></p>
 </figure>
 </div>
 <p>WCS services aren’t quite designed for this task - they’re mainly geared towards dynamic data access via web map portals or GIS GUIs, so they default to a lot of dynamic rescaling and resampling to make that efficient. Still, with a bit of mucking about its possible to bend them towards simple subsetting of very large raster datasets, at pretty reasonable speed (depending, of course, on one’s internet connection, insert NBN joke here).</p>
@@ -604,28 +607,29 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
   author = {O’Brien, Lauren},
   title = {New {R} Package: Slga},
   date = {2018-12-31},
-  url = {https://obrl-soil.github.io/posts/2018-12-31_slga-announcement},
+  url = {https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas">
-O’Brien, Lauren. 2018. <span>“New R Package: Slga.”</span> <a href="https://obrl-soil.github.io/posts/2018-12-31_slga-announcement">https://obrl-soil.github.io/posts/2018-12-31_slga-announcement</a>.
+O’Brien, Lauren. 2018. <span>“New R Package: Slga.”</span> <a href="https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/">https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>soils</category>
   <category>better living through APIs</category>
   <category>raster</category>
-  <guid>https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/index.html</guid>
+  <guid>https://obrl-soil.github.io/posts/2018-12-31_slga-announcement/</guid>
   <pubDate>Sun, 30 Dec 2018 11:00:00 GMT</pubDate>
 </item>
 <item>
   <title>New R package: h3jsr</title>
   <dc:creator>Lauren O&#39;Brien</dc:creator>
-  <link>https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/index.html</link>
+  <link>https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -1060,6 +1064,7 @@ background-color: null;
 font-style: inherit;">list</span>(sf_travel_times, crime_90_days, public_schools,</span>
 <span id="cb12-4">                          bart_stations, pois), <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(x) {</span>
 <span id="cb12-5">                            sf<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1178,7 +1183,7 @@ font-style: inherit;">'Unprocessed input data'</span>)</span></code></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/h3jsr-announcementplot1-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:80.0%" alt="Map of imported datasets in their native spatial formats"></p>
+<p><img src="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/h3jsr-announcementplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="Map of imported datasets in their native spatial formats"></p>
 </figure>
 </div>
 <p>Time to make some sense of it.</p>
@@ -1188,6 +1193,7 @@ font-style: inherit;">'Unprocessed input data'</span>)</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">layer =</span> <span class="cn" style="color: #8f5902;
@@ -1240,6 +1246,7 @@ font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">norm =</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (b0) {</span>
 <span id="cb13-6">      scales<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1268,6 +1275,7 @@ background-color: null;
 font-style: inherit;">TRUE</span>)))</span>
 <span id="cb13-7">      } <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">else</span> { scales<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
@@ -1307,6 +1315,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(., <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(h3) {</span>
 <span id="cb14-3">   dat <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -1320,7 +1329,9 @@ font-style: inherit;">=</span> h3, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'weight'</span> <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> 1L, </span>
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>L, </span>
 <span id="cb14-4">                     <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;
@@ -1368,6 +1379,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(., <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(h3) {</span>
 <span id="cb16-3">    <span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1405,6 +1417,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map_dfr</span>(near_school, <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(h3) {</span>
 <span id="cb16-8">      <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1449,6 +1462,7 @@ font-style: inherit;">1</span>]])</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(km, res) {</span>
 <span id="cb18-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1488,6 +1502,7 @@ font-style: inherit;">7</span>,<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>), <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(h3, res) {</span>
 <span id="cb18-7">    d <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -1518,6 +1533,7 @@ font-style: inherit;">map</span>(near_bart[<span class="dv" style="color: #AD000
 background-color: null;
 font-style: inherit;">1</span>], <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(feature) {</span>
 <span id="cb18-11">      purrr<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1527,6 +1543,7 @@ font-style: inherit;">map2</span>(feature, <span class="fu" style="color: #4758A
 background-color: null;
 font-style: inherit;">seq_along</span>(feature), <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(ring, step) {</span>
 <span id="cb18-12">        wt <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -1569,6 +1586,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map_dfr</span>(., <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(x) {</span>
 <span id="cb18-18">        <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1623,6 +1641,7 @@ font-style: inherit;">7</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>), <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(res) {</span>
 <span id="cb20-2">  dat <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -1649,6 +1668,7 @@ background-color: null;
 font-style: inherit;">$</span>h3_polyfillers, </span>
 <span id="cb20-5">                         <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(x, y) {</span>
 <span id="cb20-6">                           <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1710,6 +1730,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(., <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(h3) {</span>
 <span id="cb22-3">   dat <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -1723,7 +1744,9 @@ font-style: inherit;">=</span> h3, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'weight'</span> <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> 1L, </span>
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>L, </span>
 <span id="cb22-4">                     <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;
@@ -1799,6 +1822,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(dat, <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(res) {</span>
 <span id="cb24-9">  <span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1809,6 +1833,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map2</span>(res, datnm, <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(x,y) {</span>
 <span id="cb24-11">    dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2074,7 +2099,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/h3jsr-announcementplot-1.png" class="img-fluid figure-img" style="width:80.0%" alt="A map of the hexified and unified data, faceted over four increasingly detailed resolution levels"></p>
+<p><img src="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/h3jsr-announcementplot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="A map of the hexified and unified data, faceted over four increasingly detailed resolution levels"></p>
 </figure>
 </div>
 <p>Its nice to confirm that <code>h3jsr</code> does what it oughta, but my major take-home from this is that I really need to learn me some geospatial JS. The code is much more concise than the R equivalent. In fact, the above was worse before I took the time to revamp a couple of my wrapper functions. The JS is also very fast, and the interactive maps are a real winner. I know I could probably do something here with <code>mapview</code> or better yet, <code>mapdeck</code> and Shiny, but that would be even more code (not to mention getting it to work properly on my current blog setup, which I’m not sure is possible…). So I’m very impressed.</p>
@@ -2083,28 +2108,29 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
   author = {O’Brien, Lauren},
   title = {New {R} Package: H3jsr},
   date = {2018-12-21},
-  url = {https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement},
+  url = {https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas">
-O’Brien, Lauren. 2018. <span>“New R Package: H3jsr.”</span> <a href="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement">https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement</a>.
+O’Brien, Lauren. 2018. <span>“New R Package: H3jsr.”</span> <a href="https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/">https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>H3</category>
   <category>JavaScript</category>
   <category>DGGS</category>
-  <guid>https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/index.html</guid>
+  <guid>https://obrl-soil.github.io/posts/2018-12-21_h3jsr-announcement/</guid>
   <pubDate>Thu, 20 Dec 2018 11:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Playing with the Fitbit API in R</title>
   <dc:creator>Lauren O&#39;Brien</dc:creator>
-  <link>https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/index.html</link>
+  <link>https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2121,7 +2147,7 @@ O’Brien, Lauren. 2018. <span>“New R Package: H3jsr.”</span> <a href="https
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/register_app.PNG" class="quarto-discovered-preview-image img-fluid figure-img" style="width:50.0%" alt="screenshot of the app registration page, filled out correctly"></p>
+<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/register_app.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" alt="screenshot of the app registration page, filled out correctly"></p>
 </figure>
 </div>
 <ul>
@@ -2129,7 +2155,7 @@ O’Brien, Lauren. 2018. <span>“New R Package: H3jsr.”</span> <a href="https
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/fbapplanding.PNG" class="img-fluid figure-img" style="width:50.0%" alt="screenshot of the registered app, with the link to the OAuth 2 tutorial highlighted"></p>
+<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/fbapplanding.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" alt="screenshot of the registered app, with the link to the OAuth 2 tutorial highlighted"></p>
 </figure>
 </div>
 <ul>
@@ -2137,7 +2163,7 @@ O’Brien, Lauren. 2018. <span>“New R Package: H3jsr.”</span> <a href="https
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/authpage.PNG" class="img-fluid figure-img" style="width:50.0%" alt="screenshot of the app authorisation page"></p>
+<p><img src="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/authpage.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" alt="screenshot of the app authorisation page"></p>
 </figure>
 </div>
 <ul>
@@ -2160,6 +2186,7 @@ font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">token =</span> <span class="cn" style="color: #8f5902;
@@ -2221,6 +2248,7 @@ font-style: inherit;">$</span>active</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">date =</span> <span class="cn" style="color: #8f5902;
@@ -2305,6 +2333,7 @@ font-style: inherit;"># json-as-list to dataframe (for simple cases without nest
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> <span class="cn" style="color: #8f5902;
@@ -2508,6 +2537,7 @@ font-style: inherit;"># looks better now:</span></span>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">age =</span> <span class="cn" style="color: #8f5902;
@@ -2696,30 +2726,31 @@ font-style: inherit;">sum</span>(meps))</span></code></pre></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
   author = {O’Brien, Lauren},
   title = {Playing with the {Fitbit} {API} in {R}},
   date = {2018-08-01},
-  url = {https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r},
+  url = {https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas">
 O’Brien, Lauren. 2018. <span>“Playing with the Fitbit API in R.”</span>
-<a href="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r">https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r</a>.
+<a href="https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/">https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>better living through APIs</category>
   <category>the quantified life</category>
   <category>punching on</category>
   <category>fitbit</category>
-  <guid>https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/index.html</guid>
+  <guid>https://obrl-soil.github.io/posts/2018-08-01_fitbit-api-r/</guid>
   <pubDate>Tue, 31 Jul 2018 12:00:00 GMT</pubDate>
 </item>
 <item>
   <title>dsmartr: My first R package</title>
   <dc:creator>Lauren O&#39;Brien</dc:creator>
-  <link>https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/index.html</link>
+  <link>https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2772,29 +2803,30 @@ O’Brien, Lauren. 2018. <span>“Playing with the Fitbit API in R.”</span>
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2018,
   author = {O’Brien, Lauren},
   title = {Dsmartr: {My} First {R} Package},
   date = {2018-01-16},
-  url = {https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement},
+  url = {https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2018" class="csl-entry quarto-appendix-citeas">
-O’Brien, Lauren. 2018. <span>“Dsmartr: My First R Package.”</span> <a href="https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement">https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement</a>.
+O’Brien, Lauren. 2018. <span>“Dsmartr: My First R Package.”</span> <a href="https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/">https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>dsmart</category>
   <category>meta</category>
   <category>ramblings</category>
   <category>digital soil mapping</category>
-  <guid>https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/index.html</guid>
+  <guid>https://obrl-soil.github.io/posts/2018-01-16_dsmartr-announcement/</guid>
   <pubDate>Mon, 15 Jan 2018 11:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Learning Shiny with the Spline Tool</title>
   <dc:creator>Lauren O&#39;Brien</dc:creator>
-  <link>https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/index.html</link>
+  <link>https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2807,7 +2839,7 @@ O’Brien, Lauren. 2018. <span>“Dsmartr: My First R Package.”</span> <a href
 <p>The standard solution is to use a mass-preserving spline to interpolate between the available data, and produce estimates of mean values for continuous depth sections down the profile. The idea entered the scientific literature with Bishop, McBratney and Laslett’s 1999 paper <a href="https://doi.org/10.1016/S0016-7061(99)00003-8">Modelling soil attribute depth functions with equal-area quadratic smoothing splines</a> and became standard practice fairly quickly. In the mid-2000’s the CSIRO-funded <a href="http://www.clw.csiro.au/aclep/">Australian Collaborative Land Evaluation Program</a> (ACLEP) team released a standalone app to do the job, I suspect in response to too many homebrew implementations floating around. The app made certain that everyone doing splining would get the same results from a given dataset, and this was a big deal as the drive was on to produce unified national datasets like the <a href="http://www.asris.csiro.au/index.html">Australian Soil Resource Information System (ASRIS)</a> and, later, the <a href="http://www.clw.csiro.au/aclep/soilandlandscapegrid/">Soil and Landscape Grid of Australia</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/learning-shiny-splinetool.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:80.0%" alt="screenshot of the original spline app"></p>
+<p><img src="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/learning-shiny-splinetool.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="screenshot of the original spline app"></p>
 </figure>
 </div>
 <p>The standalone app is still available from the <a href="http://www.asris.csiro.au/methods.html">ASRIS website</a>, but ACLEP and ASRIS are sadly underloved these days and I don’t know how much longer they’ll be around. The app itself hasn’t been updated since ~2012 - the authors may have jinxed themselves by promising regular updates in the metadata :P.</p>
@@ -2815,7 +2847,7 @@ O’Brien, Lauren. 2018. <span>“Dsmartr: My First R Package.”</span> <a href
 <p>The webapp is now online at <a href="https://obrl-soil.shinyapps.io/splineapp/"><strong>https://obrl-soil.shinyapps.io/splineapp/</strong></a>, so check it out and let me know what you think. Hopefully its of use to people who can’t run the existing app, or don’t want to learn R just to get this one task done. It has all the original app features, except for RMSE and ‘singles reports’, which <code>mpspline</code> doesn’t produce. To make up for it, you can view outputs as well as inputs by site, save plots, and either download .csv outputs or an .rds containing the complete object output by <code>mpspline</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/learning-shiny-splineapp.png" class="img-fluid figure-img" style="width:80.0%" alt="screenshot of the new spline app"></p>
+<p><img src="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/learning-shiny-splineapp.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="screenshot of the new spline app"></p>
 </figure>
 </div>
 <p>Read on if you care about how I got it working…</p>
@@ -2831,21 +2863,21 @@ O’Brien, Lauren. 2018. <span>“Dsmartr: My First R Package.”</span> <a href
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2017,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{o'brien2017,
   author = {O’Brien, Lauren},
   title = {Learning {Shiny} with the {Spline} {Tool}},
   date = {2017-10-22},
-  url = {https://obrl-soil.github.io/posts/2017-10-22_learning-shiny},
+  url = {https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'brien2017" class="csl-entry quarto-appendix-citeas">
 O’Brien, Lauren. 2017. <span>“Learning Shiny with the Spline
-Tool.”</span> <a href="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny">https://obrl-soil.github.io/posts/2017-10-22_learning-shiny</a>.
+Tool.”</span> <a href="https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/">https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>shiny</category>
   <category>mass-preserving spline</category>
-  <guid>https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/index.html</guid>
+  <guid>https://obrl-soil.github.io/posts/2017-10-22_learning-shiny/</guid>
   <pubDate>Sat, 21 Oct 2017 11:00:00 GMT</pubDate>
 </item>
 </channel>
