@@ -35,6 +35,10 @@ website:
       - icon: envelope-fill
         aria-label: Email
         href: mailto:obrlsoilau@gmail.com
+      - text: "{{< fa brands bluesky >}}"
+        aria-label: Bluesky
+        href: https://bsky.app/profile/obrlsoil.bsky.social
+        rel: me
       - icon: mastodon
         aria-label: Mastodon
         href: https://mastodon.social/@obrl_soil
